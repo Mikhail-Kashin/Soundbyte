@@ -1,0 +1,3 @@
+npx sequelize-cli model:generate --name Song --attributes userId:integer,albumId:integer
+
+npx sequelize-cli model:generate --name Song --attributes userId:integer,albumId:integer
