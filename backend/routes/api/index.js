@@ -42,7 +42,7 @@ router.post('/test', function (req, res) {
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
-router.use('/song', songRouter);
+router.use('/songs', songRouter);
 
 
 module.exports = router;
