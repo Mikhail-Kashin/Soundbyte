@@ -13,14 +13,15 @@ const router = express.Router();
 
 
 // get all songs
-router.get ('/', asyncHandler(async (res, req) => {
+router.get ('/', asyncHandler(async (req, res) => {
   const songs = await Song.findAll()
+  console.log('------->test', songs)
   return res.json(songs)
 }))
 
 
 // post a new song
-router.post('/new',singlePublicFileUpload('songUpload'), asyncHandler(async (res, req) => {
+router.post('/new',singleMulterUpload('songUpload'), asyncHandler(async (req, res) => {
   const {songName, songGenre} = req.body;
   const songUrl = await singlePublicFileUpload(req.file);
   const newSong = await Song.create({
