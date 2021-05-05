@@ -6,11 +6,7 @@ import './splashPage.css'
 function SongPage() {
   const dispatch = useDispatch();
   const songs = useSelector(state => state.songs)
-  const songName = songs.songName
-  const currentUserId = useSelector(state => state.session.user.id)
-  // console.log('testing------->songs', songs)
-  // console.log('testing.........>user', currentUserId)
-  console.log('testing______>', songs.songName)
+
 
 
   useEffect(() => {
