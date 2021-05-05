@@ -9,13 +9,13 @@ const getSongFeed = (songs) => ({
 
 
 //thunk
-export const getSongs = () = async dispatch => {
-  const res = await fetch('/api/songs')
+export const getSongs = () => async dispatch => {
+  const res = await fetch(`/api/songs`)
   if (!res.ok){
     throw res
   }
-  const song = await res.json()
-  dispatch(getSongFeed(song))
+  const song = await res.data
+  await dispatch(getSongFeed(song))
 }
 
 
