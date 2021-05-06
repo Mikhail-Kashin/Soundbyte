@@ -32,7 +32,7 @@ export const getSongs = () => async dispatch => {
   await dispatch(getSongFeed(song))
 }
 
-//AWSTHUNK
+//AWS create song thunk
 export const createSong = (newSong) => async dispatch => {
   const {userId, songUrl, songName, songGenre} = newSong;
   const formData = new FormData();
@@ -57,15 +57,15 @@ export const createSong = (newSong) => async dispatch => {
 
 //delete song Thunks
 export const deleteSong = (songId) => async dispatch => {
-  const response = await fetch(`api/delete/${songId}`, {
+  const res = await fetch(`api/songs/delete/${songId}`, {
     headers: { 'Content-Type': 'application/json'},
     method: 'DELETE'
   })
-  const songData = await response.json()
-  if(!response.ok){
+  const songData = await res.data
+  if(!res.ok){
     return;
   };
-  dispatch(removeSong(songData));
+  await dispatch(removeSong(songData));
 }
 
 
@@ -84,7 +84,7 @@ export default function songReducer(state = initialState, action) {
     case REMOVE_SONG:
       const removeState = {...state.payload}
       for (const key in state.payload) {
-        delete removeState.payload[key]
+        delete removeState[key]
       }
     default:
       return state;

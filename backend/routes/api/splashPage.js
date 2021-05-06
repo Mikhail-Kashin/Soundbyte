@@ -37,11 +37,10 @@ router.post('/new',singleMulterUpload("songUrl"), asyncHandler(async (req, res) 
 
 // delete song
 router.delete(`/delete/:songId`, asyncHandler(async (req, res) => {
-  const songId = parseInt(req.params.songId)
+  const songId = req.params.songId
   const deleteSong = await Song.findOne({where: {id: songId}})
   await deleteSong.destroy()
-  res.status(200)
-  res.send()
+  res.json(songId)
 }))
 
 

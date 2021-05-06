@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from 'react-router-dom';
 // import { useHistory } from "react-router-dom";
-import { getSongs, createSong } from '../../store/splashpage';
+import { getSongs, deleteSong } from '../../store/splashpage';
 import { Modal } from '../../context/Modal'
 import RenderNewSongForm from './newsongform'
 import './splashPage.css';
@@ -15,13 +15,18 @@ function SongPage() {
   const [showModal, setShowModal] = useState(false);
 
 
-
+  function removeSongFunc(e, songId){
+    e.preventDefault();
+    console.log('test.......>', songId)
+    dispatch(deleteSong(songId))
+    dispatch(getSongs())
+  }
 
 
   useEffect(() => {
     dispatch(getSongs())
-
   },[dispatch])
+
 
 
 
@@ -32,30 +37,35 @@ const renderSongPage = () => {
       return (
         <div>
           <NavLink exact to={`/${song.songUrl}`}>{song.songName}</NavLink>
-          
+          <button onClick={(e) => removeSongFunc(e, song.id)}>Delete</button>
         </div>
       )
 
     })
   }
   }
-
-return (
-  <div>
-    <p className="yourSongs">Your Songs</p>
+if (sessionUser){
+  return (
     <div>
-      {renderSongPage()}
+      <p className="yourSongs">Your Songs</p>
+      <div>
+        {renderSongPage()}
+      </div>
+      <div>
+      <button onClick={() => setShowModal(true)}>Upload</button>
+        {showModal && (
+          <Modal onClose={() => setShowModal(false)}>
+            <RenderNewSongForm />
+          </Modal>
+        )}
+      </div>
     </div>
-    <div>
-    <button onClick={() => setShowModal(true)}>Upload</button>
-      {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-          <RenderNewSongForm />
-        </Modal>
-      )}
-    </div>
-  </div>
-)
+  )
+} else {
+  return (
+    <p className="yourSongs">Please Login</p>
+  )
+}
 
 }
 
