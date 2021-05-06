@@ -12,9 +12,7 @@ function SongPage() {
   const songs = useSelector(state => state.songs)
   const sessionUser = useSelector(state => state.session.user);
   const [showModal, setShowModal] = useState(false);
-  // const [songUrl, setSongUrl] = useState('');
-  // const [songName, setSongName] = useState('');
-  // const [songGenre, setSongGenre] = useState('');
+
 
 
 
@@ -25,55 +23,6 @@ function SongPage() {
   },[dispatch])
 
 
-// const handleSubmitNewSong = async (e) => {
-//   e.preventDefault();
-//   dispatch(createSong({ songUrl, songName, songGenre}))
-//     .then(() => {
-//       setSongUrl(null);
-//       setSongName('');
-//       setSongGenre('');
-//     })
-//     // .catch(async (res) => {
-//     //   const data = await res.json();
-//     // })
-// }
-
-// const updateSongFile = (e) => {
-//   const songFile = e.target.files[0];
-//   // console.log('testsongfil')
-//   if (songFile) setSongUrl(songFile);
-// }
-
-// const RenderNewSongForm = () => {
-//   if (sessionUser){
-//     return (
-//       <div>
-//         <form onSubmit={handleSubmitNewSong}>
-//           <label>
-//             songName
-//             <input
-//             type="text"
-//             value={songName}
-//             onChange={(e) => setSongName(e.target.value)}
-//             placeholder="songname"
-//             required
-//             />
-//           </label>
-//           <label>
-//             uploadhere
-//             <input
-//             type="file"
-//             // value={songUrl}
-//             onChange={updateSongFile}
-//             required
-//             />
-//           </label>
-//           <button type="submit">Upload New Song!</button>
-//         </form>
-//       </div>
-//     )
-//   }
-//   }
 
 const renderSongPage = () => {
   if (sessionUser){
