@@ -17,26 +17,7 @@ function SongPage() {
   const songs = useSelector(state => state.songs)
   const sessionUser = useSelector(state => state.session.user);
   const [showModal, setShowModal] = useState(false);
-
-  const songNames = () => {
-    return Object.values(songs).map(song => song.songName)
-  }
-
-  const songUrls = () => {
-    return Object.values(songs).map(song => song.songUrl)
-  }
-
-  // const audioElement = new Audio(audio source);
-
-  const songsToPlay = [
-    {
-      title: songNames(),
-      songUrl: songUrls()
-    }
-  ]
-
-
-
+  const [songIndex, setSongIndex] = useState(0)
 
 
   function removeSongFunc(e, songId){
@@ -59,7 +40,7 @@ const renderSongPage = () => {
 
       return (
         <div>
-          <p>{song.songName}</p>
+          <p onClick={() => setSongIndex(0)}>{song.songName}</p>
           <button onClick={(e) => removeSongFunc(e, song.id)}>Delete</button>
         </div>
       )
@@ -84,13 +65,6 @@ if (sessionUser){
             <RenderNewSongForm />
           </Modal>
         )}
-      </div>
-      <div>
-      {/* <ReactAudio
-          src='https://soundbyte.s3.amazonaws.com/1620320673909.mp3'
-          width='100%'
-          height='100%'
-          /> */}
       </div>
     </div>
   )
