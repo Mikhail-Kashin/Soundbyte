@@ -34,16 +34,17 @@ router.post('/new',singleMulterUpload("songUrl"), asyncHandler(async (req, res) 
    await res.json(newSong)
 }))
 
-//temp post route no aws
-// router.post('/new', asyncHandler(async (req, res) => {
-//   const {songUrl, songName, songGenre} = req.body;
-//   const newSong = await Song.create({
-//     songUrl,
-//     songName,
-//     songGenre
-//   })
-//    await res.json(newSong)
-// }))
+
+// delete song
+router.delete(`/delete/:songId`, asyncHandler(async (req, res) => {
+  const songId = parseInt(req.params.songId)
+  const deleteSong = await Song.findOne({where: {id: songId}})
+  await deleteSong.destroy()
+  res.status(200)
+  res.send()
+}))
+
+
 
 
 
