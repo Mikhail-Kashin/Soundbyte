@@ -14,5 +14,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "react-player": "^2.9.0",
+    "reactjs-media": "^1.5.1"
+  }
 }
