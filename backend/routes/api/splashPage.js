@@ -3,6 +3,8 @@ const { check } = require('express-validator');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const asyncHandler = require('express-async-handler');
 const { Song } = require('../../db/models')
+
+
 const {
   singleMulterUpload,
   singlePublicFileUpload,
@@ -22,13 +24,13 @@ router.get ('/', asyncHandler(async (req, res) => {
 // post a new song aws
 router.post('/new',singleMulterUpload("songUrl"), asyncHandler(async (req, res) => {
   const {songName, songGenre} = req.body;
-  // console.log('--------------->testing', songName)
   const songUrl = await singlePublicFileUpload(req.file);
   const newSong = await Song.create({
     songUrl,
     songName,
     songGenre
   })
+  console.log('--------------->testing', newSong)
    await res.json(newSong)
 }))
 
