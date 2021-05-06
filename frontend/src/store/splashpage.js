@@ -3,6 +3,7 @@ import { fetch } from './csrf.js';
 
 const SONG_FEED = 'SONG_FEED'
 const ADD_SONG = 'ADD_SONG'
+const REMOVE_SONG = 'REMOVE_SONG'
 
 
 const getSongFeed = (songs) => ({
@@ -16,6 +17,10 @@ const addSong = (song) => ({
   payload:song
 })
 
+const removeSong = (song) => ({
+  type:REMOVE_SONG,
+  payload:song
+})
 
 //thunks
 export const getSongs = () => async dispatch => {
@@ -50,22 +55,18 @@ export const createSong = (newSong) => async dispatch => {
 }
 
 
-//working code NONAWSTHUNK
-// export const createSong = (newSong) => async dispatch => {
-//   const {songUrl, songName, songGenre} = newSong;
-//   // console.log('testing newSONG', newSong)
-//   const res = await fetch(`/api/songs/new`, {
-//     method: 'POST',
-//     body: JSON.stringify({
-//       songUrl,
-//       songName,
-//       songGenre
-//     }),
-//   })
-//   const songData = await res.data
-//   console.log('testing......songData', res.data)
-//   await dispatch(addSong(songData))
-// }
+//delete song Thunks
+export const deleteSong = (songId) => async dispatch => {
+  const response = await fetch(`api/delete/${songId}`, {
+    headers: { 'Content-Type': 'application/json'},
+    method: 'DELETE'
+  })
+  const songData = await response.json()
+  if(!response.ok){
+    return;
+  };
+  dispatch(removeSong(songData));
+}
 
 
 
@@ -80,6 +81,11 @@ export default function songReducer(state = initialState, action) {
       let newSongState = Object.assign({}, state)
       newSongState[action.payload.id] = action.payload
       return newSongState
+    case REMOVE_SONG:
+      const removeState = {...state.payload}
+      for (const key in state.payload) {
+        delete removeState.payload[key]
+      }
     default:
       return state;
   }
