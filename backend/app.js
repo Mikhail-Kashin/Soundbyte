@@ -5,7 +5,7 @@ const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 const { ValidationError } = require('sequelize');
-
+const bodyParser = require("body-parser");
 
 const routes = require('./routes');
 const { environment } = require('./config');
