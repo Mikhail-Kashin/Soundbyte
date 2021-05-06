@@ -5,7 +5,11 @@ import { NavLink } from 'react-router-dom';
 import { getSongs, deleteSong } from '../../store/splashpage';
 import { Modal } from '../../context/Modal'
 import RenderNewSongForm from './newsongform'
+import AudioPlayer from './audioPlayer'
 import './splashPage.css';
+
+
+
 
 function SongPage() {
   // const history = useHistory(); // so that we can redirect after the image upload is successful
@@ -13,11 +17,12 @@ function SongPage() {
   const songs = useSelector(state => state.songs)
   const sessionUser = useSelector(state => state.session.user);
   const [showModal, setShowModal] = useState(false);
+  const [songIndex, setSongIndex] = useState(0)
 
 
   function removeSongFunc(e, songId){
     e.preventDefault();
-    console.log('test.......>', songId)
+    // console.log('test.......>', songId)
     dispatch(deleteSong(songId))
     dispatch(getSongs())
   }
@@ -29,14 +34,13 @@ function SongPage() {
 
 
 
-
 const renderSongPage = () => {
   if (sessionUser){
     return Object.values(songs).map(song => {
 
       return (
         <div>
-          <NavLink exact to={`/${song.songUrl}`}>{song.songName}</NavLink>
+          <p onClick={() => setSongIndex(0)}>{song.songName}</p>
           <button onClick={(e) => removeSongFunc(e, song.id)}>Delete</button>
         </div>
       )
@@ -50,6 +54,9 @@ if (sessionUser){
       <p className="yourSongs">Your Songs</p>
       <div>
         {renderSongPage()}
+      </div>
+      <div>
+        {AudioPlayer()}
       </div>
       <div>
       <button onClick={() => setShowModal(true)}>Upload</button>
