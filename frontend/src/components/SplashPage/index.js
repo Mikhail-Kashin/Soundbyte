@@ -21,13 +21,13 @@ if (sessionUser){
     <div class="grid-container">
       <div class="Header">
         <div className='uploadlogout'>
-          <LogOutComponent/>
           <span id='uploadIcon' className="far fa-plus-square icon" onClick={() => setShowModal(true)}></span>
             {showModal && (
               <Modal onClose={() => setShowModal(false)}>
                 <RenderNewSongForm />
               </Modal>
             )}
+            <LogOutComponent/>
         </div>
         <div>
           <p className="yourSongs">Your Songs</p>
@@ -42,7 +42,9 @@ if (sessionUser){
           <AudioPlayer/>
       </div>
       <div class="SideBar">
+        <div class="sideBarWrapper">
           <span><SideBar/></span>
+        </div>
       </div>
     </div>
   )
