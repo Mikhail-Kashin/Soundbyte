@@ -35,6 +35,7 @@
   font-size: 3.6em;
   color: #ffffff;
   font-weight: 900;
+  margin-top: -1em;
 }
 
 /* HEADER FOR NAV BAR */
@@ -43,6 +44,12 @@
 
 
 /* Song Lists */
+.Header{
+  border-style: none none solid none;
+  margin-left: 0;
+  border-color: rgb(80, 78, 78);
+  border-width: .1em;
+}
 .RendorSongPageWrapper{
   margin-top: 3em;
   color: #ffffff;
@@ -70,7 +77,10 @@
 /* sideBar */
 .SideBar{
   background: linear-gradient(#2c2a2a, black);
-  color: white
+  color: white;
+  border-style: none solid none none;
+  border-color: rgb(80, 78, 78);
+  border-width: .1em;
 }
 .SideBar a:link, a:visited, a:hover, a:active{
   text-decoration: none;
@@ -92,6 +102,9 @@
 /* Media Bar */
 .MediaPlayer{
   background-color: rgb(24,24,24);
+  border-style: solid none none none;
+  border-color: rgb(80, 78, 78);
+  border-width: .1em;
 }
 
 /* Media Bar */
