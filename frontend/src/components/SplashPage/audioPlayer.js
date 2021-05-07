@@ -72,9 +72,9 @@ const AudioPlayer = () => {
 	return (
     <>
       <div>
-        <button onClick={e => prevSong(e)}>Previous</button>
-        {playing === true ? <button onClick={e => playSongs(e)}>Play</button> : <button onClick={e => playSongs(e)}>Pause</button>}
-        <button onClick={e => nextSong(e)}>Next</button>
+        <span id='previousSong' i class="fas fa-step-backward" onClick={e => prevSong(e)}></span>
+        {playing === true ? <span id='playButton' i class="fas fa-play-circle" onClick={e => playSongs(e)}></span> : <span id='pauseButton' i class="far fa-pause-circle" onClick={e => playSongs(e)}></span>}
+        <span id='nextSong' i class="fas fa-step-forward" onClick={e => nextSong(e)}></span>
       </div>
       <p>
         <audio
