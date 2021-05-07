@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 
-const AudioPlayer = () => {
+export const AudioPlayer = () => {
   const dispatch = useDispatch();
   const songs = useSelector(state => state.songs)
   const [songIndex, setSongIndex] = useState(0)
@@ -17,10 +17,10 @@ const AudioPlayer = () => {
 
 
 
-  if(audio){
-    console.log('testingasdfa;sdjflk', currentDuration())
-    console.log('testingasdfa;sdjflk', songDuration())
-  }
+  // if(audio){
+  //   console.log('testingasdfa;sdjflk', currentDuration())
+  //   console.log('testingasdfa;sdjflk', songDuration())
+  // }
 
   //formates time into hours and seconds.
   function timeFormater(seconds) {

@@ -31,6 +31,12 @@
 
 
 /* HEADER FOR NAV BAR */
+.Header{
+  border-style: none none solid none;
+  margin-left: 0;
+  border-color: rgb(80, 78, 78);
+  border-width: .1em;
+}
 .yourSongs{
   font-size: 3.6em;
   color: #ffffff;
@@ -44,16 +50,11 @@
 
 
 /* Song Lists */
-.Header{
-  border-style: none none solid none;
-  margin-left: 0;
-  border-color: rgb(80, 78, 78);
-  border-width: .1em;
-}
 .RendorSongPageWrapper{
   margin-top: 3em;
   color: #ffffff;
 }
+
 #removeSong{
   color: white;
   background-color: transparent;
@@ -65,9 +66,15 @@
   color: lightcoral;
 }
 
+.songNum{
+  font-size: 1em;
+  margin-right: 1em;
+}
+
 .SongNames{
   font-size: 1em;
-  margin: .8em .8em .8em .8em
+  margin: 1.5em 1.5em 1.5em 1.5em;
+  padding: .75em .75em .75em .75em;
 }
 /* Song Lists */
 
