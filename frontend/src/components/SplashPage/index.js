@@ -6,7 +6,8 @@ import { Modal } from '../../context/Modal'
 import RenderNewSongForm from './newsongform'
 import AudioPlayer from './audioPlayer'
 import './splashPage.css';
-
+import Navigation from '../Navigation/index'
+import {LogOutComponent} from '../Navigation/logoutbutton'
 
 
 
@@ -49,21 +50,27 @@ const renderSongPage = () => {
   }
 if (sessionUser){
   return (
-    <div>
-      <p className="yourSongs">Your Songs</p>
-      <div>
-        {renderSongPage()}
+    <div class="grid-container">
+      <div class="Header">
+        <LogOutComponent/>
+        <div>
+          <p className="yourSongs">Your Songs</p>
+        </div>
+        <span id='uploadIcon' className="far fa-plus-square icon" onClick={() => setShowModal(true)}></span>
+          {showModal && (
+            <Modal onClose={() => setShowModal(false)}>
+              <RenderNewSongForm />
+            </Modal>
+          )}
       </div>
-      <div>
-        {AudioPlayer()}
+      <div class="MainBody">
+          {renderSongPage()}
       </div>
-      <div>
-      <span id='uploadIcon' className="far fa-plus-square icon" onClick={() => setShowModal(true)}></span>
-        {showModal && (
-          <Modal onClose={() => setShowModal(false)}>
-            <RenderNewSongForm />
-          </Modal>
-        )}
+      <div class="MediaPlayer">
+          {AudioPlayer()}
+      </div>
+      <div class="SideBar">
+          <span><Navigation/></span>
       </div>
     </div>
   )

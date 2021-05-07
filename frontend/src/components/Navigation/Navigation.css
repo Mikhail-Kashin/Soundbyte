@@ -1,8 +1,3 @@
-.navbar{
-  display: flex;
-  flex-direction: column;
-
-}
 
 .homeLink{
   display: inline-block;
@@ -15,12 +10,14 @@
   position: relative;
 }
 
-.buttonRender{
+ .buttonRender{
   display: flex;
   justify-content: flex-end;
 }
 
-#dropButton{
+#logoutButton{
+  display: flex;
+  justify-content: flex-end;
   margin-top: 1em;
   color: white;
   background-color: transparent;
@@ -28,8 +25,4 @@
   font-size: 1.4em;
   margin-left: 1rem;
   margin-right: 1rem;
-}
-
-#dropButton:hover{
-  color: lightgray;
 }
