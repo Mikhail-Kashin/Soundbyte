@@ -9,8 +9,42 @@ const AudioPlayer = () => {
   const songs = useSelector(state => state.songs)
   const [songIndex, setSongIndex] = useState(0)
   const [playing, setPlaying] = useState(true)
+  let bar = document.getElementById('bar');
+  let progress = document.getElementById('progress');
+
 
   const audio = document.getElementById("audio")
+
+
+
+  if(audio){
+    console.log('testingasdfa;sdjflk', currentDuration())
+    console.log('testingasdfa;sdjflk', songDuration())
+  }
+
+  //formates time into hours and seconds.
+  function timeFormater(seconds) {
+    let min = Math.floor((seconds / 60));
+    let sec = Math.floor(seconds - (min * 60));
+    if (sec < 10 ){
+      sec = `0${sec}`;
+    }
+    return `${min}:${sec}`
+  }
+
+  function currentDuration(){
+    if (audio){
+      return timeFormater(audio.currentTime)
+    }
+  }
+
+  function songDuration(){
+    if (audio){
+      return timeFormater(audio.duration)
+    }
+  }
+
+
 
   const songNames = () => {
     return Object.values(songs).map(song => song.songName)
@@ -20,7 +54,7 @@ const AudioPlayer = () => {
     return Object.values(songs).map(song => song.songUrl)
   }
 
-  // console.log('testingasdfa;sdjflk', songs)
+
   let listSongs = songUrls()
 
   function playSongs(e) {
@@ -53,6 +87,21 @@ const AudioPlayer = () => {
   }
 
   if (audio) {
+    audio.addEventListener('timeupdate', function(){
+      bar.style.width = parseInt(((audio.currentTime / audio.duration) * 100), 10) + "%";
+    })
+  }
+
+  // if (audio) {
+  //   progress.addEventListener('click', function(e){
+  //     let clickPosition = (e.pageX - this.offsetLeft) / this.offsetWidth;
+  //     let clickTime = clickPosition * audio.duration
+  //     audio.currentTime =clickTime;
+  //   })
+  // }
+
+
+  if (audio) {
     audio.addEventListener('ended', function() {
       if (songIndex < listSongs.length - 1) {
         setSongIndex(songIndex + 1)
@@ -67,21 +116,31 @@ const AudioPlayer = () => {
       if (audio) audio.play()
     }, [songIndex])
 
+    // useEffect(() => {
+    //   if (audio){
+    //   }
+    // },[document.querySelector('.currentTime').innerHTML])
+
 
 
 	return (
     <>
       <div>
-        <button onClick={e => prevSong(e)}>Previous</button>
-        {playing === true ? <button onClick={e => playSongs(e)}>Play</button> : <button onClick={e => playSongs(e)}>Pause</button>}
-        <button onClick={e => nextSong(e)}>Next</button>
+        <span id='previousSong' i class="fas fa-step-backward" onClick={e => prevSong(e)}></span>
+        {playing === true ? <span id='playButton' i class="fas fa-play-circle" onClick={e => playSongs(e)}></span> : <span id='pauseButton' i class="far fa-pause-circle" onClick={e => playSongs(e)}></span>}
+        <span id='nextSong' i class="fas fa-step-forward" onClick={e => nextSong(e)}></span>
       </div>
       <p>
         <audio
           id='audio'
           src={listSongs[songIndex]}
-        />
-      </p>
+          />
+            </p>
+      <div id="progress">
+        <div id="bar"></div>
+      </div>
+      <div className="currentDuration">{currentDuration()}</div>
+      <div className="songDuration">{songDuration()}</div>
     </>
     );
 }
