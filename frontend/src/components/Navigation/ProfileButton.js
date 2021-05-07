@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const sessionUser = useSelector(state => state.session.user);
 
   const openMenu = () => {
     if (showMenu) return;
@@ -27,23 +28,24 @@ function ProfileButton({ user }) {
     e.preventDefault();
     dispatch(sessionActions.logout());
   };
+  if (sessionUser)
+  {
+    return (
+      <div>
+        <span>{user.username}</span>
+        <span id="dropButton" className='fas fa-user-circle icon' onClick={openMenu}>
 
-  return (
-    <>
-      <button className="dropButton" onClick={openMenu}>
-      <i class="fas fa-angle-down"></i>
-      </button>
-      {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
-      )}
-    </>
-  );
+        </span>
+          <span  className="profile-dropdown"></span>
+          <span className='fas fa-sign-out-alt' onClick={logout}></span>
+
+      </div>
+    );
+  } else {
+    return (
+      <div>sign in</div>
+    )
+  }
 }
 
 export default ProfileButton;

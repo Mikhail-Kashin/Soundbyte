@@ -5,3 +5,17 @@ background-color: #3b1649;
 .yourSongs{
   color: white;
 }
+
+#uploadIcon {
+  margin-top: 1em;
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 1.4em;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#uploadIcon:hover{
+  color: lightgray;
+}

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from 'react-router-dom';
 // import { useHistory } from "react-router-dom";
 import { getSongs, deleteSong } from '../../store/splashpage';
 import { Modal } from '../../context/Modal'
@@ -59,7 +58,7 @@ if (sessionUser){
         {AudioPlayer()}
       </div>
       <div>
-      <button onClick={() => setShowModal(true)}>Upload</button>
+      <span id='uploadIcon' className="far fa-plus-square icon" onClick={() => setShowModal(true)}></span>
         {showModal && (
           <Modal onClose={() => setShowModal(false)}>
             <RenderNewSongForm />

@@ -1,8 +1,35 @@
-.profile-dropdown {
-  position: absolute;
+.navbar{
+  display: flex;
+  flex-direction: column;
+
 }
 
-.dropButton{
+.homeLink{
+  display: inline-block;
+  position: relative;
+}
+
+
+.profile-dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.buttonRender{
+  display: flex;
+  justify-content: flex-end;
+}
+
+#dropButton{
+  margin-top: 1em;
   color: white;
-  background: black;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 1.4em;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#dropButton:hover{
+  color: lightgray;
 }
