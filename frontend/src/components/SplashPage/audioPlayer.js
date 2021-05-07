@@ -20,9 +20,9 @@ const AudioPlayer = () => {
     return Object.values(songs).map(song => song.songUrl)
   }
 
+  // console.log('testingasdfa;sdjflk', songs)
   let listSongs = songUrls()
 
-  console.log('testingasdfa;sdjflk', listSongs)
 
 
 
@@ -38,38 +38,39 @@ const AudioPlayer = () => {
   }
 
   function prevSong(e){
-  e.preventDefault()
-  if (songIndex > 0){
-    setSongIndex(songIndex -1)
-  }else {
-    setSongIndex(listSongs.length - 1)
+    e.preventDefault()
+    if (songIndex > 0){
+      setSongIndex(songIndex -1)
+    }else {
+      setSongIndex(listSongs.length - 1)
+    }
   }
-}
 
-function nextSong(e){
-  e.preventDefault()
-  if (songIndex < listSongs.length - 1) {
-    setSongIndex(songIndex + 1)
-  }else {
-    setSongIndex(0)
+  function nextSong(e){
+    e.preventDefault()
+    if (songIndex < listSongs.length - 1) {
+      setSongIndex(songIndex + 1)
+    }else {
+      setSongIndex(0)
+    }
   }
-}
 
-if (audio) {
-  audio.addEventListener('ended', function() {
+  if (audio) {
+    audio.addEventListener('ended', function() {
       if (songIndex < listSongs.length - 1) {
-          setSongIndex(songIndex + 1)
+        setSongIndex(songIndex + 1)
       } else setSongIndex(0)
-  })}
+    })}
+
+    useEffect(() => {
+      dispatch(getSongs())
+    },[dispatch])
+
+    useEffect(() => {
+      if (audio) audio.play()
+    }, [songIndex, audio])
 
 
-  useEffect(() => {
-    dispatch(getSongs())
-  },[dispatch])
-
-  useEffect(() => {
-    if (audio) audio.play()
-}, [songIndex])
 
 	return (
     <>
