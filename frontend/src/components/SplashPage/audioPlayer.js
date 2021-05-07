@@ -9,8 +9,8 @@ const AudioPlayer = () => {
   const songs = useSelector(state => state.songs)
   const [songIndex, setSongIndex] = useState(0)
   const [playing, setPlaying] = useState(true)
-  // let bar = document.getElementById('bar');
-  // let progress = document.getElementById('progress');
+  let bar = document.getElementById('bar');
+  let progress = document.getElementById('progress');
 
 
   const audio = document.getElementById("audio")
@@ -86,11 +86,11 @@ const AudioPlayer = () => {
     }
   }
 
-  // if (audio) {
-  //   audio.addEventListener('timeupdate', function(){
-  //     bar.style.width = parseInt(((audio.currentTime / audio.duration) * 100), 10) + "%";
-  //   })
-  // }
+  if (audio) {
+    audio.addEventListener('timeupdate', function(){
+      bar.style.width = parseInt(((audio.currentTime / audio.duration) * 100), 10) + "%";
+    })
+  }
 
   // if (audio) {
   //   progress.addEventListener('click', function(e){
@@ -136,23 +136,9 @@ const AudioPlayer = () => {
           src={listSongs[songIndex]}
           />
             </p>
-      {/* <div id="progress">
+      <div id="progress">
         <div id="bar"></div>
-      </div> */}
-
-      <input
-          ref={(scrub) => {
-              this.scrub = scrub;
-          }}
-          type="range"
-          min="0"
-          max={audio.duration}
-          // onMouseEnter={() => this.setState({trackColor: '#1DB954'})}
-          // onMouseLeave={() => this.setState({trackColor: '#b3b3b3'})}
-          onChange={this.handleScrub.bind(this)}
-          className='bars'
-          id='bars'
-      />
+      </div>
       <div className="currentDuration">{currentDuration()}</div>
       <div className="songDuration">{songDuration()}</div>
     </>
