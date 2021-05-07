@@ -74,17 +74,17 @@ const AudioPlayer = () => {
 
 	return (
     <>
-    <div>
-      <button onClick={e => prevSong(e)}>Previous</button>
-      {playing === true ? <button onClick={e => playSongs(e)}>Play</button> : <button onClick={e => playSongs(e)}>Pause</button>}
-      <button onClick={e => nextSong(e)}>Next</button>
-    </div>
-    <p>
-      <audio
-        id='audio'
-        src={listSongs[songIndex]}
-      />
-    </p>
+      <div>
+        <button onClick={e => prevSong(e)}>Previous</button>
+        {playing === true ? <button onClick={e => playSongs(e)}>Play</button> : <button onClick={e => playSongs(e)}>Pause</button>}
+        <button onClick={e => nextSong(e)}>Next</button>
+      </div>
+      <p>
+        <audio
+          id='audio'
+          src={listSongs[songIndex]}
+        />
+      </p>
     </>
     );
 }
