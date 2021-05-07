@@ -9,14 +9,17 @@ const AudioPlayer = () => {
   const songs = useSelector(state => state.songs)
   const [songIndex, setSongIndex] = useState(0)
   const [playing, setPlaying] = useState(true)
+  // let bar = document.getElementById('bar');
+  // let progress = document.getElementById('progress');
+
 
   const audio = document.getElementById("audio")
-  const progressBar = []
+
 
 
   if(audio){
-    // console.log('testingasdfa;sdjflk', audio.currentTime)
-    console.log('testingasdfa;sdjflk', playBarValue())
+    console.log('testingasdfa;sdjflk', currentDuration())
+    console.log('testingasdfa;sdjflk', songDuration())
   }
 
   //formates time into hours and seconds.
@@ -29,14 +32,18 @@ const AudioPlayer = () => {
     return `${min}:${sec}`
   }
 
-  //updates bar with length of currently played song
-  function playBarValue(){
+  function currentDuration(){
     if (audio){
-      progressBar.max = audio.duration
-      progressBar.value = timeFormater(audio.currentTime)
-      // console.log(progressBar.value)
+      return timeFormater(audio.currentTime)
     }
   }
+
+  function songDuration(){
+    if (audio){
+      return timeFormater(audio.duration)
+    }
+  }
+
 
 
   const songNames = () => {
@@ -79,13 +86,18 @@ const AudioPlayer = () => {
     }
   }
 
-  // function timeDisplay(){
-  //   if(audio){
-  //     audio.addEventListener('currentTime', function(){
-  //       let time = audio.currentTime
-  //       return (time)
-  //     })
-  //   }
+  // if (audio) {
+  //   audio.addEventListener('timeupdate', function(){
+  //     bar.style.width = parseInt(((audio.currentTime / audio.duration) * 100), 10) + "%";
+  //   })
+  // }
+
+  // if (audio) {
+  //   progress.addEventListener('click', function(e){
+  //     let clickPosition = (e.pageX - this.offsetLeft) / this.offsetWidth;
+  //     let clickTime = clickPosition * audio.duration
+  //     audio.currentTime =clickTime;
+  //   })
   // }
 
 
@@ -104,6 +116,11 @@ const AudioPlayer = () => {
       if (audio) audio.play()
     }, [songIndex])
 
+    // useEffect(() => {
+    //   if (audio){
+    //   }
+    // },[document.querySelector('.currentTime').innerHTML])
+
 
 
 	return (
@@ -117,18 +134,27 @@ const AudioPlayer = () => {
         <audio
           id='audio'
           src={listSongs[songIndex]}
-        />
+          />
             </p>
-        <div class="currentTime"></div>
-        <input
-            type="range"
-            id="progress-bar"
-            min="0"
-            max=""
-            value="0"
-            onchange={playBarValue()}
-        />
-        <div class="durationTime"></div>
+      {/* <div id="progress">
+        <div id="bar"></div>
+      </div> */}
+
+      <input
+          ref={(scrub) => {
+              this.scrub = scrub;
+          }}
+          type="range"
+          min="0"
+          max={audio.duration}
+          // onMouseEnter={() => this.setState({trackColor: '#1DB954'})}
+          // onMouseLeave={() => this.setState({trackColor: '#b3b3b3'})}
+          onChange={this.handleScrub.bind(this)}
+          className='bars'
+          id='bars'
+      />
+      <div className="currentDuration">{currentDuration()}</div>
+      <div className="songDuration">{songDuration()}</div>
     </>
     );
 }

@@ -125,6 +125,27 @@
   font-size: 1.75em;
 }
 
+.currentDuration, .songDuration{
+  color: white;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+#progress {
+  margin-left: 80px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+#bar {
+  height: 20px;
+  background-color: green;
+  width: 0px;
+}
+
+
 /* Media Bar */
 
 
