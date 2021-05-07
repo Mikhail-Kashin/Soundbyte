@@ -6,7 +6,7 @@ export function SideBar(){
     return (
       <span>
         <div class="navbar">
-            <div> stuffff <NavLink exact to="/">Home</NavLink></div>
+            <div i class="fas fa-home" id='homeIcon'>  <NavLink exact to="/">Home</NavLink></div>
         </div>
       </span>
     );

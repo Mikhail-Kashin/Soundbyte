@@ -65,7 +65,7 @@ const AudioPlayer = () => {
 
     useEffect(() => {
       if (audio) audio.play()
-    }, [songIndex, audio])
+    }, [songIndex])
 
 
 

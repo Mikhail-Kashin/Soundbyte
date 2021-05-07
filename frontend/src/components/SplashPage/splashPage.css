@@ -69,10 +69,22 @@
 
 /* sideBar */
 .SideBar{
-  background-color: black;
+  background: linear-gradient(#2c2a2a, black);
+  color: white
 }
-.sideBarWrapper{
-  /* background-color: black; */
+.SideBar a:link, a:visited, a:hover, a:active{
+  text-decoration: none;
+  color: white;
+  font-size: 1em;
+  font-weight: 300;
+}
+#homeIcon{
+  margin-top: 1em;
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 1.4em;
+
 }
 /* sideBar */
 
