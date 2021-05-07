@@ -1,7 +1,39 @@
-body {
-background-color: #3b1649;
+.grid-container {
+  display: grid;
+  background-color: #3b1649;
+  grid-template-columns: 0.2fr 1.5fr;
+  grid-template-rows: 0.3fr 2.4fr 0.3fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "SideBar Header"
+    "SideBar MainBody"
+    "MediaPlayer MediaPlayer";
+  width: 100vw;
+  height: 100vh;
 }
 
-.yourSongs{
+.MainBody { grid-area: MainBody; }
+
+.Header { grid-area: Header; }
+
+.SideBar { grid-area: SideBar; }
+
+.MediaPlayer { grid-area: MediaPlayer; }
+
+
+
+#uploadIcon {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1em;
   color: white;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 1.4em;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#uploadIcon:hover{
+  color: lightgray;
 }

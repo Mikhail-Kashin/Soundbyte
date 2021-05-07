@@ -1,8 +1,28 @@
-.profile-dropdown {
-  position: absolute;
+
+.homeLink{
+  display: inline-block;
+  position: relative;
 }
 
-.dropButton{
+
+.profile-dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+ .buttonRender{
+  display: flex;
+  justify-content: flex-end;
+}
+
+#logoutButton{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1em;
   color: white;
-  background: black;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 1.4em;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }

@@ -1,49 +1,51 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
-import * as sessionActions from '../../store/session';
+// import React, { useState, useEffect } from "react";
+// import { useDispatch, useSelector } from 'react-redux';
+// import * as sessionActions from '../../store/session';
 
-function ProfileButton({ user }) {
-  const dispatch = useDispatch();
-  const [showMenu, setShowMenu] = useState(false);
+// function ProfileButton({ user }) {
+//   const dispatch = useDispatch();
+//   const [showMenu, setShowMenu] = useState(false);
+//   const sessionUser = useSelector(state => state.session.user);
 
-  const openMenu = () => {
-    if (showMenu) return;
-    setShowMenu(true);
-  };
+//   const openMenu = () => {
+//     if (showMenu) return;
+//     setShowMenu(true);
+//   };
 
-  useEffect(() => {
-    if (!showMenu) return;
+//   useEffect(() => {
+//     if (!showMenu) return;
 
-    const closeMenu = () => {
-      setShowMenu(false);
-    };
+//     const closeMenu = () => {
+//       setShowMenu(false);
+//     };
 
-    document.addEventListener('click', closeMenu);
+//     document.addEventListener('click', closeMenu);
 
-    return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
+//     return () => document.removeEventListener("click", closeMenu);
+//   }, [showMenu]);
 
-  const logout = (e) => {
-    e.preventDefault();
-    dispatch(sessionActions.logout());
-  };
+//   const logout = (e) => {
+//     e.preventDefault();
+//     dispatch(sessionActions.logout());
+//   };
+//   if (sessionUser)
+//   {
+//     return (
+//       <div>
+//         <span>{user.username}</span>
+//         <span id="dropButton" className='fas fa-user-circle icon' onClick={openMenu}>
 
-  return (
-    <>
-      <button className="dropButton" onClick={openMenu}>
-      <i class="fas fa-angle-down"></i>
-      </button>
-      {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
-        </ul>
-      )}
-    </>
-  );
-}
+//         </span>
+//           <span  className="profile-dropdown"></span>
+//           <span className='fas fa-sign-out-alt' onClick={logout}></span>
 
-export default ProfileButton;
+//       </div>
+//     );
+//   } else {
+//     return (
+//       <div>sign in</div>
+//     )
+//   }
+// }
+
+// export default ProfileButton;
