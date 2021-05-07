@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import './Navigation.css';
 import * as sessionActions from '../../store/session';
+import './splashPage.css';
 
 export function LogOutComponent(){
     const dispatch = useDispatch();
@@ -16,4 +16,4 @@ export function LogOutComponent(){
   )
 }
 
-export default LogOutComponent
+export default LogOutComponent;

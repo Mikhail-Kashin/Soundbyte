@@ -1,9 +1,17 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
 .grid-container {
+  font-family: 'proxima-nova', sans-serif;
   display: grid;
-  background-color: #3b1649;
+  /* background-color: #3b1649; */
+  background: linear-gradient(#3b1649, black);
   grid-template-columns: 0.2fr 1.5fr;
   grid-template-rows: 0.3fr 2.4fr 0.3fr;
-  gap: 0px 0px;
+  gap: 5px 5px;
   grid-template-areas:
     "SideBar Header"
     "SideBar MainBody"
@@ -22,9 +30,65 @@
 
 
 
+/* HEADER FOR NAV BAR */
+.yourSongs{
+  font-size: 3.6em;
+  color: #ffffff;
+  font-weight: 900;
+}
+
+/* HEADER FOR NAV BAR */
+
+
+
+
+/* Song Lists */
+.RendorSongPageWrapper{
+  margin-top: 3em;
+  color: #ffffff;
+}
+#removeSong{
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 1em;
+  margin-left: .4em;
+}
+#removeSong:hover{
+  color: lightcoral;
+}
+
+.SongNames{
+  font-size: 1em;
+  margin: .8em .8em .8em .8em
+}
+/* Song Lists */
+
+
+
+
+/* sideBar */
+.SideBar{
+  background-color: black;
+}
+.sideBarWrapper{
+  /* background-color: black; */
+}
+/* sideBar */
+
+
+/* Media Bar */
+.MediaPlayer{
+  background-color: rgb(24,24,24);
+}
+
+/* Media Bar */
+
+
+
+
+/* Logout and Upload Icon's */
 #uploadIcon {
-  display: flex;
-  justify-content: flex-end;
   margin-top: 1em;
   color: white;
   background-color: transparent;
@@ -37,3 +101,23 @@
 #uploadIcon:hover{
   color: lightgray;
 }
+
+#logoutButton{
+  margin-top: 1em;
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 1.4em;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#logoutButton:hover{
+  color: lightgray;
+}
+
+.uploadlogout{
+  display: flex;
+  justify-content: flex-end;
+}
+/* Logout and Upload Icon's */

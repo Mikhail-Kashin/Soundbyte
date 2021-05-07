@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getSongs, createSong } from '../../store/splashpage';
+import { createSong } from '../../store/splashpage';
 
 
 
 
 const RenderNewSongForm = () => {
   const dispatch = useDispatch();
-  const songs = useSelector(state => state.songs)
   const sessionUser = useSelector(state => state.session.user);
   const [songUrl, setSongUrl] = useState('');
   const [songName, setSongName] = useState('');

@@ -26,8 +26,9 @@ export const RenderSongPage = () => {
   return Object.values(songs).map(song => {
     return (
       <div>
-        <p onClick={() => setSongIndex(0)}>{song.songName}</p>
-        <button onClick={(e) => removeSongFunc(e, song.id)}>Delete</button>
+        <p onClick={() => setSongIndex(0)} className="SongNames">{song.songName}
+        <p onClick={(e) => removeSongFunc(e, song.id)} id='removeSong' i class="fas fa-backspace"></p>
+        </p>
       </div>
     )
   })
