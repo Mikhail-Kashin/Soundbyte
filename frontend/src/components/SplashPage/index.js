@@ -4,8 +4,8 @@ import { Modal } from '../../context/Modal'
 import RenderNewSongForm from './newsongform'
 import AudioPlayer from './audioPlayer'
 import './splashPage.css';
-import Navigation from '../Navigation/index'
-import {LogOutComponent} from '../Navigation/logoutbutton'
+import SideBar from './sidebar'
+import {LogOutComponent} from './logoutbutton'
 import { RenderSongPage } from './renderSongPage'
 
 
@@ -20,25 +20,29 @@ if (sessionUser){
   return (
     <div class="grid-container">
       <div class="Header">
-        <LogOutComponent/>
+        <div className='uploadlogout'>
+          <LogOutComponent/>
+          <span id='uploadIcon' className="far fa-plus-square icon" onClick={() => setShowModal(true)}></span>
+            {showModal && (
+              <Modal onClose={() => setShowModal(false)}>
+                <RenderNewSongForm />
+              </Modal>
+            )}
+        </div>
         <div>
           <p className="yourSongs">Your Songs</p>
         </div>
-        <span id='uploadIcon' className="far fa-plus-square icon" onClick={() => setShowModal(true)}></span>
-          {showModal && (
-            <Modal onClose={() => setShowModal(false)}>
-              <RenderNewSongForm />
-            </Modal>
-          )}
       </div>
       <div class="MainBody">
-          {RenderSongPage()}
+        <div class="RendorSongPageWrapper">
+          <RenderSongPage/>
+        </div>
       </div>
       <div class="MediaPlayer">
-          {AudioPlayer()}
+          <AudioPlayer/>
       </div>
       <div class="SideBar">
-          <span><Navigation/></span>
+          <span><SideBar/></span>
       </div>
     </div>
   )

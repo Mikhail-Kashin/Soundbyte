@@ -23,9 +23,6 @@ const AudioPlayer = () => {
   // console.log('testingasdfa;sdjflk', songs)
   let listSongs = songUrls()
 
-
-
-
   function playSongs(e) {
     e.preventDefault()
     if (playing === true) {

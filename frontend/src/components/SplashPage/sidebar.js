@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import './Navigation.css';
+import './splashPage.css';
 
-export function Navigation(){
+export function SideBar(){
     return (
       <span>
         <div class="navbar">
@@ -11,4 +11,4 @@ export function Navigation(){
       </span>
     );
 }
-export default Navigation;
+export default SideBar;
