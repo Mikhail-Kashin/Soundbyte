@@ -8,7 +8,7 @@ export const RenderSongPage = () => {
   const songs = useSelector(state => state.songs)
   const [songIndex, setSongIndex] = useState(0)
 
-
+  console.log(songIndex)
 
   function removeSongFunc(e, songId){
     e.preventDefault();
