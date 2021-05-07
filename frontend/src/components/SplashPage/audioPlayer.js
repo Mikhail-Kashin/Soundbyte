@@ -11,6 +11,33 @@ const AudioPlayer = () => {
   const [playing, setPlaying] = useState(true)
 
   const audio = document.getElementById("audio")
+  const progressBar = []
+
+
+  if(audio){
+    // console.log('testingasdfa;sdjflk', audio.currentTime)
+    console.log('testingasdfa;sdjflk', playBarValue())
+  }
+
+  //formates time into hours and seconds.
+  function timeFormater(seconds) {
+    let min = Math.floor((seconds / 60));
+    let sec = Math.floor(seconds - (min * 60));
+    if (sec < 10 ){
+      sec = `0${sec}`;
+    }
+    return `${min}:${sec}`
+  }
+
+  //updates bar with length of currently played song
+  function playBarValue(){
+    if (audio){
+      progressBar.max = audio.duration
+      progressBar.value = timeFormater(audio.currentTime)
+      // console.log(progressBar.value)
+    }
+  }
+
 
   const songNames = () => {
     return Object.values(songs).map(song => song.songName)
@@ -20,7 +47,7 @@ const AudioPlayer = () => {
     return Object.values(songs).map(song => song.songUrl)
   }
 
-  // console.log('testingasdfa;sdjflk', songs)
+
   let listSongs = songUrls()
 
   function playSongs(e) {
@@ -52,6 +79,16 @@ const AudioPlayer = () => {
     }
   }
 
+  // function timeDisplay(){
+  //   if(audio){
+  //     audio.addEventListener('currentTime', function(){
+  //       let time = audio.currentTime
+  //       return (time)
+  //     })
+  //   }
+  // }
+
+
   if (audio) {
     audio.addEventListener('ended', function() {
       if (songIndex < listSongs.length - 1) {
@@ -81,7 +118,17 @@ const AudioPlayer = () => {
           id='audio'
           src={listSongs[songIndex]}
         />
-      </p>
+            </p>
+        <div class="currentTime"></div>
+        <input
+            type="range"
+            id="progress-bar"
+            min="0"
+            max=""
+            value="0"
+            onchange={playBarValue()}
+        />
+        <div class="durationTime"></div>
     </>
     );
 }
