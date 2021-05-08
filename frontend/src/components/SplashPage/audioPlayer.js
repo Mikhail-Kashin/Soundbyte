@@ -7,15 +7,36 @@ import { useDispatch, useSelector } from "react-redux";
 export const AudioPlayer = () => {
   const dispatch = useDispatch();
   const songs = useSelector(state => state.songs)
+  const songId = useSelector(state => state.audioReducer.clickedSong)
   const [songIndex, setSongIndex] = useState(0)
   const [playing, setPlaying] = useState(true)
   let bar = document.getElementById('bar');
   let progress = document.getElementById('progress');
 
+  console.log('all songs', songs)
+
+  // const songsJson = JSON.stringify(songs)
+  // console.log('songid', songsJson)
+  // console.log('sdfjkl;adsjf', songsJson.id)
 
   const audio = document.getElementById("audio")
 
+  function lookthroughsongs(){
+    for (let x in songs){
+      if (x === songId){
+       console.log('amiworking?', x)
+       return x
+      }
+    }
+  }
+  console.log('testing', lookthroughsongs())
 
+
+
+
+  if(songId){
+
+  }
 
   // if(audio){
   //   console.log('testingasdfa;sdjflk', currentDuration())
@@ -43,6 +64,7 @@ export const AudioPlayer = () => {
       return timeFormater(audio.duration)
     }
   }
+
 
 
 

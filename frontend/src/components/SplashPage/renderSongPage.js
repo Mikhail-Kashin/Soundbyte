@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSongs, deleteSong } from '../../store/splashpage';
-import AudioPlayer from './audioPlayer'
+import { audioController } from '../../store/audiocontroller'
 
 export const RenderSongPage = () => {
   const dispatch = useDispatch();
@@ -36,18 +36,25 @@ export const RenderSongPage = () => {
     dispatch(getSongs())
   },[dispatch])
 
-
-  return Object.values(songs).map(song => {
-    return (
-      <div>
-        <div className="SongNames">
-        <span className="songNum"> {songIndexNum(song.songUrl)}. </span>
-        <span> {song.songName} </span>
-        <p onClick={(e) => removeSongFunc(e, song.id)} id='removeSong' i class="fas fa-backspace"></p>
+  function renderNames(){
+    return Object.values(songs).map(song => {
+      return (
+        <div>
+          <span className="songNum"> {songIndexNum(song.songUrl)}. </span>
+          <span onClick={(e) => dispatch(audioController(song.id))}> {song.songName} </span>
+          <span onClick={(e) => removeSongFunc(e, song.id)} id='removeSong' i class="fas fa-backspace"></span>
         </div>
-      </div>
-    )
-  })
+      )
+    })
+  }
+
+  return (
+    <div>
+      <div className="headings"><span>#</span><span>title</span><span>Delete</span></div>
+      <div>{renderNames()}</div>
+    </div>
+  )
+
 
 }
 

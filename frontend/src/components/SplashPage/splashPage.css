@@ -50,9 +50,16 @@
 
 
 /* Song Lists */
-.RendorSongPageWrapper{
-  margin-top: 3em;
+
+.MainBody{
+  display: flex;
+  justify-content: space-between;
   color: #ffffff;
+}
+.RendorSongPageWrapper{
+  /* margin-top: 3em; */
+  display: flex;
+  justify-content: space-between;
 }
 
 #removeSong{
@@ -60,7 +67,7 @@
   background-color: transparent;
   text-decoration: none;
   font-size: 1em;
-  margin-left: .4em;
+  /* margin-left: .4em; */
 }
 #removeSong:hover{
   color: lightcoral;
@@ -68,13 +75,13 @@
 
 .songNum{
   font-size: 1em;
-  margin-right: 1em;
+  /* margin-right: 1em; */
 }
 
 .SongNames{
   font-size: 1em;
-  margin: 1.5em 1.5em 1.5em 1.5em;
-  padding: .75em .75em .75em .75em;
+  /* margin: 1.5em 1.5em 1.5em 1.5em;
+  padding: .75em .75em .75em .75em; */
 }
 /* Song Lists */
 
