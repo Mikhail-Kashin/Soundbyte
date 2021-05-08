@@ -4,23 +4,47 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 
-const AudioPlayer = () => {
+export const AudioPlayer = () => {
   const dispatch = useDispatch();
   const songs = useSelector(state => state.songs)
+  const songId = useSelector(state => state.audioReducer.clickedSong)
   const [songIndex, setSongIndex] = useState(0)
   const [playing, setPlaying] = useState(true)
   let bar = document.getElementById('bar');
   let progress = document.getElementById('progress');
 
+  console.log('all songs', songs)
+
+  // const songsJson = JSON.stringify(songs)
+  // console.log('songid', songsJson)
+  // console.log('sdfjkl;adsjf', songsJson.id)
 
   const audio = document.getElementById("audio")
 
-
-
-  if(audio){
-    console.log('testingasdfa;sdjflk', currentDuration())
-    console.log('testingasdfa;sdjflk', songDuration())
+  const songNames = () => {
+    return Object.values(songs).map(song => song.songName)
   }
+
+  const songUrls = () => {
+    return Object.values(songs).map(song => song.songUrl)
+  }
+  const lookthroughsongs = () => {
+     return Object.values(songs).map(song => song.id)
+  }
+
+  console.log('testing', lookthroughsongs())
+
+
+
+
+  if(songId){
+
+  }
+
+  // if(audio){
+  //   console.log('testingasdfa;sdjflk', currentDuration())
+  //   console.log('testingasdfa;sdjflk', songDuration())
+  // }
 
   //formates time into hours and seconds.
   function timeFormater(seconds) {
@@ -46,13 +70,7 @@ const AudioPlayer = () => {
 
 
 
-  const songNames = () => {
-    return Object.values(songs).map(song => song.songName)
-  }
 
-  const songUrls = () => {
-    return Object.values(songs).map(song => song.songUrl)
-  }
 
 
   let listSongs = songUrls()

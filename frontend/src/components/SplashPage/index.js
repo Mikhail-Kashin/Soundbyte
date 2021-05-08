@@ -7,6 +7,7 @@ import './splashPage.css';
 import SideBar from './sidebar'
 import {LogOutComponent} from './logoutbutton'
 import { RenderSongPage } from './renderSongPage'
+import LoginFormPage from '../LoginFormPage/index'
 
 
 
@@ -34,9 +35,7 @@ if (sessionUser){
         </div>
       </div>
       <div class="MainBody">
-        <div class="RendorSongPageWrapper">
           <RenderSongPage/>
-        </div>
       </div>
       <div class="MediaPlayer">
           <AudioPlayer/>
@@ -50,7 +49,8 @@ if (sessionUser){
   )
 } else {
   return (
-    <p className="yourSongs">Please Login</p>
+    <h1 >Please Login <LoginFormPage/>
+    </h1>
   )
 }
 

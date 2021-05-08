@@ -17,7 +17,6 @@ const router = express.Router();
 // get all songs
 router.get ('/', asyncHandler(async (req, res) => {
   const songs = await Song.findAll()
-  // console.log('------->test', songs)
   return res.json(songs)
 }))
 
