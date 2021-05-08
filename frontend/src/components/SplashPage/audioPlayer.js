@@ -21,14 +21,17 @@ export const AudioPlayer = () => {
 
   const audio = document.getElementById("audio")
 
-  function lookthroughsongs(){
-    for (let x in songs){
-      if (x === songId){
-       console.log('amiworking?', x)
-       return x
-      }
-    }
+  const songNames = () => {
+    return Object.values(songs).map(song => song.songName)
   }
+
+  const songUrls = () => {
+    return Object.values(songs).map(song => song.songUrl)
+  }
+  const lookthroughsongs = () => {
+     return Object.values(songs).map(song => song.id)
+  }
+
   console.log('testing', lookthroughsongs())
 
 
@@ -68,13 +71,6 @@ export const AudioPlayer = () => {
 
 
 
-  const songNames = () => {
-    return Object.values(songs).map(song => song.songName)
-  }
-
-  const songUrls = () => {
-    return Object.values(songs).map(song => song.songUrl)
-  }
 
 
   let listSongs = songUrls()
