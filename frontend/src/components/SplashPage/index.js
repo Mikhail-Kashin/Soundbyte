@@ -8,6 +8,7 @@ import SideBar from './sidebar'
 import {LogOutComponent} from './logoutbutton'
 import { RenderSongPage } from './renderSongPage'
 import LoginFormPage from '../LoginFormPage/index'
+import LoginFormModal from'../LoginFormModal'
 
 
 
@@ -49,8 +50,8 @@ if (sessionUser){
   )
 } else {
   return (
-    <h1 >Please Login <LoginFormPage/>
-    </h1>
+    
+    <LoginFormModal/>
   )
 }
 
