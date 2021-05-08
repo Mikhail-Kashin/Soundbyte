@@ -50,8 +50,12 @@ if (sessionUser){
   )
 } else {
   return (
-    
-    <LoginFormModal/>
+    <div>
+      <div>
+        <h1 className="welcomeBanner">Welcome to SoundByte</h1>
+        <LoginFormModal/>
+      </div>
+    </div>
   )
 }
 
