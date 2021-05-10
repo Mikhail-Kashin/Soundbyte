@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal } from '../../context/Modal'
-import RenderNewSongForm from './newsongform'
+import RenderNewSongForm from '../NewSongForm/newsongform'
 import AudioPlayer from './audioPlayer'
 import './splashPage.css';
 import SideBar from './sidebar'
