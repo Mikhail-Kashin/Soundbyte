@@ -20,10 +20,10 @@ function SongPage() {
 
   // Object.values(songs)
 
-  // useEffect(() => {
-  //   if(sessionUser)
-  //   console.log('test...>>>>>>>>test',sessionUser.id)
-  // },[dispatch,sessionUser])
+  useEffect(() => {
+    if(sessionUser)
+    console.log('test...>>>>>>>>test',sessionUser.id)
+  },[dispatch,sessionUser])
 
 
 if (sessionUser){

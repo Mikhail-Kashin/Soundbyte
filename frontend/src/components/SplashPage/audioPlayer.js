@@ -8,13 +8,14 @@ export const AudioPlayer = () => {
   const dispatch = useDispatch();
   const songs = useSelector(state => state.songs)
   const sessionUser = useSelector(state => state.session.user);
-  // const sessionUserId = sessionUser.id
   const songId = useSelector(state => state.audioReducer.clickedSong)
   const [songIndex, setSongIndex] = useState(0)
   const [playing, setPlaying] = useState(true)
+  const [listSongs, setListSongs] = useState([])
   let bar = document.getElementById('bar');
+
   // let progress = document.getElementById('progress');
-  
+
 
 
   // const songsJson = JSON.stringify(songs)
@@ -27,20 +28,23 @@ export const AudioPlayer = () => {
     return Object.values(songs).map(song => song.songName)
   }
 
-  const songUrls = () => {
-    let list = [];
-    Object.values(songs).map(song =>{
-      if (song.userId === sessionUser.id){
-        list.push(song.songUrl)
-      }
-    } )
-    return list
-  }
 
 
   useEffect(() => {
-    console.log('test...>>>>>>>>test',sessionUser.id)
+    const songUrls = () => {
+      let list = [];
+      Object.values(songs).map(song =>{
+        if (song.userId === sessionUser.id){
+          list.push(song.songUrl)
+        }
+      } )
+      return list
+    }
+    setListSongs(songUrls())
+    // console.log('test...>>>>>>>>test', sessionUser.id)
   },[dispatch,sessionUser])
+
+
 
 
   // let songData= {}
@@ -84,7 +88,6 @@ export const AudioPlayer = () => {
   }
 
 
-  let listSongs = songUrls()
 
   function playSongs(e) {
     e.preventDefault()
