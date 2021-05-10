@@ -6,6 +6,7 @@ import { audioController } from '../../store/audiocontroller'
 export const RenderSongPage = () => {
   const dispatch = useDispatch();
   const songs = useSelector(state => state.songs)
+  const sessionUser = useSelector(state => state.session.user);
   const [songIndex, setSongIndex] = useState(0)
 
   // console.log(songs)
@@ -18,8 +19,15 @@ export const RenderSongPage = () => {
   }
 
   const songUrls = () => {
-    return Object.values(songs).map(song => song.songUrl)
+    let list = [];
+    Object.values(songs).map(song =>{
+      if (song.userId === sessionUser.id){
+        list.push(song.songUrl)
+      }
+    } )
+    return list
   }
+
 
   function songIndexNum(songUrl) {
     let list = songUrls()
@@ -36,15 +44,21 @@ export const RenderSongPage = () => {
     dispatch(getSongs())
   },[dispatch])
 
+  useEffect(() => {
+    console.log('test...>>>>>>>>test',sessionUser.id)
+  },[dispatch,sessionUser])
+
   function renderNames(){
     return Object.values(songs).map(song => {
-      return (
-        <div>
-          <span className="songNum"> {songIndexNum(song.songUrl)}. </span>
-          <span onClick={(e) => dispatch(audioController(song.id))}> {song.songName} </span>
-          <span onClick={(e) => removeSongFunc(e, song.id)} id='removeSong' i class="fas fa-backspace"></span>
-        </div>
-      )
+      if (song.userId === sessionUser.id){
+        return (
+          <div>
+            <span className="songNum"> {songIndexNum(song.songUrl)}. </span>
+            <span onClick={(e) => dispatch(audioController(song.id))}> {song.songName} </span>
+            <span onClick={(e) => removeSongFunc(e, song.id)} id='removeSong' i class="fas fa-backspace"></span>
+          </div>
+        )
+      }
     })
   }
 

@@ -13,9 +13,17 @@ import SignupFormPage from '../SignupFormPage'
 
 
 function SongPage() {
+  const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [showModal, setShowModal] = useState(false);
+  // const userId = sessionUser.id
 
+  // Object.values(songs)
+
+  useEffect(() => {
+    if(sessionUser)
+    console.log('test...>>>>>>>>test',sessionUser.id)
+  },[dispatch,sessionUser])
 
 
 if (sessionUser){

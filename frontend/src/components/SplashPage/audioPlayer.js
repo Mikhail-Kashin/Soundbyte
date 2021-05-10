@@ -1,19 +1,22 @@
 import React, {useState, useEffect} from 'react';
-import { getSongs } from '../../store/splashpage';
 import { useDispatch, useSelector } from "react-redux";
+import { getSongs } from '../../store/splashpage';
 
 
 
 export const AudioPlayer = () => {
   const dispatch = useDispatch();
   const songs = useSelector(state => state.songs)
+  const sessionUser = useSelector(state => state.session.user);
   const songId = useSelector(state => state.audioReducer.clickedSong)
   const [songIndex, setSongIndex] = useState(0)
   const [playing, setPlaying] = useState(true)
+  const [listSongs, setListSongs] = useState([])
   let bar = document.getElementById('bar');
-  let progress = document.getElementById('progress');
 
-  console.log('all songs', songs)
+  // let progress = document.getElementById('progress');
+
+
 
   // const songsJson = JSON.stringify(songs)
   // console.log('songid', songsJson)
@@ -25,11 +28,25 @@ export const AudioPlayer = () => {
     return Object.values(songs).map(song => song.songName)
   }
 
-  const songUrls = () => {
-    return Object.values(songs).map(song => song.songUrl)
-  }
 
-  
+
+  useEffect(() => {
+    const songUrls = () => {
+      let list = [];
+      Object.values(songs).map(song =>{
+        if (song.userId === sessionUser.id){
+          list.push(song.songUrl)
+        }
+      } )
+      return list
+    }
+    setListSongs(songUrls())
+    // console.log('test...>>>>>>>>test', sessionUser.id)
+  },[dispatch,sessionUser])
+
+
+
+
   // let songData= {}
   // songs.map((song) => (songData[song.id] = song))
   // console.log('songDatatest',songData) // should print out what you're looking for
@@ -71,11 +88,6 @@ export const AudioPlayer = () => {
   }
 
 
-
-
-
-
-  let listSongs = songUrls()
 
   function playSongs(e) {
     e.preventDefault()
@@ -135,6 +147,7 @@ export const AudioPlayer = () => {
     useEffect(() => {
       if (audio) audio.play()
     }, [songIndex])
+
 
     // useEffect(() => {
     //   if (audio){

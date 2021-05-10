@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import AudioPlayer from '../SplashPage/audioPlayer'
 import '../SplashPage/splashPage.css';
 import SideBar from '../SplashPage/sidebar'
@@ -9,8 +9,8 @@ import { getExploreSongs } from '../../store/explore'
 
 
 function ExplorerSongPage () {
-  const sessionUser = useSelector(state => state.session.user);
-  const userSongs = useSelector(state => state.songs)
+  // const sessionUser = useSelector(state => state.session.user);
+  // const userSongs = useSelector(state => state.songs)
   const dispatch = useDispatch();
 
   // function renderSongNamesOtherUsers(){
