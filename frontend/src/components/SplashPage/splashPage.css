@@ -9,8 +9,24 @@
   display: grid;
   /* background-color: #3b1649; */
   background: linear-gradient(#3b1649, black);
-  grid-template-columns: 0.2fr 1.5fr;
-  grid-template-rows: 0.3fr 2.4fr 0.3fr;
+  grid-template-columns: 0.14fr 1.5fr;
+  grid-template-rows: 0.2fr 2.4fr 0.32fr;
+  gap: 5px 5px;
+  grid-template-areas:
+    "SideBar Header"
+    "SideBar MainBody"
+    "MediaPlayer MediaPlayer";
+  width: 100vw;
+  height: 100vh;
+}
+
+.grid-container-explore {
+  font-family: 'proxima-nova', sans-serif;
+  display: grid;
+  /* background-color: #3b1649; */
+  background: linear-gradient(#3b1649, black);
+  grid-template-columns: 0.14fr 1.5fr;
+  grid-template-rows: 0.2fr 2.4fr 0.32fr;
   gap: 5px 5px;
   grid-template-areas:
     "SideBar Header"
@@ -38,7 +54,7 @@
   border-width: .1em;
 }
 .yourSongs{
-  font-size: 3.6em;
+  font-size: 2.8em;
   color: #ffffff;
   font-weight: 900;
   margin-top: -1em;
@@ -102,13 +118,46 @@
   font-size: 1em;
   font-weight: 300;
 }
-#homeIcon{
+#homeIcon, #exploreIcon{
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: .4em;
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 1.4em;
+}
+#uploadIcon {
   margin-top: 1em;
   color: white;
   background-color: transparent;
   text-decoration: none;
   font-size: 1.4em;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
 
+#uploadIcon:hover{
+  color: lightgray;
+}
+
+#logoutButton{
+  margin-top: 1em;
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+  font-size: 1.4em;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+#logoutButton:hover{
+  color: lightgray;
+}
+
+.uploadlogout{
+  display: flex;
+  justify-content: flex-end;
 }
 /* sideBar */
 
@@ -163,47 +212,10 @@
 /* Media Bar */
 
 
-
-
-/* Logout and Upload Icon's */
-#uploadIcon {
-  margin-top: 1em;
-  color: white;
-  background-color: transparent;
-  text-decoration: none;
-  font-size: 1.4em;
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
-#uploadIcon:hover{
-  color: lightgray;
-}
-
-#logoutButton{
-  margin-top: 1em;
-  color: white;
-  background-color: transparent;
-  text-decoration: none;
-  font-size: 1.4em;
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
-#logoutButton:hover{
-  color: lightgray;
-}
-
-.uploadlogout{
-  display: flex;
-  justify-content: flex-end;
-}
-/* Logout and Upload Icon's */
-
 /* login page styling */
 
 .welcomeBanner{
-  
+
 }
 
 

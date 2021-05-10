@@ -8,6 +8,7 @@ export function SideBar(){
         <div class="navbar">
             <div i class="fas fa-home" id='homeIcon'>  <NavLink exact to="/">Home</NavLink></div>
         </div>
+        <div i class="far fa-compass" id='exploreIcon'>  <NavLink exact to="/explore">Explore</NavLink></div>
       </span>
     );
 }

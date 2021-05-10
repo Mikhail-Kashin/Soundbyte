@@ -17,13 +17,13 @@ function ExplorerSongPage () {
 
 
   return (
-    <div class="grid-container">
+    <div class="grid-container-explore">
       <div class="Header">
         <div className='uploadlogout'>
             <LogOutComponent/>
         </div>
         <div>
-          <p className="yourSongs">Explore Song Uploaded by Other Users!</p>
+          <p className="yourSongs">Explore Songs!</p>
         </div>
       </div>
       <div class="MainBody">
