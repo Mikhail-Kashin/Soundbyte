@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       {/* <Navigation isLoaded={isLoaded} /> */}
-      
+
         <Switch>
           <Route exact path="/signup">
             <SignupFormPage />
@@ -24,7 +24,7 @@ function App() {
           <Route exact path="/">
             <SongPage />
           </Route>
-          <Route exact path="/explore">
+          <Route exact path="/:explore">
             <ExplorerSongPage/>
           </Route>
         </Switch>

@@ -1,33 +1,13 @@
-import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import React from "react";
 import AudioPlayer from '../SplashPage/audioPlayer'
 import '../SplashPage/splashPage.css';
 import SideBar from '../SplashPage/sidebar'
 import {LogOutComponent} from '../SplashPage/logoutbutton'
-import { RenderSongPage } from '../SplashPage/renderSongPage'
-import { getExploreSongs } from '../../store/explore'
+
+import RenderExplorerSongPage from './RenderExplorerSongPage'
 
 
 function ExplorerSongPage () {
-  // const sessionUser = useSelector(state => state.session.user);
-  // const userSongs = useSelector(state => state.songs)
-  const dispatch = useDispatch();
-
-  // function renderSongNamesOtherUsers(){
-  //   return Object.values(songs).map(song => {
-  //     return (
-  //       <div>
-  //         <span className="songNum"> {songIndexNum(song.songUrl)}. </span>
-  //         <span onClick={(e) => dispatch(audioController(song.id))}> {song.songName} </span>
-  //         <span onClick={(e) => removeSongFunc(e, song.id)} id='removeSong' i class="fas fa-backspace"></span>
-  //       </div>
-  //     )
-  //   })
-  // }
-
-  useEffect(() => {
-    dispatch(getExploreSongs())
-  },[dispatch])
 
 
   return (
@@ -41,7 +21,7 @@ function ExplorerSongPage () {
         </div>
       </div>
       <div class="MainBody">
-          <RenderSongPage/>
+          <RenderExplorerSongPage/>
       </div>
       <div class="MediaPlayer">
           <AudioPlayer/>

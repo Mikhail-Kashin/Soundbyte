@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { getSongs } from '../../store/splashpage';
 
@@ -13,6 +14,11 @@ export const AudioPlayer = () => {
   const [playing, setPlaying] = useState(true)
   const [listSongs, setListSongs] = useState([])
   let bar = document.getElementById('bar');
+
+  let { explore } = useParams()
+
+  console.log("a;skdfjlka;s", explore)
+
 
   // let progress = document.getElementById('progress');
 
@@ -34,8 +40,14 @@ export const AudioPlayer = () => {
     const songUrls = () => {
       let list = [];
       Object.values(songs).map(song =>{
-        if (song.userId === sessionUser.id){
-          list.push(song.songUrl)
+        if (explore){
+          if (song.userId !== sessionUser.id){
+            list.push(song.songUrl)
+          }
+        } else {
+          if (song.userId === sessionUser.id){
+            list.push(song.songUrl)
+          }
         }
       } )
       return list

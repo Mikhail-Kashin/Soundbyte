@@ -38,7 +38,7 @@ export const RenderSongPage = () => {
       }
     }
   }
-  console.log(songIndexNum())
+  // console.log(songIndexNum())
 
   useEffect(() => {
     dispatch(getSongs())
