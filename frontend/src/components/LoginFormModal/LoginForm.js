@@ -20,23 +20,26 @@ function LoginForm() {
   };
 
   return (
-    <>
-      <h1>Log In</h1>
+    <div className="logInFormWrapper">
+      <span className="logInBanner">Log In</span>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
-          Username or Email
-          <input
-            type="text"
-            value={credential}
-            onChange={(e) => setCredential(e.target.value)}
-            required
-          />
-        </label>
+        <div>
+          <label>
+            Username or Email
+            <input
+              type="text"
+              value={credential}
+              onChange={(e) => setCredential(e.target.value)}
+              required
+            />
+          </label>
+        </div>
+        <div>
         <label>
           Password
           <input
@@ -46,9 +49,12 @@ function LoginForm() {
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        </div>
+        <div>
+        <button className='buttonLogIn' type="submit">Log In!</button>
+        </div>
       </form>
-    </>
+    </div>
   );
 }
 
