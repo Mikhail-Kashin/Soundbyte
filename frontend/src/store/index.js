@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import session from './session';
 import songReducer from './splashpage'
 import audioReducer from './audiocontroller'
+import ExploreSongReducer from './explore'
 
 const rootReducer = combineReducers({
   session,
   songs:songReducer,
-  audioReducer
+  audioReducer,
+  ExploreSongReducer
 });
 
 let enhancer;
