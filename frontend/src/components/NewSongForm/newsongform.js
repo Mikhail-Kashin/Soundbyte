@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createSong } from '../../store/splashpage';
+import './newSongForm.css'
 
 
 
@@ -34,28 +35,28 @@ const RenderNewSongForm = () => {
 
   if (sessionUser){
     return (
-      <div>
+      <div className="newSongWrapper">
         <form onSubmit={handleSubmitNewSong}>
+          <span className="newSongBanner">Upload New Song!</span>
           <label>
-            songName
+            Song Name
             <input
             type="text"
             value={songName}
             onChange={(e) => setSongName(e.target.value)}
-            placeholder="songname"
+            placeholder="Enter Song Name"
             required
             />
           </label>
           <label>
-            uploadhere
-            <input
+            <input className="uploadFileButton"
             type="file"
             // value={songUrl}
             onChange={updateSongFile}
             required
             />
           </label>
-          <button type="submit" >Upload New Song!</button>
+          <button className="newSongButton" type="submit" >Submit!</button>
         </form>
       </div>
     )

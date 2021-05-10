@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Modal } from '../../context/Modal'
-import RenderNewSongForm from './newsongform'
+import RenderNewSongForm from '../NewSongForm/newsongform'
 import AudioPlayer from './audioPlayer'
 import './splashPage.css';
 import SideBar from './sidebar'
 import {LogOutComponent} from './logoutbutton'
 import { RenderSongPage } from './renderSongPage'
-import LoginFormPage from '../LoginFormPage/index'
 import LoginFormModal from'../LoginFormModal'
+import SignupFormPage from '../SignupFormPage'
 
 
 
@@ -50,12 +50,35 @@ if (sessionUser){
   )
 } else {
   return (
-    <div>
-      <div>
-        <h1 className="welcomeBanner">Welcome to SoundByte</h1>
-        <LoginFormModal/>
+    <div class="grid-container">
+      <div class="Header">
+      </div>
+      <div class="MainBody">
+          <div><LoginFormModal/>  <span id='uploadIcon' onClick={() => setShowModal(true)}>Sign Up!</span>
+            {showModal && (
+              <Modal onClose={() => setShowModal(false)}>
+                <SignupFormPage />
+              </Modal>
+            )} </div>
+      </div>
+      <div class="MediaPlayer">
+          <AudioPlayer/>
+      </div>
+      <div class="SideBar">
+        <div class="sideBarWrapper">
+          <span><SideBar/></span>
+        </div>
       </div>
     </div>
+
+
+
+    // <div>
+    //   <div>
+    //     <span className="welcomeBanner">Welcome to SoundByte</span>
+    //     <LoginFormModal/>
+    //   </div>
+    // </div>
   )
 }
 
