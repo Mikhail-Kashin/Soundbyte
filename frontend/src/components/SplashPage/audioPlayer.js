@@ -1,19 +1,21 @@
 import React, {useState, useEffect} from 'react';
-import { getSongs } from '../../store/splashpage';
 import { useDispatch, useSelector } from "react-redux";
+import { getSongs } from '../../store/splashpage';
 
 
 
 export const AudioPlayer = () => {
   const dispatch = useDispatch();
   const songs = useSelector(state => state.songs)
+  const sessionUser = useSelector(state => state.session.user);
+  // const sessionUserId = sessionUser.id
   const songId = useSelector(state => state.audioReducer.clickedSong)
   const [songIndex, setSongIndex] = useState(0)
   const [playing, setPlaying] = useState(true)
   let bar = document.getElementById('bar');
   // let progress = document.getElementById('progress');
+  
 
-  console.log('all songs', songs)
 
   // const songsJson = JSON.stringify(songs)
   // console.log('songid', songsJson)
@@ -26,8 +28,19 @@ export const AudioPlayer = () => {
   }
 
   const songUrls = () => {
-    return Object.values(songs).map(song => song.songUrl)
+    let list = [];
+    Object.values(songs).map(song =>{
+      if (song.userId === sessionUser.id){
+        list.push(song.songUrl)
+      }
+    } )
+    return list
   }
+
+
+  useEffect(() => {
+    console.log('test...>>>>>>>>test',sessionUser.id)
+  },[dispatch,sessionUser])
 
 
   // let songData= {}
@@ -69,10 +82,6 @@ export const AudioPlayer = () => {
       return timeFormater(audio.duration)
     }
   }
-
-
-
-
 
 
   let listSongs = songUrls()
@@ -135,6 +144,7 @@ export const AudioPlayer = () => {
     useEffect(() => {
       if (audio) audio.play()
     }, [songIndex])
+
 
     // useEffect(() => {
     //   if (audio){
