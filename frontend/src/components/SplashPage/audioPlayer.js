@@ -11,7 +11,7 @@ export const AudioPlayer = () => {
   const [songIndex, setSongIndex] = useState(0)
   const [playing, setPlaying] = useState(true)
   let bar = document.getElementById('bar');
-  let progress = document.getElementById('progress');
+  // let progress = document.getElementById('progress');
 
   console.log('all songs', songs)
 
@@ -29,7 +29,7 @@ export const AudioPlayer = () => {
     return Object.values(songs).map(song => song.songUrl)
   }
 
-  
+
   // let songData= {}
   // songs.map((song) => (songData[song.id] = song))
   // console.log('songDatatest',songData) // should print out what you're looking for

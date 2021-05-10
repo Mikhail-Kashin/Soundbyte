@@ -15,8 +15,9 @@ import SignupFormPage from '../SignupFormPage'
 function SongPage() {
   const sessionUser = useSelector(state => state.session.user);
   const [showModal, setShowModal] = useState(false);
+  // const userId = sessionUser.id
 
-
+  console.log('testing session user', sessionUser)
 
 if (sessionUser){
   return (

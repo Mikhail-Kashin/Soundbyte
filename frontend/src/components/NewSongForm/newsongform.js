@@ -9,9 +9,16 @@ import './newSongForm.css'
 const RenderNewSongForm = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+
   const [songUrl, setSongUrl] = useState('');
   const [songName, setSongName] = useState('');
   const [songGenre, setSongGenre] = useState('');
+
+
+
+
+
+
 
 
   const handleSubmitNewSong = async (e) => {
