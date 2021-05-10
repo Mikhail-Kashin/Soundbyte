@@ -8,7 +8,7 @@
   font-family: 'proxima-nova', sans-serif;
   display: grid;
   /* background-color: #3b1649; */
-  background: linear-gradient(#3b1649, black);
+  background: linear-gradient(#5c2370, black);
   grid-template-columns: 0.14fr 1.5fr;
   grid-template-rows: 0.2fr 2.4fr 0.32fr;
   gap: 5px 5px;
@@ -24,7 +24,7 @@
   font-family: 'proxima-nova', sans-serif;
   display: grid;
   /* background-color: #3b1649; */
-  background: linear-gradient(#3b1649, black);
+  background: linear-gradient(#68788F, black);
   grid-template-columns: 0.14fr 1.5fr;
   grid-template-rows: 0.2fr 2.4fr 0.32fr;
   gap: 5px 5px;

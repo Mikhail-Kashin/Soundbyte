@@ -10,7 +10,7 @@ const getExploreSongFeed = (songs) => ({
 
 
 //thunks
-export const getSongs = () => async dispatch => {
+export const getExploreSongs = () => async dispatch => {
   const res = await fetch(`/api/explore`)
   if (!res.ok){
     throw res
