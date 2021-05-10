@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createSong } from '../../store/splashpage';
 import './newSongForm.css'
@@ -13,9 +13,7 @@ const RenderNewSongForm = () => {
   const [songUrl, setSongUrl] = useState('');
   const [songName, setSongName] = useState('');
   const [songGenre, setSongGenre] = useState('');
-
-
-
+  const [userId, setUserId] = useState('');
 
 
 
@@ -23,16 +21,21 @@ const RenderNewSongForm = () => {
 
   const handleSubmitNewSong = async (e) => {
     e.preventDefault();
-    dispatch(createSong({ songUrl, songName, songGenre}))
+    dispatch(createSong({ userId, songUrl, songName, songGenre}))
       .then(() => {
         setSongUrl(null);
         setSongName('');
         setSongGenre('');
+        setUserId('');
       })
       // .catch(async (res) => {
       //   const data = await res.json();
       // })
   }
+
+  useEffect(() => {
+    setUserId(sessionUser.id)
+  },[dispatch,sessionUser])
 
   const updateSongFile = (e) => {
     const songFile = e.target.files[0];

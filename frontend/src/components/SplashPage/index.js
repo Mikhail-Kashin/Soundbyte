@@ -17,7 +17,8 @@ function SongPage() {
   const [showModal, setShowModal] = useState(false);
   // const userId = sessionUser.id
 
-  console.log('testing session user', sessionUser)
+  // Object.values(songs)
+
 
 if (sessionUser){
   return (
