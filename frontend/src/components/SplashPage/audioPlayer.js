@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
 import { getSongs } from '../../store/splashpage';
@@ -13,11 +13,52 @@ export const AudioPlayer = () => {
   const [songIndex, setSongIndex] = useState(0)
   const [playing, setPlaying] = useState(true)
   const [listSongs, setListSongs] = useState([])
-  let bar = document.getElementById('bar');
+  const [currentSongDuration, setCurrentSongDuration] = useState('')
+  const [currentPlayingDuration, setCurrentPlayingDuration] = useState('')
+  const [initialSongDuration, setInitialSongDuration] = useState(null)
+  const [initialPlayingDuration, setInitialPlayingDuration] = useState(null)
+  const [audioLoad, setAudioLoad] = useState(null)
+
+
+  const myRef = useCallback(node => {
+    if (node){
+      setAudioLoad(node)
+    }
+  })
+
+  const audio = document.getElementById("audio")
+
+
+  function updateBar() {
+    if (audio) {
+      let canvas = document.getElementById('my-canvas').getContext('2d')
+      let canvasWidth = 500
+      let ctrl = document.getElementById('audioControl')
+      canvas.clearRect(0, 0, canvasWidth, 50);
+      canvas.fillStyle = '#000000';
+      canvas.fillRect(0, 0, canvasWidth, 50);
+
+      if (audio.currentTime === audio.duration) {
+        ctrl.innerHTML = 'Play'
+      }
+
+      timeFormater(audio.currentTime)
+
+      let percentage = audio.currentTime / audio.duration
+      let progress = (canvasWidth * percentage)
+      canvas.fillStyle = "#FF0000"
+      canvas.fillRect(0, 0, progress, 50)
+    }
+    }
+    // useEffect(() => {
+    //   updateBar()
+    // }, [audio.duration])
+    // audiobar setup
+
 
   let { explore } = useParams()
 
-  console.log("a;skdfjlka;s", explore)
+  // console.log("a;skdfjlka;s", explore)
 
 
   // let progress = document.getElementById('progress');
@@ -28,7 +69,6 @@ export const AudioPlayer = () => {
   // console.log('songid', songsJson)
   // console.log('sdfjkl;adsjf', songsJson.id)
 
-  const audio = document.getElementById("audio")
 
   const songNames = () => {
     return Object.values(songs).map(song => song.songName)
@@ -130,20 +170,6 @@ export const AudioPlayer = () => {
     }
   }
 
-  if (audio) {
-    audio.addEventListener('timeupdate', function(){
-      bar.style.width = parseInt(((audio.currentTime / audio.duration) * 100), 10) + "%";
-    })
-  }
-
-  // if (audio) {
-  //   progress.addEventListener('click', function(e){
-  //     let clickPosition = (e.pageX - this.offsetLeft) / this.offsetWidth;
-  //     let clickTime = clickPosition * audio.duration
-  //     audio.currentTime =clickTime;
-  //   })
-  // }
-
 
   if (audio) {
     audio.addEventListener('ended', function() {
@@ -155,6 +181,12 @@ export const AudioPlayer = () => {
     useEffect(() => {
       dispatch(getSongs())
     },[dispatch])
+
+
+
+    // useEffect(() => {
+    //   setAudioLoad(audio)
+    // },[audio])
 
     useEffect(() => {
       if (audio) audio.play()
@@ -175,15 +207,21 @@ export const AudioPlayer = () => {
         {playing === true ? <span id='playButton' i class="fas fa-play-circle" onClick={e => playSongs(e)}></span> : <span id='pauseButton' i class="far fa-pause-circle" onClick={e => playSongs(e)}></span>}
         <span id='nextSong' i class="fas fa-step-forward" onClick={e => nextSong(e)}></span>
       </div>
+        <p>
+          <canvas id="my-canvas" width="300" height="20">
+          </canvas>
+        </p>
       <p>
         <audio
+          ref={myRef}
           id='audio'
           src={listSongs[songIndex]}
+          ontimeupdate={updateBar()}
           />
             </p>
-      <div id="progress">
+      {/* <div id="progress">
         <div id="bar"></div>
-      </div>
+      </div> */}
       <div className="currentDuration">{currentDuration()}</div>
       <div className="songDuration">{songDuration()}</div>
     </>
