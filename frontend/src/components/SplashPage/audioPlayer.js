@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getSongs } from '../../store/splashpage';
 
 
-
 export const AudioPlayer = () => {
   const dispatch = useDispatch();
   const songs = useSelector(state => state.songs)
@@ -13,18 +12,11 @@ export const AudioPlayer = () => {
   const [songIndex, setSongIndex] = useState(0)
   const [playing, setPlaying] = useState(true)
   const [listSongs, setListSongs] = useState([])
-  const [currentSongDuration, setCurrentSongDuration] = useState('')
-  const [currentPlayingDuration, setCurrentPlayingDuration] = useState('')
-  const [initialSongDuration, setInitialSongDuration] = useState(null)
-  const [initialPlayingDuration, setInitialPlayingDuration] = useState(null)
-  const [audioLoad, setAudioLoad] = useState(null)
+  const [currentTime, setCurrentTime] = useState(0)
+
+  console.log('testingcurrenttime', currentTime)
 
 
-  const myRef = useCallback(node => {
-    if (node){
-      setAudioLoad(node)
-    }
-  })
 
   const audio = document.getElementById("audio")
 
@@ -50,18 +42,10 @@ export const AudioPlayer = () => {
       canvas.fillRect(0, 0, progress, 50)
     }
     }
-    // useEffect(() => {
-    //   updateBar()
-    // }, [audio.duration])
-    // audiobar setup
-
 
   let { explore } = useParams()
 
   // console.log("a;skdfjlka;s", explore)
-
-
-  // let progress = document.getElementById('progress');
 
 
 
@@ -127,6 +111,11 @@ export const AudioPlayer = () => {
     return `${min}:${sec}`
   }
 
+  useEffect(() => {
+    if (audio)
+    setCurrentTime(audio.currentTime)
+  },[audio])
+
   function currentDuration(){
     if (audio){
       return timeFormater(audio.currentTime)
@@ -184,19 +173,15 @@ export const AudioPlayer = () => {
 
 
 
-    // useEffect(() => {
-    //   setAudioLoad(audio)
-    // },[audio])
 
     useEffect(() => {
       if (audio) audio.play()
     }, [songIndex])
 
+    useEffect(() => {
+        setCurrentTime(audio.currentTime)
+    }, [audio ? audio.currentTime : console.log('yo')])
 
-    // useEffect(() => {
-    //   if (audio){
-    //   }
-    // },[document.querySelector('.currentTime').innerHTML])
 
 
 
@@ -213,16 +198,12 @@ export const AudioPlayer = () => {
         </p>
       <p>
         <audio
-          ref={myRef}
           id='audio'
           src={listSongs[songIndex]}
           ontimeupdate={updateBar()}
           />
             </p>
-      {/* <div id="progress">
-        <div id="bar"></div>
-      </div> */}
-      <div className="currentDuration">{currentDuration()}</div>
+      <div className="currentDuration">{currentTime}</div>
       <div className="songDuration">{songDuration()}</div>
     </>
     );
