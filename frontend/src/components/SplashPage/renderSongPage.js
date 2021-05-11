@@ -52,9 +52,9 @@ export const RenderSongPage = () => {
     return Object.values(songs).map(song => {
       if (song.userId === sessionUser.id){
         return (
-          <div>
+          <div className="songLists">
             <span className="songNum"> {songIndexNum(song.songUrl)}. </span>
-            <span onClick={(e) => dispatch(audioController(song.id))}> {song.songName} </span>
+            <span onClick={(e) => dispatch(audioController(song.id))}> <div className="songNames">{song.songName}</div> </span>
             <span onClick={(e) => removeSongFunc(e, song.id)} id='removeSong' i class="fas fa-backspace"></span>
           </div>
         )
@@ -64,7 +64,6 @@ export const RenderSongPage = () => {
 
   return (
     <div>
-      <div className="headings"><span>#</span><span>title</span><span>Delete</span></div>
       <div>{renderNames()}</div>
     </div>
   )

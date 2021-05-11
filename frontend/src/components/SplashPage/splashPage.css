@@ -69,9 +69,35 @@
 
 .MainBody{
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  flex-direction: column;
   color: #ffffff;
+  max-width: 75%;
 }
+
+.headings{
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.75em;
+  font-weight: 700;
+  margin-bottom: 1.25em;
+}
+
+.songNames{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.25em;
+  font-size: 1.1em;
+}
+
+.songLists{
+  display: flex;
+  justify-content: space-between;
+  /* align-content: flex-start; */
+  align-items: center;
+}
+
 .RendorSongPageWrapper{
   /* margin-top: 3em; */
   display: flex;
@@ -93,13 +119,6 @@
   font-size: 1em;
   /* margin-right: 1em; */
 }
-
-.SongNames{
-  font-size: 1em;
-  /* margin: 1.5em 1.5em 1.5em 1.5em;
-  padding: .75em .75em .75em .75em; */
-}
-/* Song Lists */
 
 
 
@@ -188,6 +207,10 @@
   font-size: 1.75em;
 }
 
+#my-canvas{
+  background-color: white;
+}
+
 .currentDuration, .songDuration{
   color: white;
   margin-left: 1rem;
@@ -210,13 +233,3 @@
 
 
 /* Media Bar */
-
-
-/* login page styling */
-
-.welcomeBanner{
-
-}
-
-
-/* login page styling */
