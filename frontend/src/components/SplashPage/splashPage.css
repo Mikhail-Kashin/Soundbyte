@@ -209,6 +209,16 @@
 
 #my-canvas{
   background-color: white;
+  display: flex;
+  justify-content: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: .2rem;
+}
+
+.controller-wrap{
+  display: flex;
+  justify-content: center;
 }
 
 .currentDuration, .songDuration{

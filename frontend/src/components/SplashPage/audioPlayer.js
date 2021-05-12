@@ -49,9 +49,7 @@ export const AudioPlayer = () => {
 
 
 
-  // const songsJson = JSON.stringify(songs)
-  // console.log('songid', songsJson)
-  // console.log('sdfjkl;adsjf', songsJson.id)
+
 
 
   const songNames = () => {
@@ -83,11 +81,6 @@ export const AudioPlayer = () => {
 
 
 
-  // let songData= {}
-  // songs.map((song) => (songData[song.id] = song))
-  // console.log('songDatatest',songData) // should print out what you're looking for
-
-
 
 
 
@@ -96,10 +89,7 @@ export const AudioPlayer = () => {
 
   }
 
-  // if(audio){
-  //   console.log('testingasdfa;sdjflk', currentDuration())
-  //   console.log('testingasdfa;sdjflk', songDuration())
-  // }
+
 
   //formates time into hours and seconds.
   function timeFormater(seconds) {
@@ -144,7 +134,7 @@ export const AudioPlayer = () => {
   function prevSong(e){
     e.preventDefault()
     if (songIndex > 0){
-      setSongIndex(songIndex -1)
+      setSongIndex(songIndex - 1)
     }else {
       setSongIndex(listSongs.length - 1)
     }
@@ -178,24 +168,21 @@ export const AudioPlayer = () => {
       if (audio) audio.play()
     }, [songIndex])
 
-    useEffect(() => {
-        setCurrentTime(audio.currentTime)
-    }, [audio ? audio.currentTime : console.log('yo')])
+    // useEffect(() => {
+    //     setCurrentTime(audio.currentTime)
+    // }, [audio ? audio.currentTime : console.log('yo')])
 
 
 
 
 	return (
-    <>
-      <div>
-        <span id='previousSong' i class="fas fa-step-backward" onClick={e => prevSong(e)}></span>
-        {playing === true ? <span id='playButton' i class="fas fa-play-circle" onClick={e => playSongs(e)}></span> : <span id='pauseButton' i class="far fa-pause-circle" onClick={e => playSongs(e)}></span>}
-        <span id='nextSong' i class="fas fa-step-forward" onClick={e => nextSong(e)}></span>
-      </div>
-        <p>
-          <canvas id="my-canvas" width="300" height="20">
-          </canvas>
-        </p>
+    <div>
+      <div className="controller-wrap">
+      <span className="currentDuration">{currentDuration()}</span>
+      <span id='previousSong' i class="fas fa-step-backward" onClick={e => prevSong(e)}></span>
+      {playing === true ? <span id='playButton' i class="fas fa-play-circle" onClick={e => playSongs(e)}></span> : <span id='pauseButton' i class="far fa-pause-circle" onClick={e => playSongs(e)}></span>}
+      <span id='nextSong' i class="fas fa-step-forward" onClick={e => nextSong(e)}></span>
+      <span className="songDuration">{songDuration()}</span>
       <p>
         <audio
           id='audio'
@@ -203,9 +190,13 @@ export const AudioPlayer = () => {
           ontimeupdate={updateBar()}
           />
             </p>
-      <div className="currentDuration">{currentTime}</div>
-      <div className="songDuration">{songDuration()}</div>
-    </>
+    </div>
+      <div>
+        <canvas id="my-canvas" width="300" height="20">
+        </canvas>
+      </div>
+
+      </div>
     );
 }
 
