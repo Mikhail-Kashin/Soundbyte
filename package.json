@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "react-player": "^2.9.0",
-    "reactjs-media": "^1.5.1"
+    "reactjs-media": "^1.5.1",
+    "sequelize": "^6.6.2"
   }
 }
