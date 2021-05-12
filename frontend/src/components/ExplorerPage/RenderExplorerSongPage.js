@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AudioPlayer from '../SplashPage/audioPlayer'
-import '../SplashPage/splashPage.css';
 import SideBar from '../SplashPage/sidebar'
 import {LogOutComponent} from '../SplashPage/logoutbutton'
 import { getExploreSongs } from '../../store/explore'
 import { audioController } from '../../store/audiocontroller'
+import '../SplashPage/splashPage.css';
 
 
 export const RenderExplorerSongPage = () => {
@@ -56,15 +56,15 @@ export const RenderExplorerSongPage = () => {
     // console.log('test...>>>>>>>>test',sessionUser.id)
   },[dispatch,sessionUser])
 
-  
+
   function renderSongNamesOtherUsers(){
 
     return Object.values(userSongs).map(userSong => {
       if (userSong.userId !== sessionUser.id){
         return (
-          <div>
+          <div className="songLists">
             <span className="songNum"> {songIndexNum(userSong.songUrl)}. </span>
-            <span onClick={(e) => dispatch(audioController(userSong.id))}> {userSong.songName} </span>
+            <span onClick={(e) => dispatch(audioController(userSong.id))}> <div className="songNames">{userSong.songName}</div> </span>
           </div>
         )
       }
@@ -73,7 +73,6 @@ export const RenderExplorerSongPage = () => {
 
   return (
     <div>
-      <div className="headings"><span>#</span><span>title</span><span>Delete</span></div>
       <div>{renderSongNamesOtherUsers()}</div>
     </div>
   )

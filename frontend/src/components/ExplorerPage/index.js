@@ -21,6 +21,7 @@ function ExplorerSongPage () {
         </div>
       </div>
       <div class="MainBody">
+      <div className="headings"><span>#</span><span>Title</span><span>Delete</span></div>
           <RenderExplorerSongPage/>
       </div>
       <div class="MediaPlayer">
