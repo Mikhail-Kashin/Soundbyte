@@ -62,13 +62,15 @@ export const AudioPlayer = () => {
     const songUrls = () => {
       let list = [];
       Object.values(songs).map(song =>{
-        if (explore){
-          if (song.userId !== sessionUser.id){
-            list.push(song.songUrl)
-          }
-        } else {
-          if (song.userId === sessionUser.id){
-            list.push(song.songUrl)
+        if(sessionUser){
+          if (explore){
+            if (song.userId !== sessionUser.id){
+              list.push(song.songUrl)
+            }
+          } else {
+            if (song.userId === sessionUser.id){
+              list.push(song.songUrl)
+            }
           }
         }
       } )

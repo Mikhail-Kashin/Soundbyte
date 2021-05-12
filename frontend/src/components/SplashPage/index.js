@@ -40,7 +40,7 @@ if (sessionUser){
             <LogOutComponent/>
         </div>
         <div>
-          <p className="yourSongs">Your Songs</p>
+          <p className="yourSongs">YOUR MUSIC</p>
         </div>
       </div>
       <div class="MainBody">

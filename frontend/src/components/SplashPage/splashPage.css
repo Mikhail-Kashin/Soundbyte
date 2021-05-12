@@ -5,7 +5,8 @@
 }
 
 .grid-container {
-  font-family: 'proxima-nova', sans-serif;
+  /* font-family: 'proxima-nova', sans-serif; */
+  font-family: Didot, serif;
   display: grid;
   /* background-color: #3b1649; */
   background: linear-gradient(#5c2370, black);
@@ -21,7 +22,7 @@
 }
 
 .grid-container-explore {
-  font-family: 'proxima-nova', sans-serif;
+  font-family: Didot, serif;
   display: grid;
   /* background-color: #3b1649; */
   background: linear-gradient(#68788F, black);
@@ -54,9 +55,10 @@
   border-width: .1em;
 }
 .yourSongs{
-  font-size: 2.8em;
+  font-family: Optima, sans-serif;
+  font-size: 2.6em;
   color: #ffffff;
-  font-weight: 900;
+  /* font-weight: 400; */
   margin-top: -1em;
 }
 
