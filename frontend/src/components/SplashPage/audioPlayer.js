@@ -189,7 +189,9 @@ export const AudioPlayer = () => {
         <audio
           id='audio'
           src={listSongs[songIndex]}
-          ontimeupdate={updateBar()}
+          onTimeUpdate={() => updateBar()}
+          onTimeUpDate={() => currentDuration()}
+          onTimeUpDate={() => songDuration()}
           />
             </p>
     </div>
