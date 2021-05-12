@@ -103,13 +103,14 @@ export const AudioPlayer = () => {
     return `${min}:${sec}`
   }
 
-  useEffect(() => {
-    if (audio)
-    setCurrentTime(audio.currentTime)
-  },[audio])
+  // useEffect(() => {
+  //   if (audio)
+  //   setCurrentTime(audio.currentTime)
+  // },[audio.onTimeUpdate])
 
   function currentDuration(){
     if (audio){
+      setCurrentTime(timeFormater(audio.currentTime))
       return timeFormater(audio.currentTime)
     }
   }
@@ -170,17 +171,22 @@ export const AudioPlayer = () => {
       if (audio) audio.play()
     }, [songIndex])
 
+
+
     // useEffect(() => {
     //     setCurrentTime(audio.currentTime)
     // }, [audio ? audio.currentTime : console.log('yo')])
 
-
+    function runTimeandStatusBar() {
+      updateBar()
+      currentDuration()
+    }
 
 
 	return (
     <div>
       <div className="controller-wrap">
-      <span className="currentDuration">{currentDuration()}</span>
+      <span className="currentDuration">{ currentTime}</span>
       <span id='previousSong' i class="fas fa-step-backward" onClick={e => prevSong(e)}></span>
       {playing === true ? <span id='playButton' i class="fas fa-play-circle" onClick={e => playSongs(e)}></span> : <span id='pauseButton' i class="far fa-pause-circle" onClick={e => playSongs(e)}></span>}
       <span id='nextSong' i class="fas fa-step-forward" onClick={e => nextSong(e)}></span>
@@ -189,9 +195,8 @@ export const AudioPlayer = () => {
         <audio
           id='audio'
           src={listSongs[songIndex]}
-          onTimeUpdate={() => updateBar()}
-          onTimeUpDate={() => currentDuration()}
-          onTimeUpDate={() => songDuration()}
+          onTimeUpdate={() => runTimeandStatusBar()}
+
           />
             </p>
     </div>
