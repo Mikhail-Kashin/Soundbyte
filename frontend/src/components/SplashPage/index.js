@@ -44,7 +44,7 @@ if (sessionUser){
         </div>
       </div>
       <div class="MainBody">
-        <div className="headings"><span># </span><span>Title</span><span>Delete</span></div>
+        <div className="headings"><span className='songNumHeader'># </span><span>Title</span></div>
         <div>
           <RenderSongPage/>
         </div>
@@ -61,28 +61,21 @@ if (sessionUser){
   )
 } else {
   return (
-    <div class="grid-container">
-      <div class="Header">
-      </div>
-      <div class="MainBody">
-          <div><LoginFormModal/>  <span id='uploadIcon' onClick={() => setShowModal(true)}>Sign Up!</span>
-            {showModal && (
-              <Modal onClose={() => setShowModal(false)}>
-                <SignupFormPage />
-              </Modal>
-            )} </div>
-      </div>
-      <div class="MediaPlayer">
-          <AudioPlayer/>
-      </div>
-      <div class="SideBar">
-        <div class="sideBarWrapper">
-          <span><SideBar/></span>
+    <div className='splashPagePic'>
+      <div className='boxLoggedOut'>
+        <div className='boxContentLoggedOut'>
+          <div className='welcomeBanner'>Welcome to Sound Byte!</div>
+          <div className='LoginSignUp'>
+                <span><LoginFormModal/>  <span  onClick={() => setShowModal(true)}>Sign Up!</span>
+                  {showModal && (
+                    <Modal onClose={() => setShowModal(false)}>
+                      <SignupFormPage />
+                    </Modal>
+                  )} </span>
+          </div>
         </div>
       </div>
     </div>
-
-
 
     // <div>
     //   <div>
