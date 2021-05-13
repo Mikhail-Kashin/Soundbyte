@@ -14,6 +14,7 @@ export const AudioPlayer = () => {
   const [listSongs, setListSongs] = useState([])
   const [currentTime, setCurrentTime] = useState('0:00')
 
+
   console.log('testingcurrenttime', currentTime)
 
 
@@ -73,7 +74,7 @@ export const AudioPlayer = () => {
   }
   useEffect(() => {
     setListSongs(songUrls())
-  },[dispatch,sessionUser,!songIndex.length])
+  },[dispatch,sessionUser,songs])
 
 
   //formates time into hours and seconds.
