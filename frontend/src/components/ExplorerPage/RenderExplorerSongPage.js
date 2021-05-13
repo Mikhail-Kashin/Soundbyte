@@ -58,7 +58,9 @@ export const RenderExplorerSongPage = () => {
 
 
   function renderSongNamesOtherUsers(){
-
+    if(!sessionUser){
+      return
+    }
     return Object.values(userSongs).map(userSong => {
       if (userSong.userId !== sessionUser.id){
         return (
