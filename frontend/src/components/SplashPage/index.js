@@ -34,8 +34,8 @@ if (sessionUser){
         <div className='uploadlogout'>
           <span id='uploadIcon' className="far fa-plus-square icon" onClick={() => setShowModal(true)}></span>
             {showModal && (
-              <Modal onClose={() => setShowModal(false)}>
-                <RenderNewSongForm />
+              <Modal onClose={() => setShowModal(false)} >
+                <RenderNewSongForm onSubmit={() => setShowModal(false)}/>
               </Modal>
             )}
             <LogOutComponent/>
