@@ -54,6 +54,7 @@ function SignupFormPage() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
+              Placeholder= 'Enter Username'
             />
           </label>
         </div>
@@ -65,6 +66,7 @@ function SignupFormPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              Placeholder= 'Enter Password'
             />
           </label>
         </div>
@@ -76,6 +78,7 @@ function SignupFormPage() {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               required
+              Placeholder= "Verify Password"
             />
           </label>
         </div>
