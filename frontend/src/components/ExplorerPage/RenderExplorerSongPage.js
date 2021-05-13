@@ -64,9 +64,11 @@ export const RenderExplorerSongPage = () => {
     return Object.values(userSongs).map(userSong => {
       if (userSong.userId !== sessionUser.id){
         return (
-          <div className="songLists">
-            <span className="songNum"> {songIndexNum(userSong.songUrl)}. </span>
-            <span onClick={(e) => dispatch(audioController(userSong.id))}> <div className="songNames">{userSong.songName}</div> </span>
+          <div className='songDiv'>
+            <div className="songLists">
+              <span className="songNum"> {songIndexNum(userSong.songUrl)}. </span>
+              <span onClick={(e) => dispatch(audioController(userSong.id))}> <div className="songNames">{userSong.songName}</div> </span>
+            </div>
           </div>
         )
       }

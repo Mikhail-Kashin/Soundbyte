@@ -27,7 +27,7 @@
   font-family: Trebuchet MS;
   display: grid;
   /* background-color: #3b1649; */
-  background: linear-gradient(#68788F, black);
+  background: linear-gradient(#2c2a2adc, black);
   grid-template-columns: 0.14fr 1.5fr;
   grid-template-rows: 0.2fr 2.4fr 0.32fr;
   gap: 5px 5px;
@@ -58,10 +58,11 @@
 }
 .yourSongs{
   /* font-family: Optima, sans-serif; */
-  font-size: 2.6em;
+  font-size: 2.6rem;
   color: #ffffff;
   /* font-weight: 400; */
   margin-top: -1em;
+  margin-left: .4em
 }
 
 /* HEADER FOR NAV BAR */
@@ -262,6 +263,7 @@ button:hover:after{
   border-style: none solid none none;
   border-color: rgb(80, 78, 78);
   border-width: .1em;
+  min-width: 116px;
 }
 .SideBar a:link, a:visited, a:hover, a:active{
   text-decoration: none;
@@ -328,6 +330,7 @@ button:hover:after{
   border-style: solid none none none;
   border-color: rgb(80, 78, 78);
   border-width: .1em;
+  min-height: 103px;
 }
 #playButton, #pauseButton{
   color: white;
