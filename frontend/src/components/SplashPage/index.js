@@ -63,13 +63,16 @@ if (sessionUser){
   return (
     <div className='splashPagePic'>
       <div className='boxLoggedOut'>
-        <div className='buttonsLoggedOut'>
-              <div><LoginFormModal/>  <span  onClick={() => setShowModal(true)}>Sign Up!</span>
-                {showModal && (
-                  <Modal onClose={() => setShowModal(false)}>
-                    <SignupFormPage />
-                  </Modal>
-                )} </div>
+        <div className='boxContentLoggedOut'>
+          <div className='welcomeBanner'>Welcome to Sound Byte!</div>
+          <div className='LoginSignUp'>
+                <span><LoginFormModal/>  <span  onClick={() => setShowModal(true)}>Sign Up!</span>
+                  {showModal && (
+                    <Modal onClose={() => setShowModal(false)}>
+                      <SignupFormPage />
+                    </Modal>
+                  )} </span>
+          </div>
         </div>
       </div>
     </div>
