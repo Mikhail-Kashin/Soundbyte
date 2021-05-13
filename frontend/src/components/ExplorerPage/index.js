@@ -17,11 +17,11 @@ function ExplorerSongPage () {
             <LogOutComponent/>
         </div>
         <div>
-          <p className="yourSongs">Explore Songs!</p>
+          <p className="yourSongs">explore songs</p>
         </div>
       </div>
       <div class="MainBody">
-      <div className="headings"><span>#</span><span>Title</span><span>Delete</span></div>
+      <div className="headings"><span className='songNumHeader'>#</span><span>Title</span></div>
           <RenderExplorerSongPage/>
       </div>
       <div class="MediaPlayer">
