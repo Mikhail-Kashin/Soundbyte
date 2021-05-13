@@ -64,9 +64,12 @@ if (sessionUser){
     <div className='splashPagePic'>
       <div className='boxLoggedOut'>
         <div className='boxContentLoggedOut'>
-          <div className='welcomeBanner'>Welcome to Sound Byte!</div>
+          <div className='welcomeBanner'>Welcome to Sound Byte!
+            <div>Your personal cloud music Player!</div>
+          </div>
           <div className='LoginSignUp'>
-                <span><LoginFormModal/>  <span  onClick={() => setShowModal(true)}>Sign Up!</span>
+                <span id='demoSplash'>Demo Login</span>
+                <span id='logInSplash'><LoginFormModal/>  <span  onClick={() => setShowModal(true)} id='signUpSplash'>Sign Up!</span>
                   {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
                       <SignupFormPage />
@@ -76,13 +79,6 @@ if (sessionUser){
         </div>
       </div>
     </div>
-
-    // <div>
-    //   <div>
-    //     <span className="welcomeBanner">Welcome to SoundByte</span>
-    //     <LoginFormModal/>
-    //   </div>
-    // </div>
   )
 }
 
