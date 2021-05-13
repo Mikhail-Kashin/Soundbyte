@@ -7,7 +7,7 @@ export const RenderSongPage = () => {
   const dispatch = useDispatch();
   const songs = useSelector(state => state.songs)
   const sessionUser = useSelector(state => state.session.user);
-  const [songIndex, setSongIndex] = useState(0)
+  
 
   // console.log(songs)
 

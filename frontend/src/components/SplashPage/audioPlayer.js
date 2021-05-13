@@ -12,7 +12,7 @@ export const AudioPlayer = () => {
   const [songIndex, setSongIndex] = useState(0)
   const [playing, setPlaying] = useState(true)
   const [listSongs, setListSongs] = useState([])
-  const [currentTime, setCurrentTime] = useState(0)
+  const [currentTime, setCurrentTime] = useState('0:00')
 
   console.log('testingcurrenttime', currentTime)
 
@@ -23,7 +23,7 @@ export const AudioPlayer = () => {
 
   function updateBar() {
     if (audio) {
-      let canvas = document.getElementById('my-canvas').getContext('2d')
+      let canvas = document.getElementById('music-bar').getContext('2d')
       let canvasWidth = 500
       let ctrl = document.getElementById('audioControl')
       canvas.clearRect(0, 0, canvasWidth, 50);
@@ -38,7 +38,7 @@ export const AudioPlayer = () => {
 
       let percentage = audio.currentTime / audio.duration
       let progress = (canvasWidth * percentage)
-      canvas.fillStyle = "#FF0000"
+      canvas.fillStyle = "#b3dfee"
       canvas.fillRect(0, 0, progress, 50)
     }
     }
@@ -201,7 +201,7 @@ export const AudioPlayer = () => {
             </p>
     </div>
       <div>
-        <canvas id="my-canvas" width="300" height="20">
+        <canvas id="music-bar" width="300" height="20">
         </canvas>
       </div>
 

@@ -6,10 +6,12 @@
 
 .grid-container {
   /* font-family: 'proxima-nova', sans-serif; */
-  font-family: Didot, serif;
+  font-family: Trebuchet MS;
   display: grid;
-  /* background-color: #3b1649; */
-  background: linear-gradient(#5c2370, black);
+  background: linear-gradient(#2c2a2adc, black);
+  /* background: linear-gradient(#5c2370, black); */
+  /* background: linear-gradient(#2e3c60, black); */
+  /* background: black; */
   grid-template-columns: 0.14fr 1.5fr;
   grid-template-rows: 0.2fr 2.4fr 0.32fr;
   gap: 5px 5px;
@@ -22,7 +24,7 @@
 }
 
 .grid-container-explore {
-  font-family: Didot, serif;
+  font-family: Trebuchet MS;
   display: grid;
   /* background-color: #3b1649; */
   background: linear-gradient(#68788F, black);
@@ -55,7 +57,7 @@
   border-width: .1em;
 }
 .yourSongs{
-  font-family: Optima, sans-serif;
+  /* font-family: Optima, sans-serif; */
   font-size: 2.6em;
   color: #ffffff;
   /* font-weight: 400; */
@@ -127,7 +129,10 @@
 
 /* sideBar */
 .SideBar{
-  background: linear-gradient(#2c2a2a, black);
+  font-family: Trebuchet MS;
+  /* background: linear-gradient(#2c2a2a, black); */
+  background: linear-gradient(#2c2a2adc, black);
+  /* background: black; */
   color: white;
   border-style: none solid none none;
   border-color: rgb(80, 78, 78);
@@ -148,6 +153,11 @@
   text-decoration: none;
   font-size: 1.4em;
 }
+
+#homeText, #exploreText{
+  font-family: Trebuchet MS;
+}
+
 #uploadIcon {
   margin-top: 1em;
   color: white;
@@ -188,7 +198,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(24,24,24);
+  /* background-color: rgb(24,24,24); */
+  background: black;
   border-style: solid none none none;
   border-color: rgb(80, 78, 78);
   border-width: .1em;
@@ -209,13 +220,15 @@
   font-size: 1.75em;
 }
 
-#my-canvas{
+#music-bar{
   background-color: white;
   display: flex;
   justify-content: center;
   margin-left: 1rem;
   margin-right: 1rem;
   margin-top: .2rem;
+  border: solid rgba(17, 17, 17, 0.801);
+  border-radius: .35em;
 }
 
 .controller-wrap{
@@ -235,12 +248,6 @@
   margin-left: 80px;
   border: 1px solid black;
   cursor: pointer;
-}
-
-#bar {
-  height: 20px;
-  background-color: green;
-  width: 0px;
 }
 
 

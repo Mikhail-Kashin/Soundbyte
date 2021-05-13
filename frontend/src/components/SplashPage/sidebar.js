@@ -6,9 +6,9 @@ export function SideBar(){
     return (
       <span>
         <div class="navbar">
-            <div i class="fas fa-home" id='homeIcon'>  <NavLink exact to="/">Home</NavLink></div>
+            <div i class="fas fa-home" id='homeIcon'>  <NavLink exact to="/" id='homeText'>home</NavLink></div>
         </div>
-        <div i class="far fa-compass" id='exploreIcon'>  <NavLink exact to="/explore">Explore</NavLink></div>
+        <div i class="far fa-compass" id='exploreIcon'>  <NavLink exact to="/explore" id='exploreText'>explore</NavLink></div>
       </span>
     );
 }
