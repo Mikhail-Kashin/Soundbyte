@@ -125,6 +125,9 @@ export const AudioPlayer = () => {
 
   function playSongs(e) {
     e.preventDefault()
+    if(!songIndex){
+      return
+    }
     if (playing === true) {
       setPlaying(false)
       audio.play()

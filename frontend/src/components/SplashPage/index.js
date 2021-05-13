@@ -9,6 +9,7 @@ import {LogOutComponent} from './logoutbutton'
 import { RenderSongPage } from './renderSongPage'
 import LoginFormModal from'../LoginFormModal'
 import SignupFormPage from '../SignupFormPage'
+import DemoLogin from '../LoginFormModal/demoLogin'
 
 
 
@@ -68,7 +69,7 @@ if (sessionUser){
             <div>your personal cloud music player</div>
           </div>
           <div className='LoginSignUp'>
-                <button id='demoSplash'>Demo Login</button>
+                <DemoLogin/>
                 <span id='logInSplash'><LoginFormModal/>  <button  onClick={() => setShowModal(true)} id='signUpSplash'>Sign Up</button>
                   {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
