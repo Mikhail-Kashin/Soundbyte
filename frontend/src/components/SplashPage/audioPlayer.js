@@ -14,6 +14,7 @@ export const AudioPlayer = () => {
   const [listSongs, setListSongs] = useState([])
   const [currentTime, setCurrentTime] = useState('0:00')
 
+
   console.log('testingcurrenttime', currentTime)
 
 
@@ -49,48 +50,31 @@ export const AudioPlayer = () => {
 
 
 
-
-
-
   const songNames = () => {
     return Object.values(songs).map(song => song.songName)
   }
 
 
-
-  useEffect(() => {
-    const songUrls = () => {
-      let list = [];
-      Object.values(songs).map(song =>{
-        if(sessionUser){
-          if (explore){
-            if (song.userId !== sessionUser.id){
-              list.push(song.songUrl)
-            }
-          } else {
-            if (song.userId === sessionUser.id){
-              list.push(song.songUrl)
-            }
+  const songUrls = () => {
+    let list = [];
+    Object.values(songs).map(song =>{
+      if(sessionUser){
+        if (explore){
+          if (song.userId !== sessionUser.id){
+            list.push(song.songUrl)
+          }
+        } else {
+          if (song.userId === sessionUser.id){
+            list.push(song.songUrl)
           }
         }
-      } )
-      return list
-    }
-    setListSongs(songUrls())
-    // console.log('test...>>>>>>>>test', sessionUser.id)
-  },[dispatch,sessionUser])
-
-
-
-
-
-
-
-
-  if(songId){
-
+      }
+    } )
+    return list
   }
-
+  useEffect(() => {
+    setListSongs(songUrls())
+  },[dispatch,sessionUser,songs])
 
 
   //formates time into hours and seconds.
@@ -102,11 +86,6 @@ export const AudioPlayer = () => {
     }
     return `${min}:${sec}`
   }
-
-  // useEffect(() => {
-  //   if (audio)
-  //   setCurrentTime(audio.currentTime)
-  // },[audio.onTimeUpdate])
 
   function currentDuration(){
     if (audio){
@@ -122,12 +101,8 @@ export const AudioPlayer = () => {
   }
 
 
-
   function playSongs(e) {
     e.preventDefault()
-    if(!songIndex){
-      return
-    }
     if (playing === true) {
       setPlaying(false)
       audio.play()
@@ -155,7 +130,6 @@ export const AudioPlayer = () => {
     }
   }
 
-
   if (audio) {
     audio.addEventListener('ended', function() {
       if (songIndex < listSongs.length - 1) {
@@ -169,16 +143,10 @@ export const AudioPlayer = () => {
 
 
 
-
     useEffect(() => {
       if (audio) audio.play()
     }, [songIndex])
 
-
-
-    // useEffect(() => {
-    //     setCurrentTime(audio.currentTime)
-    // }, [audio ? audio.currentTime : console.log('yo')])
 
     function runTimeandStatusBar() {
       updateBar()
