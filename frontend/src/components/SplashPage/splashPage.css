@@ -69,43 +69,52 @@
 
 
 
-/* Song Lists */
+/* Main Body */
 
 .MainBody{
-  display: flex;
+  /* display: flex; */
   /* justify-content: space-between; */
-  flex-direction: column;
+  /* flex-direction: column; */
   color: #ffffff;
   max-width: 75%;
 }
 
 .headings{
-  display: flex;
-  justify-content: space-between;
+  /* display: flex; */
+  /* justify-content: space-between; */
   font-size: 1.75em;
   font-weight: 700;
   margin-bottom: 1.25em;
+  margin-top: .5em;
 }
 
-.songNames{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1.25em;
-  font-size: 1.1em;
-}
+
 
 .songLists{
   display: flex;
-  justify-content: space-between;
+  margin-bottom: 1.25em;
+  font-size: 1.1em;
+  /* justify-content: space-between; */
   /* align-content: flex-start; */
-  align-items: center;
+  /* align-items: center; */
 }
 
-.RendorSongPageWrapper{
-  /* margin-top: 3em; */
+.deleteHeader{
+  margin-left: 23em;
+}
+
+.songNumHeader{
+  margin-right: .5em;
+  margin-left: .8em;
+}
+
+.songNum{
+  margin-left: 1.5em;
+  margin-right: 1.25em;
+}
+
+.songDiv{
   display: flex;
-  justify-content: space-between;
 }
 
 #removeSong{
@@ -113,16 +122,15 @@
   background-color: transparent;
   text-decoration: none;
   font-size: 1em;
-  /* margin-left: .4em; */
+  margin-left: 1em;
+  /* margin-top: 1em; */
 }
 #removeSong:hover{
   color: lightcoral;
 }
 
-.songNum{
-  font-size: 1em;
-  /* margin-right: 1em; */
-}
+
+/* Main Body */
 
 
 
@@ -226,7 +234,7 @@
   justify-content: center;
   margin-left: 1rem;
   margin-right: 1rem;
-  margin-top: .2rem;
+  margin-top: .3rem;
   border: solid rgba(17, 17, 17, 0.801);
   border-radius: .35em;
 }

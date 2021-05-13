@@ -44,7 +44,7 @@ if (sessionUser){
         </div>
       </div>
       <div class="MainBody">
-        <div className="headings"><span># </span><span>Title</span><span>Delete</span></div>
+        <div className="headings"><span className='songNumHeader'># </span><span>Title</span></div>
         <div>
           <RenderSongPage/>
         </div>
