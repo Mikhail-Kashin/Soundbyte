@@ -61,28 +61,18 @@ if (sessionUser){
   )
 } else {
   return (
-    <div class="grid-container">
-      <div class="Header">
-      </div>
-      <div class="MainBody">
-          <div><LoginFormModal/>  <span id='uploadIcon' onClick={() => setShowModal(true)}>Sign Up!</span>
-            {showModal && (
-              <Modal onClose={() => setShowModal(false)}>
-                <SignupFormPage />
-              </Modal>
-            )} </div>
-      </div>
-      <div class="MediaPlayer">
-          <AudioPlayer/>
-      </div>
-      <div class="SideBar">
-        <div class="sideBarWrapper">
-          <span><SideBar/></span>
+    <div className='splashPagePic'>
+      <div className='boxLoggedOut'>
+        <div className='buttonsLoggedOut'>
+              <div><LoginFormModal/>  <span  onClick={() => setShowModal(true)}>Sign Up!</span>
+                {showModal && (
+                  <Modal onClose={() => setShowModal(false)}>
+                    <SignupFormPage />
+                  </Modal>
+                )} </div>
         </div>
       </div>
     </div>
-
-
 
     // <div>
     //   <div>
