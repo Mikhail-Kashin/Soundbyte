@@ -64,12 +64,12 @@ if (sessionUser){
     <div className='splashPagePic'>
       <div className='boxLoggedOut'>
         <div className='boxContentLoggedOut'>
-          <div className='welcomeBanner'>Welcome to Sound Byte!
-            <div>Your personal cloud music Player!</div>
+          <div className='welcomeBanner'>welcome to SoundByte!
+            <div>your personal cloud music player</div>
           </div>
           <div className='LoginSignUp'>
-                <span id='demoSplash'>Demo Login</span>
-                <span id='logInSplash'><LoginFormModal/>  <span  onClick={() => setShowModal(true)} id='signUpSplash'>Sign Up!</span>
+                <button id='demoSplash'>Demo Login</button>
+                <span id='logInSplash'><LoginFormModal/>  <button  onClick={() => setShowModal(true)} id='signUpSplash'>Sign Up</button>
                   {showModal && (
                     <Modal onClose={() => setShowModal(false)}>
                       <SignupFormPage />
