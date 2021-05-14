@@ -57,7 +57,7 @@ export const RenderSongPage = () => {
           <div className='songDiv'>
             <div className="songLists">
               <div className="songNum"> {songIndexNum(song.songUrl)}. </div>
-              <span onClick={(e) => dispatch(audioController(song.id))}> <div className="songNames">{song.songName}</div> </span>
+              <span onClick={(e) => dispatch(audioController(song.songUrl))}> <div className="songNames">{song.songName}</div> </span>
             </div>
               <div onClick={(e) => removeSongFunc(e, song.id)} id='removeSong' i class="fas fa-backspace"></div>
           </div>

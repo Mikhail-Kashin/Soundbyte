@@ -8,18 +8,36 @@ export const AudioPlayer = () => {
   const dispatch = useDispatch();
   const songs = useSelector(state => state.songs)
   const sessionUser = useSelector(state => state.session.user);
-  const songId = useSelector(state => state.audioReducer.clickedSong)
+  const clickedSongUrl = useSelector(state => state.audioReducer.clickedSong)
   const [songIndex, setSongIndex] = useState(0)
   const [playing, setPlaying] = useState(true)
   const [listSongs, setListSongs] = useState([])
   const [currentTime, setCurrentTime] = useState('0:00')
 
 
-  // console.log('testingcurrenttime', currentTime)
-
-
+  const { explore } = useParams()
 
   const audio = document.getElementById("audio")
+  // console.log('testingcurrenttime', currentTime)
+
+  console.log('clickedsongUrl', clickedSongUrl)
+  console.log('songindex', songIndex)
+
+  const clickedSong = (arr) => {
+    arr = listSongs
+    console.log('songsArray', listSongs)
+    for (let i = 0; i < arr.length; i++){
+      console.log('testing arr, clickedsong', arr[i], clickedSongUrl)
+      if (arr[i] === clickedSongUrl){
+        console.log('clickedSongs was ran!@!!!!')
+        return setSongIndex(i)
+      } 
+    }
+  }
+
+  useEffect(() => {
+    clickedSong()
+  }, [clickedSongUrl])
 
 
   function updateBar() {
@@ -35,28 +53,25 @@ export const AudioPlayer = () => {
       progressBar.addEventListener("click", seek);
 
 
-
       if (audio.currentTime === audio.duration) {
         playSongs()
       }
 
-      let percentage = audio.currentTime / audio.duration
-      let progress = (canvasWidth * percentage)
+      const percentage = audio.currentTime / audio.duration
+      const progress = (canvasWidth * percentage)
       canvas.fillStyle = "#b3dfee"
       canvas.fillRect(0, 0, progress, 50)
-
 
 
       function seek(event){
         let percentage = event.offsetX / this.offsetWidth;
         audio.currentTime = percentage * audio.duration
-        canvas.value = percentage / 100;
       }
 
     }
-    }
+  }
 
-  let { explore } = useParams()
+
 
   // console.log("a;skdfjlka;s", explore)
 
@@ -84,6 +99,7 @@ export const AudioPlayer = () => {
     } )
     return list
   }
+
   useEffect(() => {
     setListSongs(songUrls())
   },[dispatch,sessionUser,songs])
