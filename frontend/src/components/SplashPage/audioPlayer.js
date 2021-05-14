@@ -15,7 +15,7 @@ export const AudioPlayer = () => {
   const [currentTime, setCurrentTime] = useState('0:00')
 
 
-  console.log('testingcurrenttime', currentTime)
+  // console.log('testingcurrenttime', currentTime)
 
 
 
@@ -25,22 +25,34 @@ export const AudioPlayer = () => {
   function updateBar() {
     if (audio) {
       let canvas = document.getElementById('music-bar').getContext('2d')
-      let canvasWidth = 500
-      let ctrl = document.getElementById('audioControl')
+      let canvasWidth = 306
       canvas.clearRect(0, 0, canvasWidth, 50);
-      canvas.fillStyle = '#000000';
+      canvas.fillStyle = '#000';
       canvas.fillRect(0, 0, canvasWidth, 50);
 
-      if (audio.currentTime === audio.duration) {
-        ctrl.innerHTML = 'Play'
-      }
+      let progressBar = document.getElementById('music-bar')
+      progressBar.value = (audio.currentTime / audio.duration)
+      progressBar.addEventListener("click", seek);
 
-      timeFormater(audio.currentTime)
+
+
+      if (audio.currentTime === audio.duration) {
+        playSongs()
+      }
 
       let percentage = audio.currentTime / audio.duration
       let progress = (canvasWidth * percentage)
       canvas.fillStyle = "#b3dfee"
       canvas.fillRect(0, 0, progress, 50)
+
+
+
+      function seek(event){
+        let percentage = event.offsetX / this.offsetWidth;
+        audio.currentTime = percentage * audio.duration
+        canvas.value = percentage / 100;
+      }
+
     }
     }
 
@@ -101,8 +113,7 @@ export const AudioPlayer = () => {
   }
 
 
-  function playSongs(e) {
-    e.preventDefault()
+  function playSongs() {
     if (playing === true) {
       setPlaying(false)
       audio.play()
