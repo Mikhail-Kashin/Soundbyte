@@ -12,7 +12,7 @@ import RenderExplorerSongPage from './RenderExplorerSongPage'
 function ExplorerSongPage () {
   const sessionUser = useSelector(state => state.session.user);
   const history = useHistory();
-  function notLoggedIn() {
+  const notLoggedIn = () => {
     history.push('/');
   }
   if(sessionUser){
@@ -41,7 +41,12 @@ function ExplorerSongPage () {
       </div>
     )
   }else{
-    <Redirect to ='/' />
+    return(
+    <div>
+      <h1>please login</h1>
+      {notLoggedIn()}
+    </div>
+    )
   }
 }
 
