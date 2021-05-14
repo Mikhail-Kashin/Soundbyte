@@ -5,7 +5,6 @@ import SideBar from '../SplashPage/sidebar'
 import {useSelector} from "react-redux"
 import {LogOutComponent} from '../SplashPage/logoutbutton'
 import {useHistory} from 'react-router-dom'
-import {Redirect} from 'react-router'
 import RenderExplorerSongPage from './RenderExplorerSongPage'
 
 
