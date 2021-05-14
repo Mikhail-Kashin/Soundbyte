@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect, Route, useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import './splashPage.css';

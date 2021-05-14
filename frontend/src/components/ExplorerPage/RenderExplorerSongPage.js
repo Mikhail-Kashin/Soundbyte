@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import AudioPlayer from '../SplashPage/audioPlayer'
-import SideBar from '../SplashPage/sidebar'
-import {LogOutComponent} from '../SplashPage/logoutbutton'
 import { getExploreSongs } from '../../store/explore'
 import { audioController } from '../../store/audiocontroller'
 import '../SplashPage/splashPage.css';
