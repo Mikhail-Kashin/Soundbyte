@@ -64,7 +64,7 @@ export const RenderExplorerSongPage = () => {
           <div className='songDiv'>
             <div className="songLists">
               <span className="songNum"> {songIndexNum(userSong.songUrl)}. </span>
-              <span onClick={(e) => dispatch(audioController(userSong.id))}> <div className="songNames">{userSong.songName}</div> </span>
+              <span onClick={(e) => dispatch(audioController(userSong.songUrl))}> <div className="songNames">{userSong.songName}</div> </span>
             </div>
           </div>
         )

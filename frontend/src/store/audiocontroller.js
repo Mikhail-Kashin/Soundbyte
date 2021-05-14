@@ -6,8 +6,8 @@ const newSong = (song) => ({
   payload: song
 })
 
-export const audioController = (id) => async dispatch => {
-  dispatch(newSong(id))
+export const audioController = (id, songUrl) => async dispatch => {
+  dispatch(newSong(id, songUrl))
 }
 
 

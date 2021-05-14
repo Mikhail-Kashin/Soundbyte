@@ -402,11 +402,6 @@ button:hover:after{
   text-decoration: none;
 }
 
-#progress {
-  margin-left: 80px;
-  border: 1px solid black;
-  cursor: pointer;
-}
 
 
 /* Media Bar */
