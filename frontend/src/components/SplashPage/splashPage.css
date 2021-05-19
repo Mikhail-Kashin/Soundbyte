@@ -381,17 +381,42 @@ button:hover:after{
   display: flex;
   justify-content: center;
   max-height: 1.7em;
-
  }
 
- .volume-and-mute{
+.volume-and-mute{
    display: flex;
    align-items: center;
  }
 
- .volume-slider{
-   margin-top: 1.85em;
- }
+.slider{
+   -webkit-appearance: none;
+   margin-top: 2.35em;
+   appearance: none;
+   opacity: 0.6;
+   outline: none;
+   -webkit-transition: .2s;
+   transition: opacity 1.25s;
+   border-radius: .75em;
+  }
+
+
+.slider:hover {
+    opacity: 1; /* Fully shown on mouse-over */
+  }
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.5em;
+  height: 1.45em;
+  background: url('https://user-images.githubusercontent.com/75585372/118894569-7c1f4880-b8d2-11eb-9055-6994144b6007.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  cursor: pointer;
+  }
+
+
+
 
 .controls-and-time-display{
   display: flex;

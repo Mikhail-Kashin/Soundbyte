@@ -23,6 +23,8 @@ export const AudioPlayer = () => {
   console.log('clickedsongUrl', clickedSongUrl)
   console.log('songindex', songIndex)
 
+
+  //function that changes to play song that is clicked by user.
   const clickedSong = (arr) => {
     arr = listSongs
     console.log('songsArray', listSongs)
@@ -38,8 +40,10 @@ export const AudioPlayer = () => {
   useEffect(() => {
     clickedSong()
   }, [clickedSongUrl])
+    //function that changes to play song that is clicked by user.
 
 
+    //function that updates the audio progress bar, sets the color to fill, and allows it to be clickable.//
   function updateBar() {
     if (audio) {
       let canvas = document.getElementById('music-bar').getContext('2d')
@@ -69,6 +73,10 @@ export const AudioPlayer = () => {
     }
   }
 
+      //function that updates the audio progress bar, sets the color to fill, and allows it to be clickable.//
+
+
+
   let volume = document.querySelector('#volume-bar');
 
   if (audio){
@@ -76,6 +84,12 @@ export const AudioPlayer = () => {
       audio.volume = e.currentTarget.value / 100;
     })
   }
+
+  // if (audio){
+  //   volume.slider({
+
+  //   })
+  // }
 
 
   const songUrls = () => {
@@ -176,6 +190,8 @@ export const AudioPlayer = () => {
       currentDuration()
     }
 
+    
+
 
 	return (
     <div>
@@ -199,8 +215,10 @@ export const AudioPlayer = () => {
       </div>
       <div class="volume-and-mute">
       <span className='volume-slider'>
+
         <input
         type="range"
+        class='slider'
         id='volume-bar'
         />
         </span>
