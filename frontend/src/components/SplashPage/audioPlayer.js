@@ -190,6 +190,8 @@ export const AudioPlayer = () => {
       currentDuration()
     }
 
+    
+
 
 	return (
     <div>
@@ -213,6 +215,7 @@ export const AudioPlayer = () => {
       </div>
       <div class="volume-and-mute">
       <span className='volume-slider'>
+
         <input
         type="range"
         class='slider'
