@@ -31,7 +31,7 @@ export const AudioPlayer = () => {
       if (arr[i] === clickedSongUrl){
         console.log('clickedSongs was ran!@!!!!')
         return setSongIndex(i)
-      } 
+      }
     }
   }
 
@@ -52,7 +52,6 @@ export const AudioPlayer = () => {
       progressBar.value = (audio.currentTime / audio.duration)
       progressBar.addEventListener("click", seek);
 
-
       if (audio.currentTime === audio.duration) {
         playSongs()
       }
@@ -62,7 +61,6 @@ export const AudioPlayer = () => {
       canvas.fillStyle = "#b3dfee"
       canvas.fillRect(0, 0, progress, 50)
 
-
       function seek(event){
         let percentage = event.offsetX / this.offsetWidth;
         audio.currentTime = percentage * audio.duration
@@ -71,14 +69,12 @@ export const AudioPlayer = () => {
     }
   }
 
+  let volume = document.querySelector('#volume-bar');
 
-
-  // console.log("a;skdfjlka;s", explore)
-
-
-
-  const songNames = () => {
-    return Object.values(songs).map(song => song.songName)
+  if (audio){
+    volume.addEventListener("change", function(e){
+      audio.volume = e.currentTarget.value / 100;
+    })
   }
 
 
@@ -183,26 +179,66 @@ export const AudioPlayer = () => {
 
 	return (
     <div>
-      <div className="controller-wrap">
-      <span className="currentDuration">{ currentTime}</span>
-      <span id='previousSong' i class="fas fa-step-backward" onClick={e => prevSong(e)}></span>
-      {playing === true ? <span id='playButton' i class="fas fa-play-circle" onClick={e => playSongs(e)}></span> : <span id='pauseButton' i class="far fa-pause-circle" onClick={e => playSongs(e)}></span>}
-      <span id='nextSong' i class="fas fa-step-forward" onClick={e => nextSong(e)}></span>
-      <span className="songDuration">{songDuration()}</span>
-      <p>
+      <div class="grid-audio-controller-container">
+      <div class="audio-bar">
+          <canvas id="music-bar" width="300" height="20">
+          </canvas>
         <audio
-          id='audio'
-          src={listSongs[songIndex]}
-          onTimeUpdate={() => runTimeandStatusBar()}
+              id='audio'
+              src={listSongs[songIndex]}
+              onTimeUpdate={() => runTimeandStatusBar()}
 
-          />
-            </p>
-    </div>
-      <div>
-        <canvas id="music-bar" width="300" height="20">
-        </canvas>
+        />
       </div>
+      <div class="controls-and-time-display">
+        <span className="currentDuration">{ currentTime}</span>
+          <span id='previousSong' i class="fas fa-step-backward" onClick={e => prevSong(e)}></span>
+          {playing === true ? <span id='playButton' i class="fas fa-play-circle" onClick={e => playSongs(e)}></span> : <span id='pauseButton' i class="far fa-pause-circle" onClick={e => playSongs(e)}></span>}
+          <span id='nextSong' i class="fas fa-step-forward" onClick={e => nextSong(e)}></span>
+          <span className="songDuration">{songDuration()}</span>
+      </div>
+      <div class="volume-and-mute">
+      <span className='volume-slider'>
+        <input
+        type="range"
+        id='volume-bar'
+        />
+        </span>
+      </div>
+      <div class="name-of-song-playing"></div>
+    </div>
 
+
+
+      {/* <div className='media-controller-container'>
+        <div className="controller-wrap">
+      <span className='volumeBar-container'>
+        <input
+        type="range"
+        id='volume-bar'
+        />
+        </span>
+        <span className="currentDuration">{ currentTime}</span>
+        <span id='previousSong' i class="fas fa-step-backward" onClick={e => prevSong(e)}></span>
+        {playing === true ? <span id='playButton' i class="fas fa-play-circle" onClick={e => playSongs(e)}></span> : <span id='pauseButton' i class="far fa-pause-circle" onClick={e => playSongs(e)}></span>}
+        <span id='nextSong' i class="fas fa-step-forward" onClick={e => nextSong(e)}></span>
+        <span className="songDuration">{songDuration()}</span>
+        <p>
+          <audio
+            id='audio'
+            src={listSongs[songIndex]}
+            onTimeUpdate={() => runTimeandStatusBar()}
+
+            />
+              </p>
+      </div>
+        <div>
+          <canvas id="music-bar" width="300" height="20">
+          </canvas>
+
+        </div>
+
+        </div> */}
       </div>
     );
 }

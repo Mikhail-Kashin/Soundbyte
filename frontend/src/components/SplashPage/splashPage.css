@@ -351,26 +351,62 @@ button:hover:after{
 
 
 /* Media Bar */
-.MediaPlayer{
+
+.grid-audio-controller-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  /* background-color: rgb(24,24,24); */
   background: black;
   border-style: solid none none none;
   border-color: rgb(80, 78, 78);
   border-width: .1em;
   min-height: 103px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "name-of-song-playing controls-and-time-display volume-and-mute"
+    "name-of-song-playing audio-bar volume-and-mute";
+}
+
+.audio-bar { grid-area: audio-bar; }
+
+.controls-and-time-display { grid-area: controls-and-time-display; }
+
+.volume-and-mute { grid-area: volume-and-mute; }
+
+.name-of-song-playing { grid-area: name-of-song-playing; }
+
+.audio-bar{
+  display: flex;
+  justify-content: center;
+  max-height: 1.7em;
+
+ }
+
+ .volume-and-mute{
+   display: flex;
+   align-items: center;
+ }
+
+ .volume-slider{
+   margin-top: 1.85em;
+ }
+
+.controls-and-time-display{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #playButton, #pauseButton{
   color: white;
   background-color: transparent;
   text-decoration: none;
   font-size: 2.3em;
-  /* margin-top: .5em; */
   margin-left: 1rem;
   margin-right: 1rem;
 }
+
 #previousSong, #nextSong{
   color: white;
   background-color: transparent;
@@ -380,18 +416,8 @@ button:hover:after{
 
 #music-bar{
   background-color: white;
-  display: flex;
-  justify-content: center;
-  margin-left: 1rem;
-  margin-right: 1rem;
-  margin-top: .3rem;
   border: solid rgba(17, 17, 17, 0.801);
   border-radius: .35em;
-}
-
-.controller-wrap{
-  display: flex;
-  justify-content: center;
 }
 
 .currentDuration, .songDuration{
