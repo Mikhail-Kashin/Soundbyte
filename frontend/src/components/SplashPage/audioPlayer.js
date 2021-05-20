@@ -13,15 +13,31 @@ export const AudioPlayer = () => {
   const [playing, setPlaying] = useState(true)
   const [listSongs, setListSongs] = useState([])
   const [currentTime, setCurrentTime] = useState('0:00')
+  const [currentlyPlaying, setCurrentlyPlaying] = useState('')
 
 
   const { explore } = useParams()
+
 
   const audio = document.getElementById("audio")
   // console.log('testingcurrenttime', currentTime)
 
   console.log('clickedsongUrl', clickedSongUrl)
   console.log('songindex', songIndex)
+  console.log('listSongs', listSongs)
+
+  const songsLoop = () => {
+    Object.values(songs).map(song => {
+      if (song.songUrl === listSongs[songIndex]){
+        return setCurrentlyPlaying(song.songName)
+      }
+    })
+  }
+
+  useEffect(() => {
+    songsLoop()
+  },[songIndex, playing])
+  console.log('currentlyPlaying', currentlyPlaying)
 
 
   //function that changes to play song that is clicked by user.
@@ -29,9 +45,9 @@ export const AudioPlayer = () => {
     arr = listSongs
     console.log('songsArray', listSongs)
     for (let i = 0; i < arr.length; i++){
-      console.log('testing arr, clickedsong', arr[i], clickedSongUrl)
+      // console.log('testing arr, clickedsong', arr[i], clickedSongUrl)
       if (arr[i] === clickedSongUrl){
-        console.log('clickedSongs was ran!@!!!!')
+        // console.log('clickedSongs was ran!@!!!!')
         return setSongIndex(i)
       }
     }
@@ -109,6 +125,8 @@ export const AudioPlayer = () => {
     } )
     return list
   }
+
+  // console.log('songurlssdssd', songUrls())
 
   useEffect(() => {
     setListSongs(songUrls())
