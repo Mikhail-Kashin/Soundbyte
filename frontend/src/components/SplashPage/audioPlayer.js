@@ -190,7 +190,7 @@ export const AudioPlayer = () => {
       currentDuration()
     }
 
-    
+
 
 
 	return (
@@ -214,6 +214,7 @@ export const AudioPlayer = () => {
           <span className="songDuration">{songDuration()}</span>
       </div>
       <div class="volume-and-mute">
+      <span i class="fas fa-volume-down" id='volume-down'/>
       <span className='volume-slider'>
 
         <input
@@ -222,6 +223,7 @@ export const AudioPlayer = () => {
         id='volume-bar'
         />
         </span>
+      <span i class="fas fa-volume-up" id='volume-up'/>
       </div>
       <div class="name-of-song-playing"></div>
     </div>
