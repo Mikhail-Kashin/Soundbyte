@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSongs, deleteSong } from '../../store/splashpage';
-import { audioController } from '../../store/audiocontroller'
+import { audioController, songUrlplusname } from '../../store/audiocontroller'
 
 export const RenderSongPage = () => {
   const dispatch = useDispatch();
@@ -18,6 +18,10 @@ export const RenderSongPage = () => {
     // console.log('test.......>', songId)
     dispatch(deleteSong(songId))
     dispatch(getSongs())
+  }
+
+  function getSongandUrl(){
+    dispatch(songUrlplusname())
   }
 
   const songUrls = () => {
@@ -68,6 +72,7 @@ export const RenderSongPage = () => {
 
   return (
     <div>
+      <div>{getSongandUrl()}</div>
       <div>{renderNames()}</div>
     </div>
   )

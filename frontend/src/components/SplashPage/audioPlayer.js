@@ -17,11 +17,26 @@ export const AudioPlayer = () => {
 
   const { explore } = useParams()
 
+
   const audio = document.getElementById("audio")
   // console.log('testingcurrenttime', currentTime)
 
   console.log('clickedsongUrl', clickedSongUrl)
   console.log('songindex', songIndex)
+  console.log('listSongs', listSongs)
+
+  const songsLoop = () => {
+    let currentlyPlaying = ''
+    Object.values(songs).map(song => {
+      console.log (song.songUrl, listSongs[songIndex])
+      if (song.songUrl === listSongs[song.songIndex]){
+        currentlyPlaying = song.songName
+      }
+    })
+    return currentlyPlaying
+  }
+
+  console.log('songsLoop', listSongs[songIndex])
 
 
   //function that changes to play song that is clicked by user.
@@ -29,9 +44,9 @@ export const AudioPlayer = () => {
     arr = listSongs
     console.log('songsArray', listSongs)
     for (let i = 0; i < arr.length; i++){
-      console.log('testing arr, clickedsong', arr[i], clickedSongUrl)
+      // console.log('testing arr, clickedsong', arr[i], clickedSongUrl)
       if (arr[i] === clickedSongUrl){
-        console.log('clickedSongs was ran!@!!!!')
+        // console.log('clickedSongs was ran!@!!!!')
         return setSongIndex(i)
       }
     }
