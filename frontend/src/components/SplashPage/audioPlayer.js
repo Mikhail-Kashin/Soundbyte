@@ -36,18 +36,17 @@ export const AudioPlayer = () => {
   useEffect(() => {
     songsLoop()
   },[songIndex, playing])
-  console.log('currentlyPlaying', currentlyPlaying)
   //loops through songs to grab the song name of the current song being played.
 
 
   //function that changes to play song that is clicked by user.
   const clickedSong = (arr) => {
     arr = listSongs
-    console.log('songsArray', listSongs)
     for (let i = 0; i < arr.length; i++){
       // console.log('testing arr, clickedsong', arr[i], clickedSongUrl)
       if (arr[i] === clickedSongUrl){
         // console.log('clickedSongs was ran!@!!!!')
+        setPlaying(false)
         return setSongIndex(i)
       }
     }
