@@ -415,7 +415,19 @@ button:hover:after{
   cursor: pointer;
   }
 
+#volume-down{
+  color: white;
+  margin-top: 1.5em;
+  margin-right: .5em;
+  font-size: 1.25em;
+}
 
+#volume-up{
+  color: white;
+  margin-top: 1.5em;
+  margin-left: .5em;
+  font-size: 1.25em;
+}
 
 
 .controls-and-time-display{
