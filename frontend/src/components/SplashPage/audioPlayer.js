@@ -18,14 +18,13 @@ export const AudioPlayer = () => {
 
   const { explore } = useParams()
 
-
+  //grabs audio html tag
   const audio = document.getElementById("audio")
-  // console.log('testingcurrenttime', currentTime)
 
-  console.log('clickedsongUrl', clickedSongUrl)
-  console.log('songindex', songIndex)
-  console.log('listSongs', listSongs)
 
+
+
+  //loops through songs to grab the song name of the current song being played.
   const songsLoop = () => {
     Object.values(songs).map(song => {
       if (song.songUrl === listSongs[songIndex]){
@@ -38,6 +37,7 @@ export const AudioPlayer = () => {
     songsLoop()
   },[songIndex, playing])
   console.log('currentlyPlaying', currentlyPlaying)
+  //loops through songs to grab the song name of the current song being played.
 
 
   //function that changes to play song that is clicked by user.
@@ -89,10 +89,15 @@ export const AudioPlayer = () => {
     }
   }
 
-      //function that updates the audio progress bar, sets the color to fill, and allows it to be clickable.//
+  //function that updates the audio progress bar, sets the color to fill, and allows it to be clickable.//
 
+  //wraps the bar and current song time in one function to be called only once.
+  function runTimeandStatusBar() {
+    updateBar()
+    currentDuration()
+  }
 
-
+  //creates the volume function to work
   let volume = document.querySelector('#volume-bar');
 
   if (audio){
@@ -101,13 +106,8 @@ export const AudioPlayer = () => {
     })
   }
 
-  // if (audio){
-  //   volume.slider({
 
-  //   })
-  // }
-
-
+  //grabs all the songs that should be displayed on the page and puts them into an array
   const songUrls = () => {
     let list = [];
     Object.values(songs).map(song =>{
@@ -126,14 +126,14 @@ export const AudioPlayer = () => {
     return list
   }
 
-  // console.log('songurlssdssd', songUrls())
-
   useEffect(() => {
     setListSongs(songUrls())
   },[dispatch,sessionUser,songs])
 
+  //grabs all the songs that should be displayed on the page and puts them into an array
 
-  //formates time into hours and seconds.
+
+  //formates time into minutes and seconds.
   function timeFormater(seconds) {
     let min = Math.floor((seconds / 60));
     let sec = Math.floor(seconds - (min * 60));
@@ -143,6 +143,7 @@ export const AudioPlayer = () => {
     return `${min}:${sec}`
   }
 
+  //displays current song play time
   function currentDuration(){
     if (audio){
       setCurrentTime(timeFormater(audio.currentTime))
@@ -150,13 +151,14 @@ export const AudioPlayer = () => {
     }
   }
 
+  //displays current song full length.
   function songDuration(){
     if (audio){
       return timeFormater(audio.duration)
     }
   }
 
-
+  //plays song and pauses
   function playSongs() {
     if (playing === true) {
       setPlaying(false)
@@ -167,6 +169,7 @@ export const AudioPlayer = () => {
     }
   }
 
+  //plays previous song
   function prevSong(e){
     e.preventDefault()
     if (songIndex > 0){
@@ -176,6 +179,7 @@ export const AudioPlayer = () => {
     }
   }
 
+  //plays next song
   function nextSong(e){
     e.preventDefault()
     if (songIndex < listSongs.length - 1) {
@@ -185,6 +189,7 @@ export const AudioPlayer = () => {
     }
   }
 
+  //allows next song to play when one is finished playing
   if (audio) {
     audio.addEventListener('ended', function() {
       if (songIndex < listSongs.length - 1) {
@@ -202,14 +207,13 @@ export const AudioPlayer = () => {
       if (audio) audio.play()
     }, [songIndex])
 
+    //allows next song to play when one is finished playing
 
-    function runTimeandStatusBar() {
-      updateBar()
-      currentDuration()
-    }
-
-
-
+  // const songNamez = getElementById('songId')
+  // const songListHighlight = () => {
+  //   return songName
+  // }
+  // console.log('songListHighlight', songListHighlight())
 
 	return (
     <div>
