@@ -243,8 +243,11 @@ export const AudioPlayer = () => {
         </span>
       <span i class="fas fa-volume-up" id='volume-up'/>
       </div>
-      <div class="name-of-song-playing"></div>
+      <div class="name-of-song-playing">
+        <span class='currentSong'>{currentlyPlaying}</span>
+      </div>
     </div>
+
 
 
 

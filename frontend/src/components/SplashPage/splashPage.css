@@ -466,5 +466,12 @@ button:hover:after{
 }
 
 
+.currentSong{
+  color: white;
+  display: flex;
+  justify-content: center;
+  font-family: Trebuchet MS;
+  font-size: 1.25em;
+}
 
 /* Media Bar */
