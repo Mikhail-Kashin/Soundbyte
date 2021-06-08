@@ -15,17 +15,21 @@ const RenderNewSongForm = () => {
   const [songGenre, setSongGenre] = useState('');
   const [userId, setUserId] = useState('');
 
+  //loading use state
+
 
 
 
   const handleSubmitNewSong = async (e) => {
     e.preventDefault();
     dispatch(createSong({ userId, songUrl, songName, songGenre}))
+    //set loading to true
       .then(() => {
         setSongUrl(null);
         setSongName('');
         setSongGenre('');
         setUserId('');
+        //set loading false
       })
       // .catch(async (res) => {
       //   const data = await res.json();
