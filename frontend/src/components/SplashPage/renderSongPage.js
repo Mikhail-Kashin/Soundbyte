@@ -34,7 +34,6 @@ export const RenderSongPage = () => {
   useEffect(() => {
     if (audio){
       setAudioSrc(audio.src)
-      console.log('testingaudioSRC', audioSrc)
     }
   },[songUrls(), clickedSongUrl])
 

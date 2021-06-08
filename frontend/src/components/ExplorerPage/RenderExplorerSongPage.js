@@ -30,14 +30,14 @@ export const RenderExplorerSongPage = () => {
     useEffect(() => {
       if (audio){
         setAudioSrc(audio.src)
-        console.log('testingaudioSRC', audioSrc)
       }
-    },[songUrls(), clickedSongUrl])
+    },[songUrls(), clickedSongUrl, audioSrc])
 
     useEffect(() => {
       setListSongs(songUrls())
+      setAudioSrc(audio.src)
     // console.log('test...>>>>>>>>test', sessionUser.id)
-  },[dispatch,sessionUser])
+  },[dispatch,sessionUser, clickedSongUrl])
 
 
   function songIndexNum(songUrl) {
@@ -52,7 +52,8 @@ export const RenderExplorerSongPage = () => {
 
   useEffect(() => {
     dispatch(getExploreSongs())
-  },[dispatch,])
+    renderSongNamesOtherUsers()
+  },[dispatch, clickedSongUrl])
 
 
   function renderSongNamesOtherUsers(){
@@ -66,7 +67,7 @@ export const RenderExplorerSongPage = () => {
             <div className="songLists">
               <span className="songNum"> {songIndexNum(userSong.songUrl)}. </span>
               {/* <span onClick={(e) => dispatch(audioController(userSong.songUrl))}> <div className="songNames">{userSong.songName}</div> </span> */}
-              <span onClick={() => dispatch(audioController(userSong.songUrl))}> {audioSrc === userSong.songUrl ? <div className="songNames" id='songId'> {userSong.songName} </div>:  <div className="songNames"> {userSong.songName}</div>} </span>
+              <span onClick={() => dispatch(audioController(userSong.songUrl))}> {audioSrc === userSong.songUrl ? <div className="songNames" id='songIdExplorer'> {userSong.songName} </div>:  <div className="songNames"> {userSong.songName}</div>} </span>
 
             </div>
           </div>
