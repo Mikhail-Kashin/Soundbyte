@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getSongs, deleteSong } from '../../store/splashpage';
-import { audioController, songUrlplusname } from '../../store/audiocontroller'
+import { audioController } from '../../store/audiocontroller'
 
 export const RenderSongPage = () => {
   const dispatch = useDispatch();
   const songs = useSelector(state => state.songs)
   const sessionUser = useSelector(state => state.session.user);
+  const [audioSrc, setAudioSrc] = useState('')
   // const [songIndexNum, setSongIndexNum] = useState('')
   // const [songName, setSongName] = useState('')
+
+    //grabs audio html tag
+  const audio = document.getElementById("audio")
+
+
 
 
   // console.log(songs)
@@ -20,9 +26,6 @@ export const RenderSongPage = () => {
     dispatch(getSongs())
   }
 
-  function getSongandUrl(){
-    dispatch(songUrlplusname())
-  }
 
   const songUrls = () => {
     let list = [];
@@ -34,6 +37,11 @@ export const RenderSongPage = () => {
     return list
   }
 
+  useEffect(() => {
+    if (audio){
+      setAudioSrc(audio.src)
+    }
+  },[audio, songUrls(), songIndexNum()])
 
   function songIndexNum(songUrl) {
     let list = songUrls()
@@ -50,9 +58,12 @@ export const RenderSongPage = () => {
     dispatch(getSongs())
   },[dispatch])
 
-  useEffect(() => {
-    console.log('test...>>>>>>>>test',sessionUser.id)
-  },[dispatch,sessionUser])
+  // useEffect(() => {
+  //   console.log('test...>>>>>>>>test',sessionUser.id)
+  // },[dispatch,sessionUser])
+
+
+
 
   function renderNames(){
     return Object.values(songs).map(song => {
@@ -61,7 +72,7 @@ export const RenderSongPage = () => {
           <div className='songDiv'>
             <div className="songLists">
               <div className="songNum"> {songIndexNum(song.songUrl)}. </div>
-              <span onClick={(e) => dispatch(audioController(song.songUrl))}> <div className="songNames" id='songId'>{song.songName}</div> </span>
+              <span onClick={(e) => dispatch(audioController(song.songUrl))}> {audioSrc === song.songUrl ? <div className="songNames" id='songId'> {song.songName} </div>: <div className="songNames"> {song.songName}</div>} </span>
             </div>
               <div onClick={(e) => removeSongFunc(e, song.id)} id='removeSong' i class="fas fa-backspace"></div>
           </div>
@@ -72,7 +83,6 @@ export const RenderSongPage = () => {
 
   return (
     <div>
-      <div>{getSongandUrl()}</div>
       <div>{renderNames()}</div>
     </div>
   )

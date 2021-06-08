@@ -132,6 +132,10 @@
   color: lightcoral;
 }
 
+#songId{
+  color: green;
+}
+
 
 /* Main Body */
 
@@ -414,6 +418,7 @@ button:hover:after{
   background-size: 100%;
   cursor: pointer;
   }
+
 
 #volume-down{
   color: white;

@@ -24,6 +24,7 @@ export const AudioPlayer = () => {
 
 
 
+
   //loops through songs to grab the song name of the current song being played.
   const songsLoop = () => {
     Object.values(songs).map(song => {
@@ -129,7 +130,7 @@ export const AudioPlayer = () => {
     setListSongs(songUrls())
   },[dispatch,sessionUser,songs])
 
-  //grabs all the songs that should be displayed on the page and puts them into an array
+  //grabs all the songs that should be displayed on the page and puts them into an arra
 
 
   //formates time into minutes and seconds.
