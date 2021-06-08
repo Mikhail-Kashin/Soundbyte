@@ -6,6 +6,7 @@ import { audioController } from '../../store/audiocontroller'
 export const RenderSongPage = () => {
   const dispatch = useDispatch();
   const songs = useSelector(state => state.songs)
+  const clickedSongUrl = useSelector(state => state.audioReducer.clickedSong)
   const sessionUser = useSelector(state => state.session.user);
   const [audioSrc, setAudioSrc] = useState('')
   // const [songIndexNum, setSongIndexNum] = useState('')
@@ -17,11 +18,12 @@ export const RenderSongPage = () => {
 
 
 
+
   // console.log(songs)
 
   function removeSongFunc(e, songId){
     e.preventDefault();
-    // console.log('test.......>', songId)
+    // console.log('test.......>', sonngId)
     dispatch(deleteSong(songId))
     dispatch(getSongs())
   }
@@ -40,8 +42,9 @@ export const RenderSongPage = () => {
   useEffect(() => {
     if (audio){
       setAudioSrc(audio.src)
+      console.log('testingaudioSRC', audioSrc)
     }
-  },[audio, songUrls(), songIndexNum()])
+  },[audio, songUrls(), clickedSongUrl])
 
   function songIndexNum(songUrl) {
     let list = songUrls()
@@ -56,6 +59,7 @@ export const RenderSongPage = () => {
 
   useEffect(() => {
     dispatch(getSongs())
+    renderNames()
   },[dispatch])
 
   // useEffect(() => {
@@ -72,7 +76,7 @@ export const RenderSongPage = () => {
           <div className='songDiv'>
             <div className="songLists">
               <div className="songNum"> {songIndexNum(song.songUrl)}. </div>
-              <span onClick={(e) => dispatch(audioController(song.songUrl))}> {audioSrc === song.songUrl ? <div className="songNames" id='songId'> {song.songName} </div>: <div className="songNames"> {song.songName}</div>} </span>
+              <span onClick={() => dispatch(audioController(song.songUrl))}> {audioSrc === song.songUrl ? <div className="songNames" id='songId'> {song.songName} </div>:  <div className="songNames"> {song.songName}</div>} </span>
             </div>
               <div onClick={(e) => removeSongFunc(e, song.id)} id='removeSong' i class="fas fa-backspace"></div>
           </div>
@@ -80,6 +84,10 @@ export const RenderSongPage = () => {
       }
     })
   }
+  useEffect(() => {
+    renderNames()
+    console.log('did audioSrc run?')
+  },[clickedSongUrl])
 
   return (
     <div>
