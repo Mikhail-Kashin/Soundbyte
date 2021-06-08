@@ -9,13 +9,14 @@ export const RenderExplorerSongPage = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const userSongs = useSelector(state => state.songs)
-
-
+  const clickedSongUrl = useSelector(state => state.audioReducer.clickedSong)
+  const [audioSrc, setAudioSrc] = useState('')
   const [listSongs, setListSongs] = useState([])
   // console.log(songs)
 
+    //grabs audio html tag
+    const audio = document.getElementById("audio")
 
-  useEffect(() => {
     const songUrls = () => {
       let list = [];
       Object.values(userSongs).map(userSong =>{
@@ -25,7 +26,16 @@ export const RenderExplorerSongPage = () => {
       } )
       return list
     }
-    setListSongs(songUrls())
+
+    useEffect(() => {
+      if (audio){
+        setAudioSrc(audio.src)
+        console.log('testingaudioSRC', audioSrc)
+      }
+    },[songUrls(), clickedSongUrl])
+
+    useEffect(() => {
+      setListSongs(songUrls())
     // console.log('test...>>>>>>>>test', sessionUser.id)
   },[dispatch,sessionUser])
 
@@ -39,19 +49,10 @@ export const RenderExplorerSongPage = () => {
       }
     }
   }
-  // console.log(songIndexNum())
-
-  useEffect(() => {
-    // console.log('test...>>>>>>>>test',sessionUser.id)
-  },[dispatch,sessionUser])
 
   useEffect(() => {
     dispatch(getExploreSongs())
-  },[dispatch])
-
-  useEffect(() => {
-    // console.log('test...>>>>>>>>test',sessionUser.id)
-  },[dispatch,sessionUser])
+  },[dispatch,])
 
 
   function renderSongNamesOtherUsers(){
@@ -64,7 +65,9 @@ export const RenderExplorerSongPage = () => {
           <div className='songDiv'>
             <div className="songLists">
               <span className="songNum"> {songIndexNum(userSong.songUrl)}. </span>
-              <span onClick={(e) => dispatch(audioController(userSong.songUrl))}> <div className="songNames">{userSong.songName}</div> </span>
+              {/* <span onClick={(e) => dispatch(audioController(userSong.songUrl))}> <div className="songNames">{userSong.songName}</div> </span> */}
+              <span onClick={() => dispatch(audioController(userSong.songUrl))}> {audioSrc === userSong.songUrl ? <div className="songNames" id='songId'> {userSong.songName} </div>:  <div className="songNames"> {userSong.songName}</div>} </span>
+
             </div>
           </div>
         )
