@@ -60,13 +60,11 @@ export const RenderSongPage = () => {
   useEffect(() => {
     dispatch(getSongs())
     renderNames()
-  },[dispatch])
+  },[dispatch, clickedSongUrl])
 
   // useEffect(() => {
   //   console.log('test...>>>>>>>>test',sessionUser.id)
   // },[dispatch,sessionUser])
-
-
 
 
   function renderNames(){
@@ -84,10 +82,6 @@ export const RenderSongPage = () => {
       }
     })
   }
-  useEffect(() => {
-    renderNames()
-    console.log('did audioSrc run?')
-  },[clickedSongUrl])
 
   return (
     <div>
