@@ -107,7 +107,7 @@ export const AudioPlayer = () => {
   }
 
 
-  //grabs all the songs that should be displayed on the page and puts them into an array
+  //grabs all the sonngs that should be displayed on the page and puts them into an array
   const songUrls = () => {
     let list = [];
     Object.values(songs).map(song =>{
