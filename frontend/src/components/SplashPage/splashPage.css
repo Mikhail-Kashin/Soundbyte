@@ -372,8 +372,10 @@ button:hover:after{
   grid-template-rows: 1fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
-    "name-of-song-playing controls-and-time-display volume-and-mute"
-    "name-of-song-playing audio-bar volume-and-mute";
+  "name-of-song-playing controls-and-time-display volume-and-mute"
+  "name-of-song-playing audio-bar volume-and-mute";
+  position: sticky;
+  top: 1;
 }
 
 .audio-bar { grid-area: audio-bar; }
