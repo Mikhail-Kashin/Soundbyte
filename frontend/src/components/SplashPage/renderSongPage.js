@@ -9,10 +9,15 @@ export const RenderSongPage = () => {
   const clickedSongUrl = useSelector(state => state.audioReducer.clickedSong)
   const sessionUser = useSelector(state => state.session.user);
   const [audioSrc, setAudioSrc] = useState('')
+  const [initialSrc, setInitialSrc] = useState(false)
 
     //grabs audio html tag
   const audio = document.getElementById("audio")
 
+  if (initialSrc){
+    setInitialSrc(true)
+    setAudioSrc(audio.src)
+  }
 
   function removeSongFunc(e, songId){
     e.preventDefault();
@@ -34,8 +39,9 @@ export const RenderSongPage = () => {
   useEffect(() => {
     if (audio){
       setAudioSrc(audio.src)
+      setInitialSrc(false)
     }
-  },[songUrls(), clickedSongUrl])
+  },[songUrls(), clickedSongUrl, audioSrc])
 
   function songIndexNum(songUrl) {
     let list = songUrls()
@@ -49,9 +55,15 @@ export const RenderSongPage = () => {
   // console.log(songIndexNum())
 
   useEffect(() => {
+    if (audio){
+      setAudioSrc(audio.src)
+      setInitialSrc(false)
+    }
     dispatch(getSongs())
     renderNames()
-  },[dispatch, clickedSongUrl])
+  },[dispatch, clickedSongUrl, audioSrc])
+
+  console.log('testisjnetosjfna', audioSrc)
 
   // useEffect(() => {
   //   console.log('test...>>>>>>>>test',sessionUser.id)
