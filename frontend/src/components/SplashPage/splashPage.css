@@ -359,6 +359,14 @@ button:hover:after{
 
 /* Media Bar */
 
+.MediaPlayer{
+  position: absolute;
+  top: 1;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
 .grid-audio-controller-container {
   display: flex;
   justify-content: center;
@@ -372,8 +380,8 @@ button:hover:after{
   grid-template-rows: 1fr 1fr;
   gap: 0px 0px;
   grid-template-areas:
-    "name-of-song-playing controls-and-time-display volume-and-mute"
-    "name-of-song-playing audio-bar volume-and-mute";
+  "name-of-song-playing controls-and-time-display volume-and-mute"
+  "name-of-song-playing audio-bar volume-and-mute";
 }
 
 .audio-bar { grid-area: audio-bar; }
