@@ -9,7 +9,7 @@ export const RenderSongPage = () => {
   const clickedSongUrl = useSelector(state => state.audioReducer.clickedSong)
   const sessionUser = useSelector(state => state.session.user);
   const [audioSrc, setAudioSrc] = useState('')
-  const [initialSrc, setInitialSrc] = useState(false)
+  const [initialSrc, setInitialSrc] = useState(true)
 
   //grabs audio html tag
   const audio = document.getElementById("audio")
@@ -18,17 +18,19 @@ export const RenderSongPage = () => {
   const prev = document.getElementById('previousSong')
   const next = document.getElementById('nextSong')
   if (prev && audio){
-    prev.addEventListener("click", true, function(e){
+    prev.addEventListener("click", function(e){
       e.preventDefault();
       setAudioSrc(audio.src)
-      // setInitialSrc(true)
-      // dispatch(getSongs())
+      // setInitialSrc(false)
+      dispatch(getSongs())
     })
-    next.addEventListener('click', true, function(e){
+    next.addEventListener('click', function(e){
       e.preventDefault();
-      setAudioSrc(audio.src)
+      // setAudioSrc(audio.src)
       // setInitialSrc(true)
-      // dispatch(getSongs())
+      dispatch(getSongs())
+      // setTimeout(function(){ dispatch(getSongs()) }, 1000);
+
     })
   }
 
@@ -49,12 +51,20 @@ export const RenderSongPage = () => {
     } )
     return list
   }
+  // useEffect(() => {
+  //   dispatch(getSongs())
+  // },[clickedSongUrl, audioSrc, dispatch])
 
-  useEffect(() => {
-    if (audio){
-      setAudioSrc(audio.src)
-    }
-  },[songUrls()])
+  // useEffect(() =>{
+  //   dispatch(getSongs())
+  // }, [dispatch, audioSrc])
+
+  // useEffect(() => {
+  //   if (audio){
+  //     setAudioSrc(audio.src)
+  //   }
+  // },[songUrls()])
+
 
   function songIndexNum(songUrl) {
     let list = songUrls()
@@ -69,12 +79,6 @@ export const RenderSongPage = () => {
   // console.log(songIndexNum())
 
 
-  useEffect(() => {
-    if (audio){
-      setAudioSrc(audio.src)
-    }
-    dispatch(getSongs())
-  },[clickedSongUrl, audioSrc])
 
 
 
@@ -94,7 +98,7 @@ export const RenderSongPage = () => {
           <div className='songDiv'>
             <div className="songLists">
               <div className="songNum"> {songIndexNum(song.songUrl)}. </div>
-              <span onClick={() => dispatch(audioController(song.songUrl))}> {audioSrc === song.songUrl ? <div className="songNames" id='songId'> {song.songName} </div>:  <div className="songNames"> {song.songName}</div>} </span>
+              <span onClick={() => dispatch(audioController(song.songUrl))}> {audioSrc === song.songUrl ? <div className="songNames" id='songId'> {song.songName} </div>:  <div className="songNames" > {song.songName}</div>} </span>
             </div>
               <div onClick={(e) => removeSongFunc(e, song.id)} id='removeSong' i class="fas fa-backspace"></div>
           </div>
