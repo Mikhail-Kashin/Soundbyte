@@ -18,12 +18,18 @@ export const RenderSongPage = () => {
 
   const prev = document.getElementById('previousSong')
   const next = document.getElementById('nextSong')
-  if (prev){
-    prev.addEventListener("click", function(){
-     return setInitialSrc(false)
+  if (prev && audio){
+    prev.addEventListener("click", function(e){
+      e.preventDefault();
+      // setAudioSrc(audio.src)
+      setInitialSrc(false)
+      // dispatch(getSongs())
     })
-    next.addEventListener('click', function(){
-      return setInitialSrc(false)
+    next.addEventListener('click', function(e){
+      e.preventDefault();
+      // setAudioSrc(audio.src)
+      setInitialSrc(false)
+      // dispatch(getSongs())
     })
   }
 
@@ -49,8 +55,7 @@ export const RenderSongPage = () => {
     if (audio){
       setAudioSrc(audio.src)
     }
-
-  },[songUrls(), clickedSongUrl])
+  },[songUrls()])
 
   function songIndexNum(songUrl) {
     let list = songUrls()
@@ -70,8 +75,9 @@ export const RenderSongPage = () => {
       setAudioSrc(audio.src)
     }
     dispatch(getSongs())
-    renderNames()
-  },[dispatch, clickedSongUrl, audioSrc, initialSrc])
+  },[clickedSongUrl])
+
+
 
   console.log('testisjnetosjfna', audioSrc)
 
