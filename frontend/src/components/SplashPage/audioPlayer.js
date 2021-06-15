@@ -167,6 +167,7 @@ export const AudioPlayer = () => {
       setPlaying(true)
       audio.pause()
     }
+    dispatch(getSongs())
   }
 
   //plays previous song
