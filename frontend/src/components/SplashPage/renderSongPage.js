@@ -15,25 +15,6 @@ export const RenderSongPage = () => {
   const audio = document.getElementById("audio")
 
 
-  const prev = document.getElementById('previousSong')
-  const next = document.getElementById('nextSong')
-  if (prev && audio){
-    prev.addEventListener("click", function(e){
-      e.preventDefault();
-      setAudioSrc(audio.src)
-      // setInitialSrc(false)
-      dispatch(getSongs())
-    })
-    next.addEventListener('click', function(e){
-      e.preventDefault();
-      // setAudioSrc(audio.src)
-      // setInitialSrc(true)
-      dispatch(getSongs())
-      // setTimeout(function(){ dispatch(getSongs()) }, 1000);
-
-    })
-  }
-
 
   function removeSongFunc(e, songId){
     e.preventDefault();
@@ -51,19 +32,15 @@ export const RenderSongPage = () => {
     } )
     return list
   }
-  // useEffect(() => {
-  //   dispatch(getSongs())
-  // },[clickedSongUrl, audioSrc, dispatch])
+  useEffect(() => {
+    dispatch(getSongs())
+  },[clickedSongUrl, audioSrc, dispatch])
 
-  // useEffect(() =>{
-  //   dispatch(getSongs())
-  // }, [dispatch, audioSrc])
-
-  // useEffect(() => {
-  //   if (audio){
-  //     setAudioSrc(audio.src)
-  //   }
-  // },[songUrls()])
+  useEffect(() => {
+    if (audio){
+      setAudioSrc(audio.src)
+    }
+  },[songUrls()])
 
 
   function songIndexNum(songUrl) {
