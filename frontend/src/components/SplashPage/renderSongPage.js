@@ -9,26 +9,25 @@ export const RenderSongPage = () => {
   const clickedSongUrl = useSelector(state => state.audioReducer.clickedSong)
   const sessionUser = useSelector(state => state.session.user);
   const [audioSrc, setAudioSrc] = useState('')
-  const [initialSrc, setInitialSrc] = useState(true)
+  const [initialSrc, setInitialSrc] = useState(false)
 
   //grabs audio html tag
   const audio = document.getElementById("audio")
 
 
-
   const prev = document.getElementById('previousSong')
   const next = document.getElementById('nextSong')
   if (prev && audio){
-    prev.addEventListener("click", function(e){
+    prev.addEventListener("click", true, function(e){
       e.preventDefault();
-      // setAudioSrc(audio.src)
-      setInitialSrc(false)
+      setAudioSrc(audio.src)
+      // setInitialSrc(true)
       // dispatch(getSongs())
     })
-    next.addEventListener('click', function(e){
+    next.addEventListener('click', true, function(e){
       e.preventDefault();
-      // setAudioSrc(audio.src)
-      setInitialSrc(false)
+      setAudioSrc(audio.src)
+      // setInitialSrc(true)
       // dispatch(getSongs())
     })
   }
@@ -75,7 +74,7 @@ export const RenderSongPage = () => {
       setAudioSrc(audio.src)
     }
     dispatch(getSongs())
-  },[clickedSongUrl])
+  },[clickedSongUrl, audioSrc])
 
 
 
