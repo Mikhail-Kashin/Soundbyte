@@ -21,7 +21,7 @@ export const AudioPlayer = () => {
   //grabs audio html tag
   const audio = document.getElementById("audio")
 
-
+  
 
 
 

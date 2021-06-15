@@ -9,15 +9,24 @@ export const RenderSongPage = () => {
   const clickedSongUrl = useSelector(state => state.audioReducer.clickedSong)
   const sessionUser = useSelector(state => state.session.user);
   const [audioSrc, setAudioSrc] = useState('')
-  const [initialSrc, setInitialSrc] = useState(false)
+  const [initialSrc, setInitialSrc] = useState(true)
 
-    //grabs audio html tag
+  //grabs audio html tag
   const audio = document.getElementById("audio")
 
-  if (initialSrc){
-    setInitialSrc(true)
-    setAudioSrc(audio.src)
+
+
+  const prev = document.getElementById('previousSong')
+  const next = document.getElementById('nextSong')
+  if (prev){
+    prev.addEventListener("click", function(){
+     return setInitialSrc(false)
+    })
+    next.addEventListener('click', function(){
+      return setInitialSrc(false)
+    })
   }
+
 
   function removeSongFunc(e, songId){
     e.preventDefault();
@@ -39,9 +48,9 @@ export const RenderSongPage = () => {
   useEffect(() => {
     if (audio){
       setAudioSrc(audio.src)
-      setInitialSrc(false)
     }
-  },[songUrls(), clickedSongUrl, audioSrc])
+
+  },[songUrls(), clickedSongUrl])
 
   function songIndexNum(songUrl) {
     let list = songUrls()
@@ -51,23 +60,26 @@ export const RenderSongPage = () => {
         return i + 1
       }
     }
+
   }
   // console.log(songIndexNum())
+
 
   useEffect(() => {
     if (audio){
       setAudioSrc(audio.src)
-      setInitialSrc(false)
     }
     dispatch(getSongs())
     renderNames()
-  },[dispatch, clickedSongUrl, audioSrc])
+  },[dispatch, clickedSongUrl, audioSrc, initialSrc])
 
   console.log('testisjnetosjfna', audioSrc)
+
 
   // useEffect(() => {
   //   console.log('test...>>>>>>>>test',sessionUser.id)
   // },[dispatch,sessionUser])
+
 
 
   function renderNames(){
@@ -87,7 +99,7 @@ export const RenderSongPage = () => {
   }
 
   return (
-    <div>
+    <div id='yo'>
       <div>{renderNames()}</div>
     </div>
   )
