@@ -9,9 +9,11 @@ export const RenderSongPage = () => {
   const clickedSongUrl = useSelector(state => state.audioReducer.clickedSong)
   const sessionUser = useSelector(state => state.session.user);
   const [audioSrc, setAudioSrc] = useState('')
+  const [initialSrc, setInitialSrc] = useState(true)
 
-    //grabs audio html tag
+  //grabs audio html tag
   const audio = document.getElementById("audio")
+
 
 
   function removeSongFunc(e, songId){
@@ -30,12 +32,16 @@ export const RenderSongPage = () => {
     } )
     return list
   }
+  useEffect(() => {
+    dispatch(getSongs())
+  },[clickedSongUrl, audioSrc, dispatch])
 
   useEffect(() => {
     if (audio){
       setAudioSrc(audio.src)
     }
-  },[songUrls(), clickedSongUrl])
+  },[songUrls()])
+
 
   function songIndexNum(songUrl) {
     let list = songUrls()
@@ -45,17 +51,21 @@ export const RenderSongPage = () => {
         return i + 1
       }
     }
+
   }
   // console.log(songIndexNum())
 
-  useEffect(() => {
-    dispatch(getSongs())
-    renderNames()
-  },[dispatch, clickedSongUrl])
+
+
+
+
+  console.log('testisjnetosjfna', audioSrc)
+
 
   // useEffect(() => {
   //   console.log('test...>>>>>>>>test',sessionUser.id)
   // },[dispatch,sessionUser])
+
 
 
   function renderNames(){
@@ -65,7 +75,7 @@ export const RenderSongPage = () => {
           <div className='songDiv'>
             <div className="songLists">
               <div className="songNum"> {songIndexNum(song.songUrl)}. </div>
-              <span onClick={() => dispatch(audioController(song.songUrl))}> {audioSrc === song.songUrl ? <div className="songNames" id='songId'> {song.songName} </div>:  <div className="songNames"> {song.songName}</div>} </span>
+              <span onClick={() => dispatch(audioController(song.songUrl))}> {audioSrc === song.songUrl ? <div className="songNames" id='songId'> {song.songName} </div>:  <div className="songNames" > {song.songName}</div>} </span>
             </div>
               <div onClick={(e) => removeSongFunc(e, song.id)} id='removeSong' i class="fas fa-backspace"></div>
           </div>
@@ -75,7 +85,7 @@ export const RenderSongPage = () => {
   }
 
   return (
-    <div>
+    <div id='yo'>
       <div>{renderNames()}</div>
     </div>
   )

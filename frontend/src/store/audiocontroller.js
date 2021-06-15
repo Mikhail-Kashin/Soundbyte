@@ -30,7 +30,7 @@ export default function audioReducer(state = initialState, action){
       const newState = {clickedSong: action.payload}
     return newState
     case SONGNAME_AND_URL:
-      const info = {...action.payload}
+      const info = {willYousork: action.payload}
       return info
     default:
       return state

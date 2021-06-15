@@ -177,6 +177,7 @@ export const AudioPlayer = () => {
     }else {
       setSongIndex(listSongs.length - 1)
     }
+    dispatch(getSongs())
   }
 
   //plays next song
@@ -187,6 +188,7 @@ export const AudioPlayer = () => {
     }else {
       setSongIndex(0)
     }
+    dispatch(getSongs())
   }
 
   //allows next song to play when one is finished playing
@@ -197,9 +199,9 @@ export const AudioPlayer = () => {
       } else setSongIndex(0)
     })}
 
-    useEffect(() => {
-      dispatch(getSongs())
-    },[dispatch])
+    // useEffect(() => {
+    //   dispatch(getSongs())
+    // },[dispatch])
 
 
 
