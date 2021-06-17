@@ -9,7 +9,9 @@ const { Song } = require('../../db/models')
 const {
   singleMulterUpload,
   singlePublicFileUpload,
-  multiplePublicFileUpload
+  songMulterUpload,
+  multiplePublicFileUpload,
+  singlePublicFileUploadB,
 } = require("../../awsS3");
 
 const router = express.Router();
@@ -23,10 +25,28 @@ router.get ('/', asyncHandler(async (req, res) => {
 
 
 // post a new song aws
-router.post('/new',singleMulterUpload("songUrl"), asyncHandler(async (req, res) => {
+// router.post('/new',singleMulterUpload("songUrl", "albumPicUrl"), asyncHandler(async (req, res) => {
+//   const {userId, songName, songGenre} = req.body;
+//   const songUrl = await singlePublicFileUpload(req.file);
+//   const albumPicUrl = await singlePublicFileUpload(req.file);
+//   // console.log(("------>singlePublicFileUpload file", albumPicUrl))
+//   const newSong = await Song.create({
+//     userId,
+//     songUrl,
+//     albumPicUrl,
+//     songName,
+//     songGenre
+//   })
+//   console.log('--------wee------->testing', newSong)
+//    await res.json(newSong)
+// }))
+
+// post a new song aws
+router.post('/new', songMulterUpload, asyncHandler(async (req, res) => {
   const {userId, songName, songGenre} = req.body;
-  const songUrl = await singlePublicFileUpload(req.file);
-  const albumPicUrl = await singlePublicFileUpload(req.file);
+  const songUrl = await singlePublicFileUpload(req.file['songUrl'][0], 'songs');
+  const albumPicUrl = await singlePublicFileUpload(req.file['albumPicUrl'][0], 'picture');
+  // console.log(("------>singlePublicFileUpload file", albumPicUrl))
   const newSong = await Song.create({
     userId,
     songUrl,
