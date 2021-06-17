@@ -11,6 +11,7 @@ const RenderNewSongForm = () => {
   const sessionUser = useSelector(state => state.session.user);
 
   const [songUrl, setSongUrl] = useState('');
+  const [albumPicUrl, setAlbumPicUrl] = useState('');
   const [songName, setSongName] = useState('');
   const [songGenre, setSongGenre] = useState('');
   const [userId, setUserId] = useState('');
@@ -22,10 +23,11 @@ const RenderNewSongForm = () => {
 
   const handleSubmitNewSong = async (e) => {
     e.preventDefault();
-    dispatch(createSong({ userId, songUrl, songName, songGenre}))
+    dispatch(createSong({ userId, songUrl, albumPicUrl, songName, songGenre}))
     //set loading to true
       .then(() => {
         setSongUrl(null);
+        setAlbumPicUrl(null);
         setSongName('');
         setSongGenre('');
         setUserId('');
@@ -44,6 +46,11 @@ const RenderNewSongForm = () => {
     const songFile = e.target.files[0];
     // console.log('testsongfil')
     if (songFile) setSongUrl(songFile);
+  }
+
+  const updateAlbumFile = (e) => {
+    const albumPicFile = e.target.files[0];
+    if (albumPicFile) setAlbumPicUrl(albumPicFile);
   }
 
   if (sessionUser){
@@ -66,6 +73,7 @@ const RenderNewSongForm = () => {
             type="file"
             // value={songUrl}
             onChange={updateSongFile}
+            onChange={updateAlbumFile}
             required
             />
           </label>
