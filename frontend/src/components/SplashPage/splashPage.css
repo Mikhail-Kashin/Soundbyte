@@ -98,9 +98,14 @@
   display: flex;
   margin-bottom: 1.25em;
   font-size: 1.1em;
+  cursor: pointer;
   /* justify-content: space-between; */
   /* align-content: flex-start; */
   /* align-items: center; */
+}
+.songLists:hover{
+  background-color: #494747;
+  height: 1.25em;
 }
 
 .deleteHeader{
