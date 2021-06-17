@@ -34,7 +34,7 @@ router.post('/new',singleMulterUpload("songUrl"), asyncHandler(async (req, res) 
     songName,
     songGenre
   })
-  console.log('--------------->testing', newSong)
+  console.log('--------wee------->testing', newSong)
    await res.json(newSong)
 }))
 

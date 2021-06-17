@@ -30,6 +30,8 @@ const singlePublicFileUpload = async (file) => {
   return result.Location;
 };
 
+
+
 const multiplePublicFileUpload = async (files) => {
   return await Promise.all(
     files.map((file) => {
