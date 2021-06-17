@@ -25,9 +25,11 @@ router.get ('/', asyncHandler(async (req, res) => {
 router.post('/new',singleMulterUpload("songUrl"), asyncHandler(async (req, res) => {
   const {userId, songName, songGenre} = req.body;
   const songUrl = await singlePublicFileUpload(req.file);
+  const albumPicUrl = await singlePublicFileUpload(req.file);
   const newSong = await Song.create({
     userId,
     songUrl,
+    albumPicUrl,
     songName,
     songGenre
   })

@@ -34,13 +34,14 @@ export const getSongs = () => async dispatch => {
 
 //AWS create song thunk
 export const createSong = (newSong) => async dispatch => {
-  const {userId, songUrl, songName, songGenre} = newSong;
+  const {userId, songUrl, albumPicUrl, songName, songGenre} = newSong;
   const formData = new FormData();
   formData.append("songName", songName);
   formData.append("songGenre", songGenre);
   formData.append("userId", userId);
-  console.log('testing userId', newSong)
+  // console.log('testing userId', newSong)
   if (songUrl) formData.append('songUrl', songUrl);
+  if (albumPicUrl) formData.append('albumPicUrl', albumPicUrl);
 
   const res = await fetch(`/api/songs/new`, {
     method: 'POST',
@@ -49,7 +50,7 @@ export const createSong = (newSong) => async dispatch => {
     },
     body: formData,
   })
-  console.log('testing......songData', res)
+  // console.log('testing......songData', res)
   const songData = await res.data
   await dispatch(addSong(songData))
 }
