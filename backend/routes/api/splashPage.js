@@ -9,6 +9,7 @@ const { Song } = require('../../db/models')
 const {
   singleMulterUpload,
   singlePublicFileUpload,
+  multiplePublicFileUpload
 } = require("../../awsS3");
 
 const router = express.Router();
