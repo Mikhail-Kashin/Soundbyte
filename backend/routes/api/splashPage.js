@@ -2,7 +2,7 @@ const express = require('express');
 const { check } = require('express-validator');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const asyncHandler = require('express-async-handler');
-const { Song } = require('../../db/models')
+const { Song, Album } = require('../../db/models')
 
 
 
@@ -20,6 +20,24 @@ router.get ('/', asyncHandler(async (req, res) => {
   return res.json(Object.assign({}, songs))
 }))
 
+// get all albums
+router.get('/albums', asyncHandler(async (req, res) => {
+  const albums = await Album.findAll()
+  return res.json(Object.assign({}, albums))
+}))
+
+// post new album aws
+
+router.post('/newAlbum', singleMulterUpload('albumUrl'), asyncHandler(async (req, res) => {
+  const {albumName, albumDescription}
+  const albumPic = await singlePublicFileUpload(req.file);
+  const newAlbum = await Album.create({
+    albumPic,
+    albumName,
+    albumDescription
+  })
+  await res.json(newAlbum)
+}))
 
 // post a new song aws
 router.post('/new',singleMulterUpload("songUrl"), asyncHandler(async (req, res) => {
@@ -31,7 +49,7 @@ router.post('/new',singleMulterUpload("songUrl"), asyncHandler(async (req, res) 
     songName,
     songGenre
   })
-  console.log('--------------->testing', newSong)
+  // console.log('--------------->testing', newSong)
    await res.json(newSong)
 }))
 
