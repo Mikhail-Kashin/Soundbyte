@@ -20,14 +20,14 @@ Soundbyte is a cloud based music app inspired by Spotify that focuses on providi
   # Features
 
   ## Audio Player
-    - The Audio Player has all the features you would expect from an audio player.
+  - The Audio Player has all the features you would expect from an audio player.
 
-      * Play/Pause
-      * Previous Song/Next Song
-      * Interactive Progress Bar
-      * Current Duration/Full Duration
+    * Play/Pause
+    * Previous Song/Next Song
+    * Interactive Progress Bar
+    * Current Duration/Full Duration
 
-    - The Audio Player also features the name of the current song being played as well as the track picture the user uploaded along with the song.
+  - The Audio Player also features the name of the current song being played as well as the track picture the user uploaded along with the song.
 
   <img src="/frontend/public/ReadMe Pics/AduioPlayerDemo.gif">
     - This Snippet shows logic needed to fill the Progress Bar. As well as make it interactive to be able to skip through the song.
