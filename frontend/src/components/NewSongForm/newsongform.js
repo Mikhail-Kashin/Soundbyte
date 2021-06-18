@@ -51,10 +51,6 @@ const RenderNewSongForm = () => {
     if (songFile) setSongUrl(songFile);
   }
 
-  // const updateFiles = (e) => {
-  //       const files = e.target.files;
-  //       setAlbumPicUrl(files);
-  //     };
 
   const updateAlbumFile = (e) => {
     console.log('album', e.target.files)
