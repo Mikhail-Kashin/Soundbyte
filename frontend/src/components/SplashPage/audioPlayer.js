@@ -202,23 +202,13 @@ export const AudioPlayer = () => {
       } else setSongIndex(0)
     })}
 
-    // useEffect(() => {
-    //   dispatch(getSongs())
-    // },[dispatch])
-
-
-
     useEffect(() => {
       if (audio) audio.play()
     }, [songIndex])
 
     //allows next song to play when one is finished playing
 
-  // const songNamez = getElementById('songId')
-  // const songListHighlight = () => {
-  //   return songName
-  // }
-  // console.log('songListHighlight', songListHighlight())
+
 
 	return (
     <div>
@@ -260,38 +250,6 @@ export const AudioPlayer = () => {
       </div>
     </div>
 
-
-
-
-      {/* <div className='media-controller-container'>
-        <div className="controller-wrap">
-      <span className='volumeBar-container'>
-        <input
-        type="range"
-        id='volume-bar'
-        />
-        </span>
-        <span className="currentDuration">{ currentTime}</span>
-        <span id='previousSong' i class="fas fa-step-backward" onClick={e => prevSong(e)}></span>
-        {playing === true ? <span id='playButton' i class="fas fa-play-circle" onClick={e => playSongs(e)}></span> : <span id='pauseButton' i class="far fa-pause-circle" onClick={e => playSongs(e)}></span>}
-        <span id='nextSong' i class="fas fa-step-forward" onClick={e => nextSong(e)}></span>
-        <span className="songDuration">{songDuration()}</span>
-        <p>
-          <audio
-            id='audio'
-            src={listSongs[songIndex]}
-            onTimeUpdate={() => runTimeandStatusBar()}
-
-            />
-              </p>
-      </div>
-        <div>
-          <canvas id="music-bar" width="300" height="20">
-          </canvas>
-
-        </div>
-
-        </div> */}
       </div>
     );
 }
