@@ -57,6 +57,7 @@
   margin-left: 0;
   border-color: rgb(80, 78, 78);
   border-width: .1em;
+  cursor: default;
 }
 .yourSongs{
   /* font-family: Optima, sans-serif; */
@@ -64,7 +65,29 @@
   color: #ffffff;
   /* font-weight: 400; */
   margin-top: -1em;
-  margin-left: .4em
+  /* margin-left: .4em */
+}
+
+.pic-and-name{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /* align-items: center; */
+  /* margin-right: 116px; */
+}
+
+.currentlyPlayingSong{
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  /* margin-top: -1em;
+  margin-left: .4em */
+}
+
+.currentlyTrackPicture{
+  height: 12rem;
+  width: 12rem;
 }
 
 /* HEADER FOR NAV BAR */
@@ -488,13 +511,24 @@ button:hover:after{
   text-decoration: none;
 }
 
+.name-of-song-playing{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
 
 .currentSong{
   color: white;
-  display: flex;
   justify-content: center;
   font-family: Trebuchet MS;
   font-size: 1.25em;
+}
+
+.currentTrackPicture{
+  height: 4em;
+  width: 4em;
+  margin-right: 1.5em;
 }
 
 /* Media Bar */

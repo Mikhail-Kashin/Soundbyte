@@ -14,6 +14,7 @@ export const AudioPlayer = () => {
   const [listSongs, setListSongs] = useState([])
   const [currentTime, setCurrentTime] = useState('0:00')
   const [currentlyPlaying, setCurrentlyPlaying] = useState('')
+  const [currentTrackPicture, setCurrentTrackPicture] = useState('')
 
 
   const { explore } = useParams()
@@ -21,7 +22,7 @@ export const AudioPlayer = () => {
   //grabs audio html tag
   const audio = document.getElementById("audio")
 
-
+  console.log("testingpoicture", currentTrackPicture)
 
 
 
@@ -29,6 +30,7 @@ export const AudioPlayer = () => {
   const songsLoop = () => {
     Object.values(songs).map(song => {
       if (song.songUrl === listSongs[songIndex]){
+        setCurrentTrackPicture(song.albumPicUrl)
         return setCurrentlyPlaying(song.songName)
       }
     })
@@ -251,7 +253,10 @@ export const AudioPlayer = () => {
       <span i class="fas fa-volume-up" id='volume-up'/>
       </div>
       <div class="name-of-song-playing">
-        <span class='currentSong'>{currentlyPlaying}</span>
+
+         <span>{currentTrackPicture ? <img src={currentTrackPicture}  class='currentTrackPicture'></img> : <img src='https://user-images.githubusercontent.com/75585372/122488680-fadbd400-cfab-11eb-9c62-a13dd40295c1.jpg'  class='currentTrackPicture'></img>} </span>
+          <span class='currentSong'>{currentlyPlaying}</span>
+
       </div>
     </div>
 

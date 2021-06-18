@@ -86,13 +86,7 @@ const RenderNewSongForm = () => {
             required
             />
           </label>
-           {/* <label>
-            Multiple Upload
-            <input
-              type="file"
-              multiple
-              onChange={updateFiles} />
-          </label> */}
+
           <label>
             Song File
             <input className="uploadFileButton"
