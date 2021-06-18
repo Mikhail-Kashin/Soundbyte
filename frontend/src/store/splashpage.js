@@ -43,6 +43,12 @@ export const createSong = (newSong) => async dispatch => {
   if (albumPicUrl) formData.append('albumPicUrl', albumPicUrl);
   if (songUrl) formData.append('songUrl', songUrl);
 
+  // if (songUrl && songUrl.length !== 0) {
+  //   for (var i = 0; i < songUrl.length; i++) {
+  //     formData.append("songUrl", songUrl[i]);
+  //   }
+  // }
+
   const res = await fetch(`/api/songs/new`, {
     method: 'POST',
     headers: {

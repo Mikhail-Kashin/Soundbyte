@@ -51,6 +51,11 @@ const RenderNewSongForm = () => {
     if (songFile) setSongUrl(songFile);
   }
 
+  // const updateFiles = (e) => {
+  //       const files = e.target.files;
+  //       setAlbumPicUrl(files);
+  //     };
+
   const updateAlbumFile = (e) => {
     console.log('album', e.target.files)
     const albumPicFile = e.target.files[0];
@@ -81,8 +86,15 @@ const RenderNewSongForm = () => {
             required
             />
           </label>
+           {/* <label>
+            Multiple Upload
+            <input
+              type="file"
+              multiple
+              onChange={updateFiles} />
+          </label> */}
           <label>
-            Song Name
+            Song File
             <input className="uploadFileButton"
             type="file"
             // value={songUrl}
