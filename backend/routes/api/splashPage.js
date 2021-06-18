@@ -44,8 +44,8 @@ router.get ('/', asyncHandler(async (req, res) => {
 // post a new song aws
 router.post('/new', songMulterUpload, asyncHandler(async (req, res) => {
   const {userId, songName, songGenre} = req.body;
-  const songUrl = await singlePublicFileUpload(req.file['songUrl'][0], 'songs');
-  const albumPicUrl = await singlePublicFileUpload(req.file['albumPicUrl'][0], 'picture');
+  const songUrl = await singlePublicFileUpload(req.files['songUrl'][0], 'songs');
+  const albumPicUrl = await singlePublicFileUpload(req.files['albumPicUrl'][0], 'pictures');
   // console.log(("------>singlePublicFileUpload file", albumPicUrl))
   const newSong = await Song.create({
     userId,

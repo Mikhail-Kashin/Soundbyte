@@ -31,12 +31,7 @@ const singlePublicFileUpload = async (file) => {
   return result.Location;
 };
 
-const storage = multer.memoryStorage({
-  destination: function (req, file, callback) {
-    callback(null, "");
-  },
-});
-// const storage = multer.memoryStorage();
+const storage = multer.memoryStorage();
 const songMulterUpload = multer({
   storage,
 }).fields([
@@ -110,6 +105,11 @@ const retrievePrivateFile = (key) => {
 
 // --------------------------- Storage ------------------------
 
+// const storage = multer.memoryStorage({
+//   destination: function (req, file, callback) {
+//     callback(null, "");
+//   },
+// });
 
 // app.use(multer({ storage : storage}).fields([{name:'image',maxCount:1}]));
 
