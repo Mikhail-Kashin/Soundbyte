@@ -14,6 +14,7 @@ function ExplorerSongPage () {
   const history = useHistory();
   const [currentlyPlaying, setCurrentlyPlaying] = useState('')
   const [currentTrackPicture, setCurrentTrackPicture] = useState('')
+  const clickedSongUrl = useSelector(state => state.audioReducer.clickedSong)
   const songs = useSelector(state => state.songs)
   const notLoggedIn = () => {
     history.push('/');
@@ -31,7 +32,7 @@ function ExplorerSongPage () {
     if (audio){
       songsLoop()
     }
-  },[test])
+  },[test, clickedSongUrl])
 
   const songsLoop = () => {
     Object.values(songs).map(song => {
