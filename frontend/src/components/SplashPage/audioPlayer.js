@@ -14,6 +14,7 @@ export const AudioPlayer = () => {
   const [listSongs, setListSongs] = useState([])
   const [currentTime, setCurrentTime] = useState('0:00')
   const [currentlyPlaying, setCurrentlyPlaying] = useState('')
+  const [currentTrackPicture, setCurrentTrackPicture] = useState('')
 
 
   const { explore } = useParams()
@@ -29,6 +30,7 @@ export const AudioPlayer = () => {
   const songsLoop = () => {
     Object.values(songs).map(song => {
       if (song.songUrl === listSongs[songIndex]){
+        setCurrentTrackPicture(song.albumPicUrl)
         return setCurrentlyPlaying(song.songName)
       }
     })
@@ -252,6 +254,7 @@ export const AudioPlayer = () => {
       </div>
       <div class="name-of-song-playing">
         <span class='currentSong'>{currentlyPlaying}</span>
+        <span class='currentTrackPicture'>{currentTrackPicture}</span>
       </div>
     </div>
 
