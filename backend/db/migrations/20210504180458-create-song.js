@@ -21,6 +21,11 @@ module.exports = {
         allowNull: false,
         unique: true
       },
+      albumPicUrl: {
+        type: Sequelize.STRING(500),
+        allowNull: true,
+        unique: true
+      },
       songName: {
         type: Sequelize.STRING(250),
         allowNull: false
