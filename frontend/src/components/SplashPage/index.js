@@ -69,13 +69,11 @@ if (sessionUser){
             )}
             <LogOutComponent/>
         </div>
-        <div>
           <p className="yourSongs">your music</p>
           <div className="pic-and-name">
             <p className="currentlyPlayingSong">{currentlyPlaying}</p>
             <p ><img src={currentTrackPicture} className="currentlyTrackPicture"></img></p>
           </div>
-        </div>
       </div>
       <div class="MainBody">
         <div className="headings"><span className='songNumHeader'># </span><span>Title</span></div>

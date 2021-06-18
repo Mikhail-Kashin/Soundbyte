@@ -57,6 +57,7 @@
   margin-left: 0;
   border-color: rgb(80, 78, 78);
   border-width: .1em;
+  cursor: default;
 }
 .yourSongs{
   /* font-family: Optima, sans-serif; */
@@ -64,7 +65,7 @@
   color: #ffffff;
   /* font-weight: 400; */
   margin-top: -1em;
-  margin-left: .4em
+  /* margin-left: .4em */
 }
 
 .pic-and-name{
@@ -85,8 +86,8 @@
 }
 
 .currentlyTrackPicture{
-  height: 10rem;
-  width: 10rem;
+  height: 12rem;
+  width: 12rem;
 }
 
 /* HEADER FOR NAV BAR */
