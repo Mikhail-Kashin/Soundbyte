@@ -1,5 +1,6 @@
 # Soundbyte
 
+<img src='/frontend/public/ReadMe Pics/splashPage.PNG'>
 
 Soundbyte is a cloud based music app inspired by Spotify that focuses on providing users a platform to upload and play songs, as well as share music with their friends!
 
