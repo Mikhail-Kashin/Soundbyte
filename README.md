@@ -30,7 +30,7 @@ Soundbyte is a cloud based music app inspired by Spotify that focuses on providi
   - The Audio Player also features the name of the current song being played as well as the track picture the user uploaded along with the song.
 
   <img src="/frontend/public/ReadMe Pics/AduioPlayerDemo.gif">
-  - This Snippet shows logic needed to fill the Progress Bar. As well as make it interactive to be able to skip through the song.
+  * This Snippet shows logic needed to fill the Progress Bar. As well as make it interactive to be able to skip through the song.
 
   <img src="/frontend/public/ReadMe Pics/audio player snippet 1.PNG">
   - JavaScript only deals in seconds. Therefore a simple format function is needed to display the duration in a readable song and second format.
