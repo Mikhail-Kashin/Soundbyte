@@ -71,8 +71,10 @@ if (sessionUser){
         </div>
         <div>
           <p className="yourSongs">your music</p>
-          <p>{currentlyPlaying}</p>
-          <p>{currentTrackPicture}</p>
+          <div className="pic-and-name">
+            <p className="currentlyPlayingSong">{currentlyPlaying}</p>
+            <p ><img src={currentTrackPicture} className="currentlyTrackPicture"></img></p>
+          </div>
         </div>
       </div>
       <div class="MainBody">
