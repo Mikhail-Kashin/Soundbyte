@@ -45,9 +45,24 @@ Soundbyte is a cloud based music app inspired by Spotify that focuses on providi
   <img src="/frontend/public/ReadMe Pics/audio player snippet 4.PNG">
 
 ## Upload
-    - Upload Song Demo
-  <img src="/frontend/public/ReadMe Pics/Upload Feature Giff.gif">
-    - AWS Code
-  <img src="/frontend/public/ReadMe Pics/AWS Logic.PNG">
-    - New Song Post Route
-  <img src="/frontend/public/ReadMe Pics/post new song route.PNG">
+  - The Upload feature allows users to upload songs along with a track photo.
+
+    <img src="/frontend/public/ReadMe Pics/Upload Feature Giff.gif">
+
+  - This snippet shows of the AWS logic needed for the cloud storage to function.
+
+    * The first function accepts the file and timestamps the file along with the orginal file name.
+    * The Multer function took a lot of extra work. To allow AWS to accept two separate uploads at once .fields needed to be added along with the unique keys.
+
+    <img src="/frontend/public/ReadMe Pics/AWS Logic.PNG">
+  - In this post route you will see the key name provided in both of the URL columns. This is so that AWS has unique names to prevent errors.
+
+    <img src="/frontend/public/ReadMe Pics/post new song route.PNG">
+
+  - A simple thunk for the React Store to send the data over to AWS and my Express Server.
+
+    <img src="/frontend/public/ReadMe Pics/AWS Logic.PNG">
+
+  - My reducer that has cases for the Song Feed, Adding songs, and deleting them.
+  
+    <img src="/frontend/public/ReadMe Pics/reducer.PNG">
