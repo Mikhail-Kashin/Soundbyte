@@ -27,7 +27,8 @@ Soundbyte is a cloud based music app inspired by Spotify that focuses on providi
   <img src="/frontend/public/ReadMe Pics/audio player snippet 2.PNG">
   <img src="/frontend/public/ReadMe Pics/audio player snippet 3.PNG">
   <img src="/frontend/public/ReadMe Pics/audio player snippet 4.PNG">
-  ## Upload
+
+## Upload
     - Upload Song Demo
   <img src="/frontend/public/ReadMe Pics/Upload Feature Giff.gif">
     - AWS Code
