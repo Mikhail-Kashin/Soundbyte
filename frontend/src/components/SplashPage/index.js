@@ -71,7 +71,7 @@ if (sessionUser){
           <p className="yourSongs">your music</p>
           <div className="pic-and-name">
             <p className="currentlyPlayingSong">{currentlyPlaying}</p>
-            <p ><img src={currentTrackPicture} className="currentlyTrackPicture"></img></p>
+            <p >{currentTrackPicture ? <img src={currentTrackPicture}  class='currentTrackPicture'></img> : <img src='https://user-images.githubusercontent.com/75585372/122488680-fadbd400-cfab-11eb-9c62-a13dd40295c1.jpg'  class='currentTrackPicture'></img>}</p>
           </div>
       </div>
       <div class="MainBody">
