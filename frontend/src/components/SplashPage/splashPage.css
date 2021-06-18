@@ -488,13 +488,24 @@ button:hover:after{
   text-decoration: none;
 }
 
+.name-of-song-playing{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
 
 .currentSong{
   color: white;
-  display: flex;
   justify-content: center;
   font-family: Trebuchet MS;
   font-size: 1.25em;
+}
+
+.currentTrackPicture{
+  height: 4em;
+  width: 4em;
+  margin-right: 1.5em;
 }
 
 /* Media Bar */
