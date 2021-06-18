@@ -20,7 +20,6 @@ function SongPage() {
 
   const [currentlyPlaying, setCurrentlyPlaying] = useState('')
   const [currentTrackPicture, setCurrentTrackPicture] = useState('')
-  const [flag, setFlag] = useState(false)
   const songs = useSelector(state => state.songs)
   // const userId = sessionUser.id
 
